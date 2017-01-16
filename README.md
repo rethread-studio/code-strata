@@ -1,9 +1,19 @@
 # whistle-bits
 
-##Clone
+##Git
+
+###Installation de git
+
+Sous OS X, deux options:
+
+ * [Télécharger l'installer ici](http://sourceforge.net/projects/git-osx-installer/)
+ * Via les [MacPorts](http://www.macports.org): `sudo port install git-core +svn +doc +bash_completion +gitweb`
+ 
+###Utilisation de git
+
 Pour copier le repo:
 ```
-git clone ht
+git clone https://github.com/Lyadis/whistle-bits.git
 ```
 
 Pour le mettre à jour (depuis le repertoir du projet):
@@ -20,3 +30,5 @@ Pour mettre à jour le repo distant (faire un `git pull` pour vérifier que le r
 ```
 git push
 ```
+
+[Plus de doc sur git ici.](https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git)
