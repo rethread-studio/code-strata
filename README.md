@@ -1,6 +1,6 @@
 # whistle-bits
 
-Les sources sont dans `src`, les données dans `data`.
+Les sources processing sont dans `src`, les données dans `data`.
 
 Les données ont le format suivant:
  * A la racine un objet contenant un nom/src et une capture (tableau d'evenements capturés)
