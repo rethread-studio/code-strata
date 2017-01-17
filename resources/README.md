@@ -41,6 +41,7 @@ Here is a (short) list of tools to vizualize different aspects of software's str
 - the [history of web browsers](http://visual.ly/browser-history)
 - the [evolution of the web](http://www.evolutionoftheweb.com/)
 - [http://findtheflow.io/](http://findtheflow.io/)
+- [A tool to vizualize Binaries](http://binvis.io/#/)
 - and [other examples](http://www.webdesignerdepot.com/2009/06/50-great-examples-of-data-visualization/)
 
 Art and technology forums
