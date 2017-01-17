@@ -30,20 +30,21 @@ The [systems engineering body of knowledge](swebok.org) (SEBOK) identifies four 
 
 In this paper that appeared in the [Wall street journal](http://www.wsj.com/europe) in 2011, [Marc Andreesen](https://en.wikipedia.org/wiki/Marc_Andreessen), a pioneer in web devlopment, emphasizes the deep impact of software in all sectors of industry.
 
-> [http://spectrum.ieee.org/computing/software/software-the-invisible-technology](http://spectrum.ieee.org/computing/software/software-the-invisible-technology)
+> [Software, the Invisible Technology](http://spectrum.ieee.org/computing/software/software-the-invisible-technology)
 
 In 2016, this paper that appeared in [IEEE spectrum](http://spectrum.ieee.org/), comes back on Andreesen's vision five years later and discusses the deep impact of software, but also, almost paradoxically, the fact that software 'disappears' in the sense that it is not perceived as the source of value anymore.
 
+Software vizualization
+---
 
+Here is a (short) list of tools to vizualize different aspects of software's structure and execution
+- the [history of web browsers](http://visual.ly/browser-history)
+- the [evolution of the web](http://www.evolutionoftheweb.com/)
+- [http://findtheflow.io/](http://findtheflow.io/)
+- and [other examples](http://www.webdesignerdepot.com/2009/06/50-great-examples-of-data-visualization/)
 
-https://adnauseam.io/
-https://amiunique.org/
+Art and technology forums
+---
 
-
-http://findtheflow.io/
-
-http://spectrum.ieee.org/computing/software/software-the-invisible-technology
-
-
-Et un endroit où on pourrait soumettre notre projet
-http://www.atelier-arts-sciences.eu/APPEL-A-CANDIDATURE-EXPERIMENTA
+- [EXPERIMENTA](http://www.atelier-arts-sciences.eu/APPEL-A-CANDIDATURE-EXPERIMENTA)
+- [Maintenant](http://www.maintenant-festival.fr/)
