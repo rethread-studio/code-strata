@@ -28,7 +28,7 @@ Sous OS X, deux options:
 
 Pour copier le repo:
 ```
-git clone https://github.com/Lyadis/whistle-bits.git
+git clone https://github.com/DIVERSIFY-project/whistle-bits
 ```
 
 Pour le mettre à jour (depuis le repertoir du projet):
