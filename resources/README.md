@@ -15,7 +15,7 @@ We have made a standalone version of this work, which is available [here](https:
  
 > [{Software} Structures @ Whitney](http://whitney.org/Exhibitions/Artport/Commissions/SoftwareStructures)
 
-In 2004, this exhibition at the [Whitney Museum (USA)](http://whitney.org/) explores the idea of software as art. In 2016, the project was revisited and most works were rewritten in [Processing](https://processing.org/) or [p5.js](http://p5js.org/).
+In 2004, this exhibition at the [Whitney Museum (USA)](http://whitney.org/) explores the idea of software as art. In 2016, the project was revisited and most works were written in [Processing](https://processing.org/) were rewritten in [p5.js](http://p5js.org/).
 
 The nature of software
 ---
