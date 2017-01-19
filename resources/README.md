@@ -17,6 +17,11 @@ We have made a standalone version of this work, which is available [here](https:
 
 In 2004, this exhibition at the [Whitney Museum (USA)](http://whitney.org/) explores the idea of software as art. In 2016, the project was revisited and most works were written in [Processing](https://processing.org/) were rewritten in [p5.js](http://p5js.org/).
 
+>[Listen to wikipedia](http://listen.hatnote.com/)
+
+This project combines vizualization and sound synthesis to render the acitivty on wikipedia.
+The code is [available on Github](https://github.com/hatnote/listen-to-wikipedia)
+
 The nature of software
 ---
 
