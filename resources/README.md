@@ -22,6 +22,10 @@ In 2004, this exhibition at the [Whitney Museum (USA)](http://whitney.org/) expl
 This project combines vizualization and sound synthesis to render the acitivty on wikipedia.
 The code is [available on Github](https://github.com/hatnote/listen-to-wikipedia)
 
+>[Live coding](https://en.wikipedia.org/wiki/Live_coding)
+Live coding creates a direct link between code and artistic representations. It consists in using source code and interactive programming to create music or images in an improvised way. This approach is also used to teach programming in schools. 
+[Sonic-Pi](http://sonic-pi.net/) is one environment for live coding.
+
 The nature of software
 ---
 
