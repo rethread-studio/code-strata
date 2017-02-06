@@ -59,4 +59,5 @@ Art and technology forums
 
 - [EXPERIMENTA](http://www.atelier-arts-sciences.eu/APPEL-A-CANDIDATURE-EXPERIMENTA)
 - [Technarte](http://www.technarte.org/)
+- [Electronic Music Foundation](http://www.emf.org/index.html)
 - [Maintenant](http://www.maintenant-festival.fr/)
