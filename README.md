@@ -1,59 +1,16 @@
-# whistle-bits
+# code{strata}
 
-Les sources processing sont dans `src`, les données dans `data`.
+Musicologists and software scientists collaborate to reveal the beautiful and complex code strata that underlie software applications.
 
-Les données ont le format suivant:
- * A la racine un objet contenant un nom/src et une capture (tableau d'evenements capturés)
- * Chaque évenement à un id, un niveau et un poids. (On pourrait rajouter une date.)
+Software is, by nature, invisible, yet it is omnipresent in our lives. This pervasiveness of software is the result of organic and decentralized processes.  A growing number of companies and individuals have contributed to the devlopment and aggregation of millions of software pieces. The assembly and coordination between all these pieces relies on a flexible hierarchical organization of software and a stratfied organization of the code.
 
-Le niveau suit le code suivant:
- 0: Action de l'utilisateur
- 1: Evenement java
- 2: Appel de method java
- 3: Appel de method d'une library
- 4: Bytecode
- 5: x86
- 6: Appel system
+This interdisciplinary project, aims at building visual and sound devices that reveal these code strata to an audience as large as possible. Stratigraphy  reveals the beauties of [geological](http://www.jqjacobs.net/southwest/images/fajada_butte.jpg) or [ecological](https://upload.wikimedia.org/wikipedia/commons/c/c4/MUWO4193.JPG) structures. Inspired by these natural wonders of structure and complexity, we want to restore a more tangible relation between users and the software world through artistic representations.
 
-##Git
 
-###Installation de git
+## `ctrl-c ctrl-v`
 
-Sous OS X, deux options:
+We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that symbolizes the major impact of software on all sectors of our societies. We deconstruct all the code that has been stacked to provide this action in almost any software tool. We choose an [open source text editor]() to pursue this deconstruction of code strata. The choice of open source code is essential for us since it provides an access to all strata, but also to the origin of these strata.
 
- * [Télécharger l'installer ici](http://sourceforge.net/projects/git-osx-installer/)
- * Via les [MacPorts](http://www.macports.org): `sudo port install git-core +svn +doc +bash_completion +gitweb`
- 
-###Utilisation de git
+## music, light and software
 
-Pour copier le repo:
-```
-git clone https://github.com/DIVERSIFY-project/whistle-bits
-```
-
-Pour le mettre à jour (depuis le repertoir du projet):
-```
-git pull
-```
-
-Pour sauvegarder des modifications locales:
-```
-git commit -am "Message décrivant mes modifications"
-```
-
-Pour mettre à jour le repo distant (faire un `git pull` pour vérifier que le repo local est à jour):
-```
-git push
-```
-
-Pour faire suivre un nouveau fichier (par defaut les nouveaux fichiers restent locaux):
-```
-git add path/to/my/file
-```
-
-Pour voir les changements courants:
-```
-git status
-```
-
-[Plus de doc sur git ici.](https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git)
+Music and light share the characteristics of invisibility and abstraction with software. Despite the fundamental differences in the nature of these objects (music and light are perceived through a combination of waves and neuroprocessing, while software results from the interactions of signals on digital processor), we believe they fit the purpose of representing code complexity in artistic devices.
