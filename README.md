@@ -9,7 +9,7 @@ This interdisciplinary project, aims at building visual and sound devices that r
 
 ## `ctrl-c ctrl-v`
 
-We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that symbolizes the major impact of software on all sectors of our societies. We deconstruct all the code that has been stacked to provide this action in almost any software tool. We choose an [open source text editor]() to pursue this deconstruction of code strata. The choice of open source code is essential for us since it provides an access to all strata, but also to the origin of these strata.
+We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that symbolizes the major impact of software on all sectors of our societies. We deconstruct all the code that has been stacked to provide this action in almost any software tool. We choose an [open source text editor](https://github.com/jguitana/simple-file-editor) to pursue this deconstruction of code strata. The choice of open source code is essential for us since it provides an access to all strata, but also to the origin of these strata.
 
 ## music, light and software
 
