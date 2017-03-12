@@ -15,7 +15,7 @@ public class TreeCallUtils {
     }
 
     public static void trim (CallTree t, Set<String> appPackages, Set<String> libs) {
-        //if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
+        if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
         if(isIn(t.name, appPackages)) t.level = 0;
         else if (!isIn(t.name, libs)) t.level = 1;
         else  t.level = 2;

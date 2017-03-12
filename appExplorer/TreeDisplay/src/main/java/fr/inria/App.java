@@ -24,8 +24,8 @@ public class App extends PApplet
     }
 
     public void setup() {
-        drawByteCode();
-        //drawCallTree();
+        //drawByteCode();
+        drawCallTree();
         //drawSysCall();
     }
 
@@ -89,8 +89,8 @@ public class App extends PApplet
         int[] pop = new int[t.depth];
 
         stroke(255);
-        drawNode(t, s/(3*t.depth), 0, width, pop, 3);
-        //save("calltree.png");
+        drawNode(t, s/(3*t.depth), 0, width, pop, 0);
+        save("calltree.png");
         System.out.println("coucou");
     }
 
