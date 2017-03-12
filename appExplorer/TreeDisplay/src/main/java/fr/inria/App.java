@@ -139,7 +139,7 @@ public class App extends PApplet
             int[] width = t.getWidthArray();
             int[] pop = new int[t.depth];
 
-            stroke(255);
+            stroke(0);
             drawMethod(j, t, s/t.depth, 0, width, pop, 3);
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,20 +166,25 @@ public class App extends PApplet
         String method = t.name;
         if(method.compareTo("Self time") == 0) method = t.parent.name;
         int[] bytes = j.methodsByteCode.get(method);
-        int nx = x, ny = y;
+        int nx = x+1, ny = y+1;
         if(bytes != null){
             fill(255, 0, 0);
-            rect(x, y, w, h);
+            rect(nx, ny, w, h);
             for(int i = 0; i < bytes.length; i++){
                 if(ny >= h) break;
                 if(nx >= x +w) {
                     nx = x;
                     ny++;
                 }
-                if(bytes[i] != -1)
-                    set(nx,ny, color(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2),  255 - (bytes[i] - (bytes[i] >> 2))));
-                else
-                    set(nx,ny, color(255));
+                if(bytes[i] != -1) {
+                    fill(255, 0, 0);
+                    noStroke();
+                    fill(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2), 255 - (bytes[i] - (bytes[i] >> 2)));
+                    rect(nx, ny, 1, 1);
+                    stroke(0);
+                } else{
+                    set(nx,ny, color(0,255,0));
+                }
                 nx++;
             }
         } else {

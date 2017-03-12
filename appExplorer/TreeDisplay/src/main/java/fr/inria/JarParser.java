@@ -42,7 +42,8 @@ public class JarParser {
                     classFileInputStream.close();
                 }
 
-                System.out.println(describeClass(classNode));
+                if(verbose) System.out.println(describeClass(classNode));
+                else describeClass(classNode);
             }
         }
     }
