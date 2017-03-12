@@ -1,0 +1,49 @@
+{
+  "name" : "main",
+  "weight" : 5,
+  "children" : [
+    {
+      "name" : "call1",
+      "weight" : 3,
+      "children" : []
+    },
+    {
+      "name" : "call2",
+      "weight" : 8,
+      "children" : [
+        {
+          "name" : "subcall1",
+          "weight" : 12,
+          "children" : []
+        },
+        {
+          "name" : "subcall2",
+          "weight" : 2,
+          "children" : []
+        }
+      ]
+    },
+    {
+      "name" : "call3",
+      "weight" : 1,
+      "children" : [
+        {
+          "name" : "subcall1",
+          "weight" : 11,
+          "children" : [
+            {
+              "name" : "subsubcall1",
+              "weight" : 1,
+              "children" : []
+            }
+          ]
+        },
+        {
+          "name" : "subcall2",
+          "weight" : 6,
+          "children" : []
+        }
+      ]
+    }
+  ]
+}
