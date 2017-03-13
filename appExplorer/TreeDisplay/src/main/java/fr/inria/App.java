@@ -25,8 +25,8 @@ public class App extends PApplet
 
     public void setup() {
         //drawByteCode();
-        drawCallTree();
-        //drawSysCall();
+        //drawCallTree();
+        drawSysCall();
     }
 
     public void drawS(int x, int y, int w, int h) {
@@ -63,6 +63,7 @@ public class App extends PApplet
             x++;
         }
 
+        save("syscall.png");
     }
 
     public void drawCallTree() {
@@ -80,18 +81,22 @@ public class App extends PApplet
         appPackages.add("Views");
 
         Set<String> libs = new HashSet<>();
-        libs.add("java.util");
+        //libs.add("javafx");
 
         TreeCallUtils.trim(t, appPackages, libs);
+        String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
+        System.out.println("Most frequent method: " + mostFMethod);
+        TreeCallUtils.color(t,mostFMethod);
+
         //drawNode(t,0,0,h,s);
         //int d = t.computeDepth();
         int[] width = t.getWidthArray();
         int[] pop = new int[t.depth];
 
         stroke(255);
-        drawNode(t, s/(3*t.depth), 0, width, pop, 0);
-        save("calltree.png");
-        System.out.println("coucou");
+        drawNode(t, s/(3*t.depth), 0, width, pop, 3);
+        //save("calltree.png");
+
     }
 
     public void drawNode(CallTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
@@ -141,6 +146,7 @@ public class App extends PApplet
 
             stroke(0);
             drawMethod(j, t, s/t.depth, 0, width, pop, 3);
+            save("bytecode.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -168,25 +174,31 @@ public class App extends PApplet
         int[] bytes = j.methodsByteCode.get(method);
         int nx = x+1, ny = y+1;
         if(bytes != null){
+            int availaiblePixels = w * h;
             fill(255, 0, 0);
             rect(nx, ny, w, h);
             for(int i = 0; i < bytes.length; i++){
-                if(ny >= h) break;
-                if(nx >= x +w) {
-                    nx = x;
-                    ny++;
-                }
+                fill(255, 0, 0);
+                noStroke();
                 if(bytes[i] != -1) {
-                    fill(255, 0, 0);
-                    noStroke();
                     fill(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2), 255 - (bytes[i] - (bytes[i] >> 2)));
-                    rect(nx, ny, 1, 1);
-                    stroke(0);
                 } else{
-                    set(nx,ny, color(0,255,0));
+                    fill(0,255,0);
                 }
-                nx++;
+                for(int k = (availaiblePixels * i) / (bytes.length); k < (availaiblePixels * (i+1)) / (bytes.length); k++) {
+                    if(ny >= y + h) break;
+                    if(nx >= x + w) {
+                        nx = x;
+                        ny++;
+                    }
+                    rect(nx, ny, 1, 1);
+                    nx++;
+                }
+                if(ny >= y + h) break;
+
+                stroke(0);
             }
+            System.out.println("l: " + bytes.length + " (" + x + ", " + y + ")" + " available: " + availaiblePixels + ", filled:" + (availaiblePixels * (bytes.length)) / (bytes.length));
         } else {
             //System.out.println("method not found");
         }
