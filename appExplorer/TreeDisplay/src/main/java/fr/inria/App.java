@@ -17,6 +17,8 @@ import static fr.inria.SysCall.types;
 public class App extends PApplet
 {
     final int s = 1200;
+    boolean save = true;
+    int strokeLight = 255;
 
     public void settings(){
         size(s, s);
@@ -24,9 +26,9 @@ public class App extends PApplet
     }
 
     public void setup() {
-        //drawByteCode();
+        drawByteCode();
         //drawCallTree();
-        drawSysCall();
+        //drawSysCall();
     }
 
     public void drawS(int x, int y, int w, int h) {
@@ -36,7 +38,7 @@ public class App extends PApplet
 
     public void drawSysCall() {
         background(0);
-        colorMode(HSB, 360, 100, 100);
+        //colorMode(HSB, 360, 100, 100);
         SysCallReader r = new SysCallReader();
         List<SysCall> sysCalls = r.readFromFile(new File("inputsFiles/syscall.log"));
         List<String> colors = new ArrayList<>(SysCall.types);
@@ -47,6 +49,8 @@ public class App extends PApplet
             colors.put(s, Color.hsb((float) i*step,1.0f,1.0f));
             i++;
         }*/
+
+        ColorPicker colorPicker = new ColorPicker(255,100,0,types.size());
         int n = (int) Math.floor(Math.sqrt(sysCalls.size()));
         n++;
         int w = s / n;
@@ -57,13 +61,15 @@ public class App extends PApplet
                 x = 0;
                 y++;
             }
-            fill(colors.indexOf(s.name) * step,100,100);
+            //fill(colors.indexOf(s.name) * step,100,100);
+            int[] c = colorPicker.getColor(colors.indexOf(s.name));
+            fill(c[0], c[1], c[2]);
             System.out.println("(" + x + ", " + y + ", " + w + ") - (" + colors.indexOf(s.name) * step + ")");
             rect(x*(w+1), y*(w+1), w+2, w+2);
             x++;
         }
 
-        save("syscall.png");
+        if(save) save("syscall.png");
     }
 
     public void drawCallTree() {
@@ -93,9 +99,9 @@ public class App extends PApplet
         int[] width = t.getWidthArray();
         int[] pop = new int[t.depth];
 
-        stroke(255);
+        stroke(strokeLight);
         drawNode(t, s/(3*t.depth), 0, width, pop, 3);
-        //save("calltree.png");
+        if(save) save("calltree.png");
 
     }
 
@@ -122,6 +128,8 @@ public class App extends PApplet
         }
     }
 
+    public ColorPicker picker = new ColorPicker(255,100,0,256,1);
+
     public void drawByteCode() {
         try {
             background(0);
@@ -144,9 +152,10 @@ public class App extends PApplet
             int[] width = t.getWidthArray();
             int[] pop = new int[t.depth];
 
-            stroke(0);
-            drawMethod(j, t, s/t.depth, 0, width, pop, 3);
-            save("bytecode.png");
+            stroke(strokeLight);
+            //drawMethod(j, t, s/(t.depth*3), 0, width, pop, 3);
+            drawMethod(j, t, s/(t.depth), 0, width, pop, 3);
+            if(save) save("bytecode.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -154,6 +163,7 @@ public class App extends PApplet
 
     public void drawMethod(JarParser j, CallTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
         int h = Math.max(s / width[d], 3);
+        //int x = d * w * 3;
         int x = d * w;
         int y = pop[d] * h;
         pop[d]++;
@@ -175,20 +185,22 @@ public class App extends PApplet
         int nx = x+1, ny = y+1;
         if(bytes != null){
             int availaiblePixels = w * h;
-            fill(255, 0, 0);
-            rect(nx, ny, w, h);
+            fill(0, 0, 0, 0);
+            rect(nx-1, ny-1, w, h);
             for(int i = 0; i < bytes.length; i++){
                 fill(255, 0, 0);
                 noStroke();
                 if(bytes[i] != -1) {
-                    fill(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2), 255 - (bytes[i] - (bytes[i] >> 2)));
+                    //fill(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2), 255 - (bytes[i] - (bytes[i] >> 2)));
+                    int[] c = picker.getColor(bytes[i]);
+                    fill(c[0], c[1], c[2]);
                 } else{
-                    fill(0,255,0);
+                    fill(128,0,0);
                 }
                 for(int k = (availaiblePixels * i) / (bytes.length); k < (availaiblePixels * (i+1)) / (bytes.length); k++) {
-                    if(ny >= y + h) break;
-                    if(nx >= x + w) {
-                        nx = x;
+                    if(ny >= y + h - 1) break;
+                    if(nx >= x + w - 1) {
+                        nx = x+1;
                         ny++;
                     }
                     rect(nx, ny, 1, 1);
@@ -196,9 +208,9 @@ public class App extends PApplet
                 }
                 if(ny >= y + h) break;
 
-                stroke(0);
+                stroke(strokeLight);
             }
-            System.out.println("l: " + bytes.length + " (" + x + ", " + y + ")" + " available: " + availaiblePixels + ", filled:" + (availaiblePixels * (bytes.length)) / (bytes.length));
+            //System.out.println("l: " + bytes.length + " (" + x + ", " + y + ")" + " available: " + availaiblePixels + ", filled:" + (availaiblePixels * (bytes.length)) / (bytes.length));
         } else {
             //System.out.println("method not found");
         }
