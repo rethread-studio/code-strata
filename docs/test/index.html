@@ -1,0 +1,77 @@
+<html>
+<head>
+<style>
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 1200px;
+    padding: 0 5px;
+}
+</style>
+</head>
+<body onload="init()">
+
+<table>
+<tr>
+<td>
+<table>
+	<tr id="cell_7">
+		<td><img src="img/calltree_app.png" /><br />Application's method calls</td>
+	</tr>
+	<tr id="cell_6">
+		<td><img src="img/calltree_app_and_libs.png" /><br />Application and libraries's method calls</td>
+	</tr>
+	<tr id="cell_5">
+		<td><img src="img/bytecode.png" /><br />Byte code</td>
+	</tr>
+	<tr id="cell_4">
+		<td><img src="img/syscall.png" /><br />System call</td>
+	</tr>
+	<tr id="cell_3">
+		<td>3</td>
+	</tr>
+	<tr id="cell_2">
+		<td>2</td>
+	</tr>
+	<tr id="cell_1">
+		<td>1</td>
+	</tr>
+	<tr id="cell_0">
+		<td>0</td>
+	</tr>
+</table>
+</td>
+<td>
+<input type="range" min="0" max="7" value="7" step="1"  orient="vertical" onchange="showValue(this.value)" />
+</td>
+</tr>
+</table>
+
+<!--<span id="range">0</span> -->
+<script type="text/javascript">
+function showValue(newValue)
+{
+	//document.getElementById("range").innerHTML=newValue;
+	for(var i = 0; i < 8; i++) {
+		if(i == newValue) {
+			document.getElementById("cell_" + i).style.visibility = "visible";
+		} else {
+			document.getElementById("cell_" + i).style.visibility = "collapse";
+		}	
+	}
+}
+
+function init()
+{
+	for(var i = 1; i < 8; i++) {
+		document.getElementById("cell_" + i).style.visibility = "collapse";
+	}
+}
+</script>
+
+</body>
+</html>
+
+
