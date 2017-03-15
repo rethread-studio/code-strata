@@ -46,6 +46,34 @@ input[type=range][orient=vertical]
 <td>
 <input type="range" min="0" max="7" value="7" step="1"  orient="vertical" onchange="showValue(this.value)" />
 </td>
+<td>
+<table>
+	<tr id="mini_7">
+		<td><img src="img/mini/mini_app.png" /></td>
+	</tr>
+	<tr id="mini_6">
+		<td><img src="img/mini/mini_app_lib.png" /></td>
+	</tr>
+	<tr id="mini_5">
+		<td><img src="img/mini/mini_bytecode_app_lib.png" /></td>
+	</tr>
+	<tr id="mini_4">
+		<td><img src="img/mini/mini_syscall.png" /></td>
+	</tr>
+	<tr id="mini_3">
+		<td>.</td>
+	</tr>
+	<tr id="mini_2">
+		<td>.</td>
+	</tr>
+	<tr id="mini_1">
+		<td>.</td>
+	</tr>
+	<tr id="mini_0">
+		<td>.</td>
+	</tr>
+</table>
+</td>
 </tr>
 </table>
 
@@ -57,16 +85,19 @@ function showValue(newValue)
 	for(var i = 0; i < 8; i++) {
 		if(i == newValue) {
 			document.getElementById("cell_" + i).style.visibility = "visible";
+			document.getElementById("mini_" + i).style.visibility = "visible";
 		} else {
 			document.getElementById("cell_" + i).style.visibility = "collapse";
+			document.getElementById("mini_" + i).style.visibility = "collapse";
 		}	
 	}
 }
 
 function init()
 {
-	for(var i = 1; i < 8; i++) {
+	for(var i = 0; i < 7; i++) {
 		document.getElementById("cell_" + i).style.visibility = "collapse";
+		document.getElementById("mini_" + i).style.visibility = "collapse";
 	}
 }
 </script>
