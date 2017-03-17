@@ -1,5 +1,7 @@
 # code{strata}
 
+[View demo](test/demo.html)
+
 Musicologists and software scientists collaborate to reveal the beautiful and complex code strata that underlie software applications.
 
 Software is, by nature, invisible, yet it is omnipresent in our lives. This pervasiveness of software is the result of organic and decentralized processes.  A growing number of companies and individuals have contributed to the devlopment and aggregation of millions of software pieces. The assembly and coordination between all these pieces relies on a flexible hierarchical organization of software and a stratfied organization of the code.
