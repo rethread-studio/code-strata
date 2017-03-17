@@ -1,11 +1,12 @@
 package fr.inria;
 
+import fr.inria.DataStructure.SysCall;
+import fr.inria.Inputs.SysCallReader;
 import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
-import fr.inria.SysCall;
 
 /**
  * Created by nharrand on 10/03/17.

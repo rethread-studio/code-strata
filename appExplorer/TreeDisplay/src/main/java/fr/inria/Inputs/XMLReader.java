@@ -1,6 +1,7 @@
-package fr.inria;
+package fr.inria.Inputs;
 
 
+import fr.inria.DataStructure.CallTree;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -8,11 +9,7 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * Created by nharrand on 09/03/17.
@@ -22,7 +19,7 @@ public class XMLReader {
         return null;
     }
 
-    protected CallTree readFromFile(File f) {
+    public CallTree readFromFile(File f) {
         CallTree res = null;
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

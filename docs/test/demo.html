@@ -352,7 +352,7 @@ input[type=range][orient=vertical]
 <td>
 <table>
 	<tr id="cell_8">
-		<td><img src="img/code_strata.gif" /><br />Application's method calls</td>
+		<td><img src="img/code_strata.gif" /><br />Application</td>
 	</tr>
 	<tr id="cell_7">
 		<td><img src="img/calltree_app.png" /><br />Application's method calls</td>
@@ -381,7 +381,7 @@ input[type=range][orient=vertical]
 </table>
 </td>
 <td>
-<input type="range" min="0" max="8" value="8" step="1"  orient="vertical" onchange="showValue(this.value)" />
+<input type="range" min="4" max="8" value="8" step="1"  orient="vertical" onchange="showValue(this.value)" />
 </td>
 <td>
 <table>
@@ -389,13 +389,13 @@ input[type=range][orient=vertical]
 		<td><img src="img/mini/mini_app.png" /></td>
 	</tr>
 	<tr id="mini_7">
-		<td><img src="img/mini/mini_app.png" /></td>
+		<td><img src="img/mini/mini_app_calls.png" /></td>
 	</tr>
 	<tr id="mini_6">
-		<td><img src="img/mini/mini_app_lib.png" /></td>
+		<td><img src="img/mini/mini_app_and_lib_calls.png" /></td>
 	</tr>
 	<tr id="mini_5">
-		<td><img src="img/mini/mini_bytecode_app_lib.png" /></td>
+		<td><img src="img/mini/mini_app_and_lib_bytecode.png" /></td>
 	</tr>
 	<tr id="mini_4">
 		<td><img src="img/mini/mini_syscall.png" /></td>
@@ -415,6 +415,54 @@ input[type=range][orient=vertical]
 </table>
 </td>
 </tr>
+	<tr id="desc_8">
+		<td><h3>Application</h3>
+			<p>
+			Application as seen by the user.
+			</p>
+		</td><td></td><td></td>
+	</tr>
+	<tr id="desc_7">
+		<td><h3>Application calls</h3>
+			<p>
+			Each rectangle represents the invocation of a java method written by the application author(s). White links represents the way each method call sub methods.
+			</p>
+		</td><td></td><td></td>
+	</tr>
+	<tr id="desc_6">
+		<td><h3>Application and libraries calls</h3>
+			<p>
+			Each rectangle represents the invocation of a java method, in blue are methods of the application, whereas in green are methods from the library javafx (handling the graphical interface). White links represents the way each method call sub methods.
+			</p>
+		</td><td></td><td></td>
+	</tr>
+	<tr id="desc_5">
+		<td><h3>Byte code</h3>
+			<p>
+			The jvm (java virtual machine) doesn't read java code. Instead this code is transformed in a more compact form call bytecode. Each color segment represent a bytecode instruction.
+			</p>
+		</td><td></td><td></td>
+	</tr>
+	<tr id="desc_4">
+		<td><h3>System calls</h3>
+			<p>
+			Each square represent a system call. A system call is an operation handled by the operating system.
+			</p>
+		</td><td></td><td></td>
+	</tr>
+	<tr id="desc_3">
+		<td>.</td><td></td><td></td>
+	</tr>
+	<tr id="desc_2">
+		<td>.</td><td></td><td></td>
+	</tr>
+	<tr id="desc_1">
+		<td>.</td><td></td><td></td>
+	</tr>
+	<tr id="desc_0">
+		<td>.</td><td></td><td></td>
+	</tr>
+
 </table>
 
 <!--<span id="range">0</span> -->
@@ -426,9 +474,11 @@ function showValue(newValue)
 		if(i == newValue) {
 			document.getElementById("cell_" + i).style.visibility = "visible";
 			document.getElementById("mini_" + i).style.visibility = "visible";
+			document.getElementById("desc_" + i).style.visibility = "visible";
 		} else {
 			document.getElementById("cell_" + i).style.visibility = "collapse";
 			document.getElementById("mini_" + i).style.visibility = "collapse";
+			document.getElementById("desc_" + i).style.visibility = "collapse";
 		}	
 	}
 }
@@ -438,6 +488,7 @@ function init()
 	for(var i = 0; i < 8; i++) {
 		document.getElementById("cell_" + i).style.visibility = "collapse";
 		document.getElementById("mini_" + i).style.visibility = "collapse";
+		document.getElementById("desc_" + i).style.visibility = "collapse";
 	}
 }
 </script>
@@ -456,3 +507,6 @@ function init()
   
 
 </body></html>
+
+0
+

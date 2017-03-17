@@ -1,6 +1,11 @@
 package fr.inria;
 
-import javafx.scene.paint.Color;
+import fr.inria.DataStructure.CallTree;
+import fr.inria.DataStructure.JarParser;
+import fr.inria.DataStructure.SysCall;
+import fr.inria.DataStructure.TreeCallUtils;
+import fr.inria.Inputs.SysCallReader;
+import fr.inria.Inputs.VisualvmReader;
 import processing.core.PApplet;
 
 import java.io.File;
@@ -8,7 +13,7 @@ import java.util.*;
 import java.util.List;
 import java.util.jar.JarFile;
 
-import static fr.inria.SysCall.types;
+import static fr.inria.DataStructure.SysCall.types;
 
 
 /**
@@ -150,6 +155,7 @@ public class App extends PApplet
             JarParser j = new JarParser();
             j.printMethodStubs(new JarFile("src/test/resources/SimpleTextEditor.jar"));
             j.printMethodStubs(new JarFile("/usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar"));
+            //j.printMethodStubs(new JarFile("/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar"));
             int[] width = t.getWidthArray();
             int[] pop = new int[t.depth];
 
@@ -183,6 +189,11 @@ public class App extends PApplet
         String method = t.name;
         if(method.compareTo("Self time") == 0) method = t.parent.name;
         int[] bytes = j.methodsByteCode.get(method);
+        /*if(bytes == null) {
+            method = method.replace("Object", "java.lang.Object");
+            method = method.replace("String", "java.lang.String");
+            bytes = j.methodsByteCode.get(method);
+        }*/
         int nx = x+1, ny = y+1;
         if(bytes != null){
             int availaiblePixels = w * h;
@@ -213,7 +224,7 @@ public class App extends PApplet
             }
             //System.out.println("l: " + bytes.length + " (" + x + ", " + y + ")" + " available: " + availaiblePixels + ", filled:" + (availaiblePixels * (bytes.length)) / (bytes.length));
         } else {
-            //System.out.println("method not found");
+            System.out.println("method '" + method + "' not found");
         }
     }
 

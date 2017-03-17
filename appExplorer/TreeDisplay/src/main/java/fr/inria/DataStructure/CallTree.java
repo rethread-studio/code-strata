@@ -1,4 +1,4 @@
-package fr.inria;
+package fr.inria.DataStructure;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * Created by nharrand on 08/03/17.
  */
 public class CallTree {
-    List<CallTree> children;
-    CallTree parent = null;
+    public List<CallTree> children;
+    public CallTree parent = null;
     public int weight;
     public String name;
-    int depth;
+    public int depth;
     public int level = 0;
 
     public CallTree(String name, int w) {

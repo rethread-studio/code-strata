@@ -1,5 +1,6 @@
-package fr.inria;
+package fr.inria.Inputs;
 
+import fr.inria.DataStructure.CallTree;
 import org.json.JSONObject;
 
 import java.io.File;

@@ -13,9 +13,23 @@ input[type=range][orient=vertical]
 </head>
 <body onload="init()">
 
+<h1 id="codestrata">code{strata}</h1>
+
 <table>
-<tr>
-<td>
+	<tr>
+		<td><input type="range" min="0" max="8" value="8" step="1"  orient="vertical" onchange="showValue(this.value)" /></td>
+		<td id="mini_8"><img src="img/mini/mini_app.png" /></td>
+		<td id="mini_7"><img src="img/mini/mini_app.png" /></td>
+		<td id="mini_6"><img src="img/mini/mini_app_lib.png" /></td>
+		<td id="mini_5"><img src="img/mini/mini_bytecode_app_lib.png" /></td>
+		<td id="mini_4"><img src="img/mini/mini_syscall.png" /></td>
+		<td id="mini_3">.</td>
+		<td id="mini_2">.</td>
+		<td id="mini_1">.</td>
+		<td id="mini_0">.</td>
+	</tr>
+</table>
+
 <table>
 	<tr id="cell_8">
 		<td><img src="img/code_strata.gif" /><br />Application's method calls</td>
@@ -44,43 +58,6 @@ input[type=range][orient=vertical]
 	<tr id="cell_0">
 		<td>0</td>
 	</tr>
-</table>
-</td>
-<td>
-<input type="range" min="0" max="8" value="8" step="1"  orient="vertical" onchange="showValue(this.value)" />
-</td>
-<td>
-<table>
-	<tr id="mini_8">
-		<td><img src="img/mini/mini_app.png" /></td>
-	</tr>
-	<tr id="mini_7">
-		<td><img src="img/mini/mini_app.png" /></td>
-	</tr>
-	<tr id="mini_6">
-		<td><img src="img/mini/mini_app_lib.png" /></td>
-	</tr>
-	<tr id="mini_5">
-		<td><img src="img/mini/mini_bytecode_app_lib.png" /></td>
-	</tr>
-	<tr id="mini_4">
-		<td><img src="img/mini/mini_syscall.png" /></td>
-	</tr>
-	<tr id="mini_3">
-		<td>.</td>
-	</tr>
-	<tr id="mini_2">
-		<td>.</td>
-	</tr>
-	<tr id="mini_1">
-		<td>.</td>
-	</tr>
-	<tr id="mini_0">
-		<td>.</td>
-	</tr>
-</table>
-</td>
-</tr>
 </table>
 
 <!--<span id="range">0</span> -->

@@ -1,4 +1,4 @@
-package fr.inria;
+package fr.inria.DataStructure;
 
 import java.util.HashSet;
 import java.util.Set;

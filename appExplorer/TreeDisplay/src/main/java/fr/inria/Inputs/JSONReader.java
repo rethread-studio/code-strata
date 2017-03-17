@@ -1,5 +1,6 @@
-package fr.inria;
+package fr.inria.Inputs;
 
+import fr.inria.DataStructure.CallTree;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -10,7 +11,7 @@ import java.io.*;
 public abstract class JSONReader {
     public abstract CallTree read(JSONObject o);
 
-    protected CallTree readFromFile(File f) {
+    public CallTree readFromFile(File f) {
         CallTree res = null;
         JSONObject jsonObject = null;
         BufferedReader br = null;

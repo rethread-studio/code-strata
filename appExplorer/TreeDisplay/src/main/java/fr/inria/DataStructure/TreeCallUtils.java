@@ -1,4 +1,6 @@
-package fr.inria;
+package fr.inria.DataStructure;
+
+import fr.inria.DataStructure.CallTree;
 
 import java.util.HashMap;
 import java.util.Map;

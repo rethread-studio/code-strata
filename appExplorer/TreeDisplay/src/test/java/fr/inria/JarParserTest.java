@@ -1,5 +1,6 @@
 package fr.inria;
 
+import fr.inria.DataStructure.JarParser;
 import junit.framework.TestCase;
 
 import java.util.jar.JarFile;

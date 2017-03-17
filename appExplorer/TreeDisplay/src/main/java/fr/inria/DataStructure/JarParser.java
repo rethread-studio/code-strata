@@ -1,4 +1,4 @@
-package fr.inria;
+package fr.inria.DataStructure;
 
 import java.io.InputStream;
 import java.util.Enumeration;
@@ -137,15 +137,25 @@ public class JarParser {
         methodDescription.append(" ");*/
         methodDescription.append(methodNode.name);
 
-        methodDescription.append("(");
+        //methodDescription.append("(");
+        String param = "", paramAlternative = "";
         for (int i = 0; i < argumentTypes.length; i++) {
             Type argumentType = argumentTypes[i];
             if (i > 0) {
-                methodDescription.append(", ");
+                //methodDescription.append(", ");
+                param += ", ";
+                paramAlternative += ", ";
             }
-            methodDescription.append(argumentType.getClassName());
+            //methodDescription.append(argumentType.getClassName());
+            param += argumentType.getClassName();
+            if(argumentType.getClassName().equals("java.lang.Object"))
+                paramAlternative += "Object";
+            else if (argumentType.getClassName().equals("java.lang.String"))
+                paramAlternative += "String";
+            else
+                paramAlternative += argumentType.getClassName();
         }
-        methodDescription.append(")");
+        //methodDescription.append(")");
 
         /*if (!thrownInternalClassNames.isEmpty()) {
             methodDescription.append(" throws ");
@@ -167,8 +177,18 @@ public class JarParser {
             b2[i] = insnList.get(i).getType();
             //methodDescription.append(", (" + b[i] + ", " + b2[i] + ")");
         }
+
+
         //methodDescription.append("}");
-        methodsByteCode.put(classQName + "." + methodDescription.toString(), b);
+
+        //javafx.fxml.FXMLLoader$ControllerAccessor.<init>(javafx.fxml.FXMLLoader.1)
+        if(classQName.startsWith("javafx.fxml.FXMLLoader$"))
+            System.out.print("coucou");
+
+        if(param.compareTo(paramAlternative) != 0)
+            methodsByteCode.put(classQName + "." + methodDescription.toString() + "(" + paramAlternative + ")", b);
+        methodsByteCode.put(classQName + "." + methodDescription.toString() + "(" + param + ")", b);
+
 
         return methodDescription.toString();
     }

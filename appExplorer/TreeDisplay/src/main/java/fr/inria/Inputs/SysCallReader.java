@@ -1,5 +1,7 @@
-package fr.inria;
+package fr.inria.Inputs;
 
+
+import fr.inria.DataStructure.SysCall;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +20,7 @@ public class SysCallReader {
     private static Pattern pattern;
     private static Matcher matcher;
 
-    protected List<SysCall> readFromFile(File f) {
+    public List<SysCall> readFromFile(File f) {
         List<SysCall> sysCallList = new ArrayList<>();
         BufferedReader br = null;
 

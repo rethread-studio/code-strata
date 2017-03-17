@@ -1,5 +1,7 @@
 package fr.inria;
 
+import fr.inria.DataStructure.CallTree;
+import fr.inria.Inputs.XMLReader;
 import junit.framework.TestCase;
 
 import java.io.File;

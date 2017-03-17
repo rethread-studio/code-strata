@@ -42,7 +42,7 @@ public class ColorPicker {
                 colors[i][2] = colors[i-1][1];
             }
         }
-        System.out.println("Stop");
+        //System.out.println("Stop");
     }
 
     public int[] getColor(int i) {

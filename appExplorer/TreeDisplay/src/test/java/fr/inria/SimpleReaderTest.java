@@ -1,7 +1,8 @@
 package fr.inria;
 
+import fr.inria.DataStructure.CallTree;
+import fr.inria.Inputs.SimpleReader;
 import junit.framework.TestCase;
-import junit.framework.TestResult;
 import org.junit.Test;
 
 import java.io.File;
