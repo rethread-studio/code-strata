@@ -1,7 +1,6 @@
-package fr.inria;
+package fr.inria.Inputs;
 
 import fr.inria.DataStructure.SysCall;
-import fr.inria.Inputs.SysCallReader;
 import junit.framework.TestCase;
 import org.junit.Test;
 

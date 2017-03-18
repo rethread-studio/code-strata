@@ -1,4 +1,4 @@
-package fr.inria;
+package fr.inria.Inputs;
 
 import fr.inria.DataStructure.JarParser;
 import junit.framework.TestCase;
