@@ -1,6 +1,6 @@
 # code{strata}
 
-[View demo](test/demo.html)
+[View demo](test/strata.html)
 
 Musicologists and software scientists collaborate to reveal the beautiful and complex code strata that underlie software applications.
 
