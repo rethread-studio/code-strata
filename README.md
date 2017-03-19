@@ -1,6 +1,6 @@
 # code{strata}
 
-[View demo](test/strata.html)
+[View demo](https://diversify-project.github.io/code-strata/test/demo.html)
 
 Musicologists and software scientists collaborate to reveal the beautiful and complex code strata that underlie software applications.
 
