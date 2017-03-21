@@ -1,6 +1,6 @@
-##Monitor a java application
+## Monitor a java application
 
-###Call tree
+### Call tree
 
  * Install visualvm
  * Install the plugin Startup profiler
@@ -8,19 +8,19 @@
  * Export the call tree in xml
  * Translate it in json
 
-###Bytecode
+### Bytecode
 
  * Include all jars containing your classes
 
-###x86
+### x86
 
  * `java -Xcomp -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly your.app.Main > assembly.log`
 
-###System call
+### System call
 
  * `strace -f java your.app.Main`
 
-###Generate web report
+### Generate web report
 
 ```
 cd TreeDisplay
