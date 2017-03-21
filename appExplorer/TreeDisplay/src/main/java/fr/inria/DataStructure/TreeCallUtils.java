@@ -18,6 +18,21 @@ public class TreeCallUtils {
         return false;
     }
 
+    public static void label (CallTree t, Map<Integer,Set<String>> l, int defaultLevel) {
+        if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
+
+        boolean marked = false;
+        for(Integer i: l.keySet()) {
+            if (isIn(t.name, l.get(i))) {
+                t.level = i.intValue();
+                marked = true;
+            }
+        }
+        if(!marked) t.level = defaultLevel;
+        for(CallTree c : t.getChildren()) label(c,l,defaultLevel);
+
+    }
+
     public static void trim (CallTree t, Set<String> appPackages, Set<String> libs) {
         if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
         if(isIn(t.name, appPackages)) t.level = 0;

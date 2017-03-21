@@ -12,7 +12,7 @@ public class JarParserTest extends TestCase {
     public void testPrintMethodStubs() throws Exception {
         JarParser j = new JarParser();
         j.printMethodStubs(new JarFile(SimpleReaderTest.class.getClassLoader().getResource("SimpleTextEditor.jar").getFile()));
-        assertTrue(j.methodsByteCode.size() == 140);
+        assertTrue(j.methodsByteCode.size() == 146);
         System.out.println("Done");
     }
 
