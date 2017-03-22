@@ -34,8 +34,11 @@ public class x86Instructions {
     public int[] getInstructions(String method) {
         String[] raw = method.split("\\(");
         String[] raw2 = raw[0].split("\\.");
-        String m = raw2[raw2.length-1] + "(" + raw[1];
-        String c = raw2[0];
+        String m, c;
+        m = raw2[raw2.length-1];
+        if(raw.length > 1)
+            m += "(" + rewriteParameters(raw[1]);
+        c = raw2[0];
         for(int i = 1; i < raw2.length-1; i++) {
             c += "." + raw2[i];
         }
@@ -43,5 +46,21 @@ public class x86Instructions {
             return  classMethodInstructions.get(c).get(m);
         else
             return null;
+    }
+
+    public String rewriteParameters(String params) {
+        if(params.equals(")")) return params;
+        String param[] = params.replace(" ", "").split(",");
+        String res ="";
+        int i = 0;
+        for(String p : param) {
+            if(i != 0) res += ",";
+            if(p.equals("Object")) res += "java.lang.Object";
+            else if(p.equals("Class")) res += "java.lang.Class";
+            else if(p.equals("String")) res += "java.lang.String";
+            else res += p;
+            i++;
+        }
+        return res;
     }
 }

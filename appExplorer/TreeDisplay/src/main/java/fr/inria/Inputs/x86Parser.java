@@ -1,5 +1,6 @@
 package fr.inria.Inputs;
 
+import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.SysCall;
 import fr.inria.DataStructure.x86Instructions;
 
@@ -70,14 +71,10 @@ public class x86Parser {
                     param = param.replace("/", ".");
                     curMethod = line.split("'")[1] + "(";
                     if(!param.equals("")) {
-                        int  i = 0;
-                        for(String p : param.split(";")) {
-                            if(i != 0) curMethod += ", ";
-                            curMethod +=removeFirstCaps(p);
-                            i++;
-                        }
+                        curMethod += readParameters(param);
                     }
                     curMethod += ")";
+                    //System.out.println("Read method: " + curMethod);
                 }
                 else if (line.startsWith("  0x")) {//0x00007fcdc550ef68: cmp
                     String instruction = line.split("0x")[1].split(": ")[1];
@@ -114,4 +111,79 @@ public class x86Parser {
         while(str.matches("[A-Z].*")) str = str.substring(1);
         return str;
     }
+
+    public static String[] readParameter(String parameters) throws InvalidCharacter {
+        String res[] = new String[2];
+        char first = parameters.charAt(0);
+        switch (first) {
+            case 'B':
+                res[0] = "byte";
+                res[1] = parameters.substring(1);
+                break;
+            case 'C':
+                res[0] = "char";
+                res[1] = parameters.substring(1);
+                break;
+            case 'D':
+                res[0] = "double";
+                res[1] = parameters.substring(1);
+                break;
+            case 'F':
+                res[0] = "float";
+                res[1] = parameters.substring(1);
+                break;
+            case 'I':
+                res[0] = "int";
+                res[1] = parameters.substring(1);
+                break;
+            case 'J':
+                res[0] = "long";
+                res[1] = parameters.substring(1);
+                break;
+            case 'S':
+                res[0] = "short";
+                res[1] = parameters.substring(1);
+                break;
+                /*case 'V':
+                    result.add("void");
+                    remain = remain.substring(1);
+                    break;*/
+            case 'Z':
+                res[0] = "boolean";
+                res[1] = parameters.substring(1);
+                break;
+            case '[':
+                String[] tmp = readParameter(parameters.substring(1));
+                res[0] = tmp[0] + "[]";
+                res[1] = tmp[1];
+                break;
+            case 'L':
+                res[0] = parameters.split(";")[0].substring(1);
+                res[1] = parameters.substring(res[0].length() + 2);
+                break;
+            default:
+                System.out.println("Invalid char: '" + first + "'");
+                throw new InvalidCharacter();
+        }
+        return res;
+    }
+
+    public static String readParameters(String parameters) throws InvalidCharacter {
+        /*TODO [Ljava.lang.Class -> Class
+        [BII -> ?
+        */
+        String result = "";
+        String remain = parameters;
+        int i = 0;
+        while(remain.length() > 0) {
+            if(i != 0) result += ",";
+            String[] tmp = readParameter(remain);
+            result += tmp[0];
+            remain = tmp[1];
+            i++;
+        }
+        return result;
+    }
+
+    public static class InvalidCharacter extends Exception {}
 }
