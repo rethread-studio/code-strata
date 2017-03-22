@@ -46,7 +46,8 @@ public class MiniMapView extends PApplet {
             background(255);
             //pg.beginDraw();
             for(int j = 0; j < 8; j++) {
-                drawLevel(j, j == i);
+                if((i != 5) || (j != 6))
+                    drawLevel(j, j == i);
             }
 
             //pg.endDraw();
@@ -83,6 +84,7 @@ public class MiniMapView extends PApplet {
 
             case 5:
                 drawIsometricRect(10,270,150,200);
+                if(highlighted) drawIsometricRect(10,270,60,80);
                 break;
 
             case 6:

@@ -14,10 +14,20 @@ public class SysCall {
 
     public static Set<String> types = new HashSet<>();
 
-    public SysCall(String l) throws Exception {
-        String rawPid = l.split("  ")[0];
-        pid = Integer.parseInt(rawPid);
-        name = l.split("  ")[1].split("\\(")[0];
+    public SysCall(String l, int form) throws Exception {
+        if(form == 0) {
+            String rawPid = l.split("  ")[0];
+            pid = Integer.parseInt(rawPid);
+            name = l.split("  ")[1].split("\\(")[0];
+        } else if (form ==1) { //[pid \d+]
+            String nl = l.replace("[pid ", "").replaceFirst("]", "");
+            String rawPid = nl.split(" ")[0];
+            pid = Integer.parseInt(rawPid);
+            name = nl.split(" ")[1].split("\\(")[0];
+        } else {
+            pid = -1;
+            name = l.split("\\(")[0];
+        }
         if(!types.contains(name)) types.add(name);
     }
 }

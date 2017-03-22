@@ -50,6 +50,9 @@ public class CallTreeView extends PApplet {
         drawNode(t, e.screenSize/(3*t.depth), 0, width, pop, 0);
         if(e.save) save(e.outputDir + "/img/" + e.name + "_calltree_app.png");
 
+        width = t.getWidthArray();
+        pop = new int[t.depth];
+
         background(0);
         fill(204, 102, 0);
         stroke(strokeLight);
@@ -69,14 +72,16 @@ public class CallTreeView extends PApplet {
         } else {
             fill(204, 102, 0);
         }
-        rect(x, y, w, h);
+        if(t.level <= maxLevel) {
+            rect(x, y, w, h);
+        }
 
         for (CallTree c : t.children) {
-            if(c.level <= maxLevel) {
                 int tmpH = Math.max(e.screenSize / width[d + 1], 3);
-                line(x + w, y + (h / 2), x + 3 * w, tmpH * pop[d + 1] + (tmpH / 2));
+                if(c.level <= maxLevel) {
+                    line(x + w, y + (h / 2), x + 3 * w, tmpH * pop[d + 1] + (tmpH / 2));
+                }
                 drawNode(c, w, d + 1, width, pop, maxLevel);
-            }
         }
     }
 

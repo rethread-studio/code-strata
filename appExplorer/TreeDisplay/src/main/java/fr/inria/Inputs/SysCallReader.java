@@ -17,25 +17,34 @@ import java.util.regex.Pattern;
  */
 public class SysCallReader {
 
+    private static Pattern patternPid;
+    private static Pattern patternPid2;
     private static Pattern pattern;
+    private static Matcher matcherPid2;
+    private static Matcher matcherPid;
     private static Matcher matcher;
 
     public List<SysCall> readFromFile(File f) {
         List<SysCall> sysCallList = new ArrayList<>();
         BufferedReader br = null;
 
-        //pattern = Pattern.compile("\\[pid \\d+\\]  [a-zA-Z].*\\(.*");
-        pattern = Pattern.compile("\\d+  [a-zA-Z].*\\(.*");
+        patternPid2 = Pattern.compile("\\[pid \\d+\\] [a-zA-Z]+\\(.*");
+        patternPid = Pattern.compile("\\d+  [a-zA-Z].*\\(.*");
+        pattern = Pattern.compile("[a-zA-Z].*\\(.*");
 
         try {
             br = new BufferedReader(new FileReader(f));
-            //StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
-                //sb.append(line);
                 matcher = pattern.matcher(line);
-                if(matcher.matches())
-                    sysCallList.add(new SysCall(line));
+                matcherPid = patternPid.matcher(line);
+                matcherPid2 = patternPid2.matcher(line);
+                if(matcherPid.matches())
+                    sysCallList.add(new SysCall(line, 0));
+                else if (matcherPid2.matches())
+                    sysCallList.add(new SysCall(line, 1));
+                else if(matcher.matches())
+                    sysCallList.add(new SysCall(line, 2));
                 line = br.readLine();
             }
 

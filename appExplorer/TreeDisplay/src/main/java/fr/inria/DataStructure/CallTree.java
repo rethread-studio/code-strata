@@ -15,6 +15,8 @@ public class CallTree {
     public int depth;
     public int level = 0;
 
+    public CallTree() {}
+
     public CallTree(String name, int w) {
         children = new ArrayList<>();
         this.name = name;
@@ -37,7 +39,7 @@ public class CallTree {
         c.parent = this;
     }
 
-    public void addChild(Collection<CallTree> collection) {
+    public void addChildren(Collection<CallTree> collection) {
         for(CallTree c : collection) {
             addChild(c);
         }
