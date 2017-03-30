@@ -12,6 +12,7 @@ public class Execution {
 
     public String name;
     public int defaultLevel;
+    public int nbLevel;
     public Map<Integer,Set<String>> packages;
     public File trace;
     public Set<JarFile> jars;

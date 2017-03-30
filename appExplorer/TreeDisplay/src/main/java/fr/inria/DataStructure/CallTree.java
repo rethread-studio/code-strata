@@ -7,13 +7,14 @@ import java.util.ArrayList;
 /**
  * Created by nharrand on 08/03/17.
  */
-public class CallTree {
+public class CallTree implements OrderedTree<String> {
     public List<CallTree> children;
     public CallTree parent = null;
     public int weight;
     public String name;
     public int depth;
     public int level = 0;
+    public int d2;
 
     public CallTree() {}
 
@@ -26,6 +27,11 @@ public class CallTree {
 
     public int getDepth() {
         return depth;
+    }
+
+    @Override
+    public String getEl() {
+        return name;
     }
 
     public List<CallTree> getChildren() {
