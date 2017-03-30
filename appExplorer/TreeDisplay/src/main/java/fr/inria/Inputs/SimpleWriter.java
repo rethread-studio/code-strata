@@ -42,16 +42,16 @@ public class SimpleWriter extends JSONWriter {
             res.put("nbBrothers", nbBrothers[c.d2]);
             res.put("depth", c.depth);
             res.put("z", c.d2);
+            array.put(array.length(), res);
             //if(c.d2 < 6) {
-                JSONArray children = new JSONArray();
-                for (CallTree child : c.children) {
-                    write(child, array);
-                }
-                res.put("children", children);
+            //JSONArray children = new JSONArray();
+            for (CallTree child : c.children) {
+                write(child, array);
+            }
+            //res.put("children", children);
             //}
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        array.put(res);
     }
 }
