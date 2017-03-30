@@ -31,12 +31,12 @@ public class PropertiesReader {
             sDefaultLevel = p.getProperty("defaultLevel", "0");
             sNbLevel = p.getProperty("nbLevel", "1");
 
-            int nbLevel = Integer.parseInt(sNbLevel);
+            e.nbLevel = Integer.parseInt(sNbLevel);
             e.defaultLevel = Integer.parseInt(sDefaultLevel);
 
             e.packages = new HashMap<>();
 
-            for(int i =0; i < nbLevel; i++) {
+            for(int i =0; i < e.nbLevel; i++) {
                 String pack = p.getProperty("packages_" + i);
                 if(pack != null) {
                     Set<String> packs = new HashSet<>();

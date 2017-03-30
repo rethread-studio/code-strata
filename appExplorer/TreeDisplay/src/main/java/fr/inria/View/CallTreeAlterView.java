@@ -4,22 +4,18 @@ import fr.inria.DataStructure.CallTree;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.TreeCallUtils;
-import fr.inria.Inputs.PropertiesReader;
 import fr.inria.Inputs.VisualvmReader;
 import processing.core.PApplet;
 
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
- * Created by nharrand on 21/03/17.
+ * Created by nharrand on 29/03/17.
  */
-public class CallTreeView extends PApplet {
+public class CallTreeAlterView  extends PApplet {
 
     static int strokeLight = 255;
 
     public static Execution e;
+    public static int maxWeight;
 
     public void settings(){
 
@@ -43,19 +39,11 @@ public class CallTreeView extends PApplet {
 
         int[] width = t.getWidthArray();
         int[] pop = new int[t.depth];
+        maxWeight = TreeCallUtils.maxWeight(t);
 
         background(0);
         fill(204, 102, 0);
-        stroke(strokeLight);
-        drawNode(t, e.screenSize/(3*t.depth), 0, width, pop, 0);
-        if(e.save) save(e.outputDir + "/img/" + e.name + "_calltree_app.png");
-
-        width = t.getWidthArray();
-        pop = new int[t.depth];
-
-        background(0);
-        fill(204, 102, 0);
-        stroke(strokeLight);
+        noStroke();
         drawNode(t, e.screenSize/(3*t.depth), 0, width, pop, e.nbLevel);
         if(e.save) save(e.outputDir + "/img/" + e.name + "_calltree.png");
     }
@@ -65,23 +53,36 @@ public class CallTreeView extends PApplet {
         int x = d * w * 3;
         int y = pop[d] * h;
         pop[d]++;
-        if (t.level == 0) {
-            fill(0, 102, 204);
-        } else if (t.level == 1) {
-            fill(0, 204, 102);
-        } else {
-            fill(204, 102, 0);
-        }
-        if(t.level <= maxLevel) {
-            rect(x, y, w, h);
-        }
 
         for (CallTree c : t.children) {
-                int tmpH = Math.max(e.screenSize / width[d + 1], 3);
-                if(c.level <= maxLevel) {
-                    line(x + w, y + (h / 2), x + 3 * w, tmpH * pop[d + 1] + (tmpH / 2));
-                }
-                drawNode(c, w, d + 1, width, pop, maxLevel);
+            int tmpH = Math.max(e.screenSize / width[d + 1], 3);
+            if(c.level <= maxLevel) {
+                setColors(c.level);
+                //stroke(255);
+                line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
+            }
+            drawNode(c, w, d + 1, width, pop, maxLevel);
+        }
+        if(t.level <= maxLevel) {
+            //rect(x, y, w, h);
+            int r = 3 + ((t.weight * 22)/ maxWeight) ;
+            //int r = 10 ;
+            setColors(t.level);
+            //rect(x+w/2, y+h/2, r, r);
+            ellipse(x+w/2, y+h/2, r, r);
+        }
+    }
+
+    public void setColors(int level) {
+        if (level == 0) {
+            fill(0, 102, 204);
+            stroke(0, 102, 204);
+        } else if (level == 1) {
+            fill(0, 204, 102);
+            stroke(0, 204, 102);
+        } else {
+            fill(204, 102, 0);
+            stroke(204, 102, 0);
         }
     }
 

@@ -2,10 +2,7 @@ package fr.inria;
 
 import fr.inria.DataStructure.*;
 import fr.inria.DataStructure.Compare.CompareExecution;
-import fr.inria.Inputs.PropertiesReader;
-import fr.inria.Inputs.SysCallReader;
-import fr.inria.Inputs.VisualvmReader;
-import fr.inria.Inputs.x86Parser;
+import fr.inria.Inputs.*;
 import fr.inria.View.WebStrataView;
 import org.apache.commons.io.FileUtils;
 import processing.core.PApplet;
@@ -29,13 +26,28 @@ public class App
     public static void main(String... args){
         //generateCodeStrata(new File(args[0]));
 
-        Context.currentCompareExec = new CompareExecution();
-        Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32InputStreamTest.properties"));
-        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32InputStreamTest_addMI.properties"));
-        PApplet.main("fr.inria.View.Compare.CompareCallTreeView");
+        /*Context.currentCompareExec = new CompareExecution();
+        Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test.properties"));
+        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
+        PApplet.main("fr.inria.View.Compare.CompareCallTreeView");*/
 
         //generateCodeStrata(new File("inputsFiles/Base32/Base32InputStreamTest.properties"));
         //generateCodeStrata(new File("inputsFiles/Base32/Base32InputStreamTest_addMI.properties"));
+
+        //generateCodeStrata(new File("inputsFiles/Base32/Base32OutputStreamTest.properties"));
+        //generateCodeStrata(new File("inputsFiles/Base32/Base32OutputStreamTest_addMI.properties"));
+
+        //generateCodeStrata(new File("inputsFiles/Base32/Base32Test.properties"));
+        //generateCodeStrata(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
+
+        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
+        ExecutionWritter w = new ExecutionWritter();
+        w.toJSON();
+        //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
+        //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
+        //PApplet.main("fr.inria.View.CallTreeAlterView");
+        //PApplet.main("fr.inria.View.ByteCodeAlterView");
+        //PApplet.main("fr.inria.View.x86AlterView");
     }
 
     public static void generateCodeStrata(File properties) {

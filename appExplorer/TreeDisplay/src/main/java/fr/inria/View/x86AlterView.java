@@ -2,24 +2,21 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.PropertiesReader;
 import fr.inria.Inputs.VisualvmReader;
 import fr.inria.Inputs.x86Parser;
 import processing.core.PApplet;
 
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
- * Created by nharrand on 21/03/17.
+ * Created by nharrand on 29/03/17.
  */
-public class X86View extends PApplet {
+public class x86AlterView extends PApplet {
     public static ColorPicker picker;
 
     static int strokeLight = 255;
 
     public static Execution e;
+
+    static int maxWeight;
 
     public void settings(){
 
@@ -46,27 +43,30 @@ public class X86View extends PApplet {
             int[] pop = new int[t.depth];
 
             stroke(strokeLight);
+            maxWeight = maxWeight(p,t);
             //drawMethod(j, t, s/(t.depth*3), 0, width, pop, 3);
-            drawMethod(p, t, e.screenSize/(t.depth), 0, width, pop, e.nbLevel);
+            drawMethod(p, t, e.screenSize/(t.depth), 0, width, pop, e.nbLevel, 0, 0, 0, 0);
             if(e.save) save(e.outputDir + "/img/" + e.name + "_x86.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void drawMethod(x86Parser p, CallTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
+    public void drawMethod(x86Parser p, CallTree t, int w, int d, int[] width, int[] pop, int maxLevel, int px, int py, int pw, int ph) {
         int h = Math.max(e.screenSize / width[d], 3);
         //int x = d * w * 3;
         int x = d * w;
         int y = pop[d] * h;
+
+        stroke(50);
+        if((px != 0) || (py != 0) || (pw != 0) || (ph != 0))
+            line(px + (pw/2), py + (ph / 2), x + w/2, y + (h / 2));
+
         pop[d]++;
-        fill(0, 0, 0, 0);
-        rect(x, y, w, h);
         drawMethodX86(p, t, x, y, w, h);
         for (CallTree c : t.children) {
             if(c.level <= maxLevel) {
-                int tmpH = Math.max(e.screenSize / width[d + 1], 3);
-                drawMethod(p, c, w, d + 1, width, pop, maxLevel);
+                drawMethod(p, c, w, d + 1, width, pop, maxLevel, x, y, w, h);
             }
         }
     }
@@ -75,38 +75,37 @@ public class X86View extends PApplet {
         String method = t.name;
         if(method.compareTo("Self time") == 0) method = t.parent.name;
         int[] bytes = p.instructions.getInstructions(method);
-        int nx = x+1, ny = y+1;
         if(bytes != null){
-            int availaiblePixels = w * h;
-            fill(0, 0, 0, 0);
-            rect(nx-1, ny-1, w, h);
             for(int i = 0; i < bytes.length; i++){
-                fill(255, 0, 0);
                 noStroke();
                 if(bytes[i] != -1) {
-                    //fill(255 - (bytes[i] >> 5), 255 - ((bytes[i] - (bytes[i] >> 5)) >> 2), 255 - (bytes[i] - (bytes[i] >> 2)));
                     int[] c = picker.getColor(bytes[i]);
                     fill(c[0], c[1], c[2]);
                 } else{
                     fill(128,0,0);
                 }
-                for(int k = (availaiblePixels * i) / (bytes.length); k < (availaiblePixels * (i+1)) / (bytes.length); k++) {
-                    if(ny >= y + h - 1) break;
-                    if(nx >= x + w - 1) {
-                        nx = x+1;
-                        ny++;
-                    }
-                    rect(nx, ny, 1, 1);
-                    nx++;
-                }
-                if(ny >= y + h) break;
 
-                stroke(strokeLight);
+                //int r = 25;
+                noStroke();
+                int r = 12 + ((bytes.length * 18)/ maxWeight) ;
+                arc(x+w/2, y+h/2, r, r, (2 * PI * i) / bytes.length, (2 * PI * (i + 1)) / bytes.length, PIE);
             }
-            //System.out.println("l: " + bytes.length + " (" + x + ", " + y + ")" + " available: " + availaiblePixels + ", filled:" + (availaiblePixels * (bytes.length)) / (bytes.length));
         } else {
             System.out.println("method '" + method + "' not found");
         }
+        noStroke();
+        fill(50,50,50);
+        ellipse(x+w/2, y+h/2, 10, 10);
+    }
+
+    public int maxWeight(x86Parser p, CallTree t) {
+        int max = 0;
+        String method = t.name;
+        if(method.compareTo("Self time") == 0) method = t.parent.name;
+        int[] bytes = p.instructions.getInstructions(method);
+        if(bytes != null) max = bytes.length;
+        for(CallTree c : t.children) max = Math.max(max, maxWeight(p, c));
+        return max;
     }
 
 }

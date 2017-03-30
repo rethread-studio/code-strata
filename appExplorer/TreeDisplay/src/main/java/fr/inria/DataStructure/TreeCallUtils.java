@@ -1,10 +1,11 @@
 package fr.inria.DataStructure;
 
 import fr.inria.DataStructure.CallTree;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by nharrand on 10/03/17.
@@ -74,4 +75,60 @@ public class TreeCallUtils {
         if(t.name.equals(str)) t.level = 2;
         for(CallTree c: t.children) color(c,str);
     }
+
+    public static List<Map.Entry<OrderedTree,OrderedTree>> commonChildren(OrderedTree t1,OrderedTree t2) {
+        List<Map.Entry<OrderedTree,OrderedTree>> res = new ArrayList<>();
+        List<OrderedTree> children1 = t1.getChildren();
+        List<OrderedTree> children2 = t2.getChildren();
+        List<OrderedTree> childrenMax, childrenMin;
+        boolean max1;
+        if(children1.size() > children2.size()) {
+            childrenMax = children1;
+            childrenMin = children2;
+            max1 = true;
+        }
+        else {
+            childrenMax = children2;
+            childrenMin = children1;
+            max1 =false;
+        }
+
+        int i = 0, tmp =0;
+        for(OrderedTree c1 : childrenMin) {
+            for(int k = i; k < childrenMax.size(); k++) {
+                if(c1.getEl().equals(childrenMax.get(k).getEl())) {
+                    if(max1)
+                        res.add(new HashMap.SimpleEntry<>(childrenMax.get(k), c1));
+                    else
+                        res.add(new HashMap.SimpleEntry<>(c1, childrenMax.get(k)));
+                    tmp = k;
+                    break;
+                } else {
+                    if (max1)
+                        res.add(new HashMap.SimpleEntry<>(childrenMax.get(k), null));
+                    else
+                        res.add(new HashMap.SimpleEntry<>(null, childrenMax.get(k)));
+                }
+            }
+            i = tmp+1;
+        }
+        return res;
+    }
+
+    public static void annotateD(CallTree t, int d) {
+        t.d2 = d;
+        for (CallTree c : t.children) {
+            annotateD(c, d+1);
+        }
+    }
+
+    public static int maxWeight(CallTree t) {
+        int m = t.weight;
+        for(CallTree c : t.children) {
+            m = Math.max(m, maxWeight(c));
+        }
+        return m;
+    }
+
+
 }
