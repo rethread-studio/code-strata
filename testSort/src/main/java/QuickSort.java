@@ -16,14 +16,14 @@ public class QuickSort {
 
             // Partition
             for(int i=1;i<arr.size();i++)  {
-                if ((Integer)arr.get(i)<pivot)
-                    less.add(i);
-                else if ((Integer)arr.get(i)>pivot)
-                    more.add(i);
+                if ((Integer)arr.get(i) < pivot)
+                    less.add(arr.get(i));
+                else if ((Integer)arr.get(i) > pivot)
+                    more.add(arr.get(i));
                 else
-                    pivotList.add(i);
+                    pivotList.add(arr.get(i));
             }
-
+            pivotList.add(arr.get(0));
             // Recursively sort sublists
             less = sort(less);
             more = sort(more);

@@ -207,4 +207,25 @@ public class CompareCallTree {
         else return null;
     }
 
+
+
+    public double distance(int[] data) {
+        if(data == null) data = new int[4];
+        //0 nodes
+        //1 common nodes
+        //2 arcs
+        //3common arcs
+
+        data[0]++;
+        if(areNodeEquals) data[1]++;
+        for(CompareCallTree c : children) {
+            data[2]++;
+            if(areNodeEquals || c.areNodeEquals) data[3]++;
+            c.distance(data);
+        }
+
+
+        return (data[2]);
+    }
+
 }
