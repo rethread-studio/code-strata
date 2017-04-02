@@ -41,10 +41,10 @@ public class App
         //generateCodeStrata(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
 
 
-        //generateCodeStrata(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        generateCodeStrata(new File("inputsFiles/Sort/QuickSortTest.properties"));
         //generateCodeStrata(new File("inputsFiles/Sort/QuickSortTest_full.properties"));
         //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest.properties"));
-        generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest_full.properties"));
+        //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest_full.properties"));
 
         /*Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
         ExecutionWritter w = new ExecutionWritter();
