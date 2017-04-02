@@ -40,9 +40,15 @@ public class App
         //generateCodeStrata(new File("inputsFiles/Base32/Base32Test.properties"));
         //generateCodeStrata(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
 
-        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
+
+        //generateCodeStrata(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        //generateCodeStrata(new File("inputsFiles/Sort/QuickSortTest_full.properties"));
+        //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest.properties"));
+        generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest_full.properties"));
+
+        /*Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
         ExecutionWritter w = new ExecutionWritter();
-        w.toJSON();
+        w.toJSON();*/
         //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
         //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
         //PApplet.main("fr.inria.View.CallTreeAlterView");
@@ -79,7 +85,7 @@ public class App
                 "\t\t\t\t\t\t\t</p>");
         strataDesc.put(6,"\t\t\t\t\t\t\t<h3>Application calls</h3>\n" +
                 "\t\t\t\t\t\t\t<p>\n" +
-                "\t\t\t\t\t\t\t\tEach rectangle represents the invocation of a java method written by the application author(s). White links represents the way each method call sub methods.\n" +
+                "\t\t\t\t\t\t\t\tEach rectangle represents the invocation of a java method written by the application author(s). White links represent the way each method call sub methods.\n" +
                 "\t\t\t\t\t\t\t</p>");
         strataDesc.put(5,"\t\t\t\t\t\t\t<h3>Application and libraries calls</h3>\n" +
                 "\t\t\t\t\t\t\t<p>\n" +
@@ -94,7 +100,7 @@ public class App
                 "\t\t\t\t\t\t\t\tEach square represent a system call. A system call is an operation handled by the operating system.\n" +
                 "\t\t\t\t\t\t\t</p>");
         strataDesc.put(2, "");
-        strataDesc.put(1,"");
+        strataDesc.put(1, "");
         strataDesc.put(0, "\t\t\t\t\t\t\t<h3>x86</h3>\n" +
                 "\t\t\t\t\t\t\t<p>\n" +
                 "\t\t\t\t\t\t\t\tIn order to executed by micro processor, a program must be converted in a serie of instructions that the processor understand. A common instruction set nodays is x86.\n" +
@@ -106,6 +112,7 @@ public class App
         WebStrataView web = new WebStrataView(Context.currentExec, strataNb, strataImages, strataDesc);
         web.generateWeb();
 
+        PApplet.main("fr.inria.View.CallTreeAlterView");
         PApplet.main("fr.inria.View.CallTreeView");
         PApplet.main("fr.inria.View.ByteCodeView");
         PApplet.main("fr.inria.View.SysCallView");

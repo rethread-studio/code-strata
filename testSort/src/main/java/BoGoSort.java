@@ -15,6 +15,7 @@ public class BoGoSort {
         //Boast
         System.out.println("This took "+shuffle+" shuffles.");
     }
+
     void shuffle(TreeList arr)
     {
         //Standard Fisher-Yates shuffle algorithm
@@ -22,6 +23,7 @@ public class BoGoSort {
         while(i>0)
             swap(arr,i--,(int)(Math.random()*i));
     }
+
     void swap(TreeList arr,int i,int j) {
         Object temp = arr.get(i);
         arr.set(i, arr.get(j));

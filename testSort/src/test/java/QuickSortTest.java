@@ -16,7 +16,7 @@ public class QuickSortTest {
         list.add(2,(Integer)2);
         list.add(3,(Integer)7);
         assertFalse(bgs.isSorted(list));
-        bgs.sort(list);
+        list = bgs.sort(list);
         assertTrue(bgs.isSorted(list));
     }
 
