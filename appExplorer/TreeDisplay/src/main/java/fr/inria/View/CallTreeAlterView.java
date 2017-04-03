@@ -87,7 +87,9 @@ public class CallTreeAlterView  extends PApplet {
             fill(204, 102, 0);
             stroke(204, 102, 0);
         }*/
-        if(level != 0) {
+        if(false) {
+        //if(level > 1) {
+        //if(level != 0) {
 
             fill(0);
             stroke(0);
