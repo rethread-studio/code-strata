@@ -8,7 +8,8 @@ public class QuickSort {
 
     public static TreeList sort(TreeList arr) {
         if (!arr.isEmpty()) {
-            int pivot = (Integer)arr.get(0); //This pivot can change to get faster results
+            //int pivot = (Integer)arr.get(0); //This pivot can change to get faster results
+            int pivot = (int) Math.floor(Math.random() * ((double) arr.size())); //This pivot can change to get faster results
 
             TreeList less = new TreeList();
             TreeList pivotList = new TreeList();
@@ -16,14 +17,15 @@ public class QuickSort {
 
             // Partition
             for(int i=1;i<arr.size();i++)  {
-                if ((Integer)arr.get(i) < pivot)
+                if ((Integer)arr.get(i) < ((Integer)arr.get(pivot))) {
                     less.add(arr.get(i));
-                else if ((Integer)arr.get(i) > pivot)
+                }
+                else if ((Integer)arr.get(i) > ((Integer)arr.get(pivot)))
                     more.add(arr.get(i));
                 else
                     pivotList.add(arr.get(i));
             }
-            pivotList.add(arr.get(0));
+            pivotList.add(arr.get(pivot));
             // Recursively sort sublists
             less = sort(less);
             more = sort(more);
