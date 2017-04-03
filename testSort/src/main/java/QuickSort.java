@@ -8,8 +8,8 @@ public class QuickSort {
 
     public static TreeList sort(TreeList arr) {
         if (!arr.isEmpty()) {
-            //int pivot = (Integer)arr.get(0); //This pivot can change to get faster results
-            int pivot = (int) Math.floor(Math.random() * ((double) arr.size())); //This pivot can change to get faster results
+            int pivot = 0; //This pivot can change to get faster results
+            //int pivot = (int) Math.floor(Math.random() * ((double) arr.size())); //This pivot can change to get faster results
 
             TreeList less = new TreeList();
             TreeList pivotList = new TreeList();
