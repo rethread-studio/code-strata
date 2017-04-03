@@ -31,6 +31,7 @@ public class CallTreeAlterView  extends PApplet {
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
+        t = TreeCallUtils.trim(t, e.excludes);
         picker = new ColorPicker(255,100,0, e.nbLevel, 30);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
@@ -73,6 +74,8 @@ public class CallTreeAlterView  extends PApplet {
         }
     }
 
+    static int strokeW = 2;
+
     public void setColors(int level) {
         /*if (level == 0) {
             fill(0, 102, 204);
@@ -84,9 +87,16 @@ public class CallTreeAlterView  extends PApplet {
             fill(204, 102, 0);
             stroke(204, 102, 0);
         }*/
-        int[] c = picker.getColor(level);
-        fill(c[0], c[1], c[2]);
-        stroke(c[0], c[1], c[2]);
+        if(false) {
+
+            fill(0);
+            stroke(0);
+        } else {
+            int[] c = picker.getColor(level);
+            fill(c[0], c[1], c[2]);
+            stroke(c[0], c[1], c[2]);
+        }
+        strokeWeight(strokeW);
     }
 
     public void draw(){

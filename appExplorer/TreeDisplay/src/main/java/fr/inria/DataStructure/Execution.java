@@ -19,6 +19,7 @@ public class Execution {
     public File x86log;
     public File syscalls;
     public File outputDir;
+    public Set<String> excludes;
 
 
     public int screenSize;

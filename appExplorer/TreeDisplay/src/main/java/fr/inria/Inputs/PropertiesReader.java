@@ -54,6 +54,15 @@ public class PropertiesReader {
                 }
             }
 
+            String ex = p.getProperty("excludes");
+            e.excludes = new HashSet<>();
+            if(ex != null) {
+
+                for(String s : ex.replace(" ", "").split(",")) {
+                    e.excludes.add(s);
+                }
+            }
+
             trace = p.getProperty("trace");
             if(trace != null) e.trace = new File(trace);
             x86log = p.getProperty("x86log");

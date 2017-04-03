@@ -20,7 +20,8 @@ public class TreeCallUtils {
     }
 
     public static void label (CallTree t, Map<Integer,Set<String>> l, int defaultLevel) {
-        if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
+        for(CallTree c : t.getChildren()) if(c.name.compareTo("Self time") == 0) t.children.remove(c);
+        //if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
 
         boolean marked = false;
         for(Integer i: l.keySet()) {
@@ -34,12 +35,26 @@ public class TreeCallUtils {
 
     }
 
-    public static void trim (CallTree t, Set<String> appPackages, Set<String> libs) {
-        if(t.name.compareTo("Self time") == 0) t.name = t.parent.name;
-        if(isIn(t.name, appPackages)) t.level = 0;
-        else if (!isIn(t.name, libs)) t.level = 1;
-        else  t.level = 2;
-        for(CallTree c : t.getChildren()) trim(c,appPackages, libs);
+    public static CallTree trim (CallTree t, Set<String> toRemove) {
+        if(isIn(t.name, toRemove)) {
+            if(t.children.isEmpty()) return null;
+            else {
+                for(CallTree c : t.getChildren()) {
+                    CallTree tr = trim(c,toRemove);
+                    if(tr != null) return tr;
+                }
+                return null;
+            }
+        }
+
+
+        for(CallTree c : t.getChildren())  {
+            if(isIn(c.name, toRemove))
+                t.children.remove(c);
+            trim(c,toRemove);
+        }
+
+        return t;
     }
 
     public static Map<String, Integer> frequencies(CallTree t) {
