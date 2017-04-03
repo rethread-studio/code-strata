@@ -31,7 +31,10 @@ public class CallTreeAlterView  extends PApplet {
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
+        t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
         t = TreeCallUtils.trim(t, e.excludes);
+
+
         picker = new ColorPicker(255,100,0, e.nbLevel, 30);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
@@ -87,9 +90,9 @@ public class CallTreeAlterView  extends PApplet {
             fill(204, 102, 0);
             stroke(204, 102, 0);
         }*/
-        if(false) {
+        //if(false) {
         //if(level > 1) {
-        //if(level != 0) {
+        if(level != 0) {
 
             fill(0);
             stroke(0);

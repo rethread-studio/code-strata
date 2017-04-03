@@ -34,6 +34,16 @@ public class TreeCallUtils {
         for(CallTree c : t.getChildren()) label(c,l,defaultLevel);
 
     }
+    public static CallTree from(CallTree t, String start) {
+        if(t.name.startsWith(start)) return t;
+        else {
+            for(CallTree c : t.getChildren()) {
+                CallTree tr = from(c, start);
+                if(tr != null) return tr;
+            }
+            return null;
+        }
+    }
 
     public static CallTree trim (CallTree t, Set<String> toRemove) {
         if(isIn(t.name, toRemove)) {

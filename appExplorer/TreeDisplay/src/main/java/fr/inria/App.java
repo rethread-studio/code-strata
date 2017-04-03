@@ -46,7 +46,8 @@ public class App
         //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest.properties"));
         //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest_full.properties"));
 
-        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_arraylist.properties"));
         PApplet.main("fr.inria.View.CallTreeAlterView");
 
         /*Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
