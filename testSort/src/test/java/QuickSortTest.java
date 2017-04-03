@@ -1,6 +1,9 @@
 import org.apache.commons.collections.list.TreeList;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,7 +13,7 @@ public class QuickSortTest {
     @Test
     public void quickSort() throws Exception {
         QuickSort bgs = new QuickSort();
-        TreeList list = new TreeList();
+        List list = new ArrayList();
         list.add(0,(Integer)1);
         list.add(1,(Integer)4);
         list.add(2,(Integer)2);
