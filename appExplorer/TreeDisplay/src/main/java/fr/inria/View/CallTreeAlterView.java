@@ -2,6 +2,7 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
+import fr.inria.Inputs.AgentReader;
 import fr.inria.Inputs.VisualvmReader;
 import processing.core.PApplet;
 
@@ -27,12 +28,15 @@ public class CallTreeAlterView  extends PApplet {
 
     public void setup() {
         VisualvmReader r = new VisualvmReader();
+        //AgentReader r = new AgentReader();
         CallTree t = r.readFromFile(e.trace);
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
-        t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
-        t = TreeCallUtils.trim(t, e.excludes);
+        //t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
+        t= TreeCallUtils.from(t, "QuickSortTest.quickSort()");
+        //t = TreeCallUtils.trim(t, e.excludes);
+        t = TreeCallUtils.trim2(t, e.excludes).get(0);
 
 
         picker = new ColorPicker(255,100,0, e.nbLevel, 30);
@@ -69,8 +73,8 @@ public class CallTreeAlterView  extends PApplet {
         }
         if(t.level <= maxLevel) {
             //rect(x, y, w, h);
-            int r = 3 + ((t.weight * 22)/ maxWeight) ;
-            //int r = 10 ;
+            //int r = 3 + ((t.weight * 22)/ maxWeight) ;
+            int r = 10 ;
             setColors(t.level);
             //rect(x+w/2, y+h/2, r, r);
             ellipse(x+w/2, y+h/2, r, r);
@@ -90,9 +94,9 @@ public class CallTreeAlterView  extends PApplet {
             fill(204, 102, 0);
             stroke(204, 102, 0);
         }*/
-        //if(false) {
+        if(false) {
         //if(level > 1) {
-        if(level != 0) {
+        //if(level != 0) {
 
             fill(0);
             stroke(0);

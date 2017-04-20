@@ -2,20 +2,18 @@
  * Created by baudry on 31/03/17.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-//import org.apache.commons.collections.list.TreeList;
+import org.apache.commons.collections.list.TreeList;
 
 public class QuickSort {
 
-    public static List sort(List arr) {
+    public static TreeList sort(TreeList arr) {
         if (!arr.isEmpty()) {
             int pivot = 0; //This pivot can change to get faster results
             //int pivot = (int) Math.floor(Math.random() * ((double) arr.size())); //This pivot can change to get faster results
 
-            List less = new ArrayList();
-            List pivotList = new ArrayList();
-            List more = new ArrayList();
+            TreeList less = new TreeList();
+            TreeList pivotList = new TreeList();
+            TreeList more = new TreeList();
 
             // Partition
             for(int i=1;i<arr.size();i++)  {
@@ -27,6 +25,7 @@ public class QuickSort {
                 else
                     pivotList.add(arr.get(i));
             }
+			isSorted(less);
             pivotList.add(arr.get(pivot));
             // Recursively sort sublists
             less = sort(less);
@@ -41,7 +40,7 @@ public class QuickSort {
 
     }
 
-    boolean isSorted(List arr)
+    static boolean isSorted(TreeList arr)
     {
 
         for(int i=1;i<arr.size();i++) {
