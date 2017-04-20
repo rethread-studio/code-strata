@@ -67,6 +67,22 @@ public class TreeCallUtils {
         return t;
     }
 
+    public static List<CallTree> trim2 (CallTree t, Set<String> toRemove) {
+        List<CallTree> tmp = new ArrayList<>();
+        for(CallTree c : t.getChildren())
+            tmp.addAll(trim2(c,toRemove));
+        if(isIn(t.name, toRemove)) {
+            return tmp;
+        } else {
+
+            t.children = new ArrayList<CallTree>();
+            t.children.addAll(tmp);
+            List<CallTree> res = new ArrayList<>();
+            res.add(t);
+            return res;
+        }
+    }
+
     public static Map<String, Integer> frequencies(CallTree t) {
         Map<String, Integer> result = new HashMap<>();
         computeF(t,result);
