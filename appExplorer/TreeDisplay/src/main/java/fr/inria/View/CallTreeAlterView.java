@@ -3,6 +3,8 @@ package fr.inria.View;
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
 import fr.inria.Inputs.AgentReader;
+import fr.inria.Inputs.JSONReader;
+import fr.inria.Inputs.SimpleReader;
 import fr.inria.Inputs.VisualvmReader;
 import processing.core.PApplet;
 
@@ -20,15 +22,16 @@ public class CallTreeAlterView  extends PApplet {
     public void settings(){
 
         e = Context.currentExec;
-        //e = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
 
         size(e.screenSize, e.screenSize);
 
     }
 
     public void setup() {
-        VisualvmReader r = new VisualvmReader();
-        //AgentReader r = new AgentReader();
+        //JSONReader r = new VisualvmReader();
+        //JSONReader r = new AgentReader();
+        JSONReader r = new SimpleReader();
+
         CallTree t = r.readFromFile(e.trace);
         int h = e.screenSize / t.depth;
 

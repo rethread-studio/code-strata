@@ -49,8 +49,8 @@ public class App
         Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
         //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_addMI.properties"));
         PApplet.main("fr.inria.View.CallTreeAlterView");
-        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
-        PApplet.main("fr.inria.View.CallTreeAlterView");
+        //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        //PApplet.main("fr.inria.View.CallTreeAlterView");
 
 
         /*Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));

@@ -13,7 +13,7 @@ public class SimpleReader extends JSONReader {
     public CallTree read(JSONObject o) {
         CallTree res = null;
         try {
-            int w = o.getInt("weight");
+            int w = 1;//o.getInt("weight");
             String name = o.getString("name");
             JSONArray children = o.getJSONArray("children");
 

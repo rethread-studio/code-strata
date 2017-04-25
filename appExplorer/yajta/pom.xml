@@ -59,6 +59,7 @@
                         </manifest>
                         <manifestEntries>
                             <Premain-Class>fr.inria.yajta.Agent</Premain-Class>
+                            <Main-Class>fr.inria.yajta.Cleaner</Main-Class>
                         </manifestEntries>
                     </archive>
                     <descriptorRefs>
