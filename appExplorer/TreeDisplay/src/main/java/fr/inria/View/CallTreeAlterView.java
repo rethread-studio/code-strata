@@ -2,10 +2,8 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.AgentReader;
-import fr.inria.Inputs.JSONReader;
-import fr.inria.Inputs.SimpleReader;
-import fr.inria.Inputs.VisualvmReader;
+import fr.inria.IOs.JSONReader;
+import fr.inria.IOs.SimpleReader;
 import processing.core.PApplet;
 
 /**

@@ -46,59 +46,6 @@ public class CompareCallTree {
                 CompareCallTree cc = new CompareCallTree((CallTree) m.getKey(), (CallTree) m.getValue());
                 addChild(cc);
             }
-
-            /*List<CallTree> children1 = t1.getChildren();
-            List<CallTree> children2 = t2.getChildren();
-            List<CallTree> childrenMax, childrenMin;
-            boolean max1;
-            if(children1.size() > children2.size()) {
-                childrenMax = children1;
-                childrenMin = children2;
-                max1 = true;
-            }
-            else {
-                childrenMax = children2;
-                childrenMin = children1;
-                max1 =false;
-            }
-
-            int i = 0, tmp =0;
-            for(CallTree c1 : childrenMin) {
-                boolean found = false;
-                for(int k = i; k < childrenMax.size(); k++) {
-                    CompareCallTree cc;
-                    if(c1.name.equals(childrenMax.get(k).name)) {
-                        found = true;
-                        if(max1)
-                            cc = new CompareCallTree(childrenMax.get(k), c1);
-                        else
-                            cc = new CompareCallTree(c1, childrenMax.get(k));
-                        addChild(cc);
-                        tmp = k;
-                        break;
-                    } else {
-                        if (max1)
-                            cc = new CompareCallTree(childrenMax.get(k), null);
-                        else
-                            cc = new CompareCallTree(null, childrenMax.get(k));
-                        addChild(cc);
-                    }
-                }
-                i = tmp+1;*/
-
-                /*if(found) {
-                    for(int k = i; k < tmp; k++) {
-                        CompareCallTree cc;
-
-                        if (max1)
-                            cc = new CompareCallTree(childrenMax.get(k), null);
-                        else
-                            cc = new CompareCallTree(null, childrenMax.get(k));
-                        addChild(cc);
-                    }
-                    i = tmp;
-                }
-            }*/
         } else if(t1 != null) {
             name = t1.name;
             level = t1.level;
@@ -125,59 +72,6 @@ public class CompareCallTree {
 
     }
 
-    /*public CompareCallTree(CallTree t1, CallTree t2) {
-        this.t1 = t1;
-        this.t2 = t2;
-        depth = 1;
-        name = "*";
-
-
-        if((t1 != null) && (t2 != null)) {
-            areNodeEquals = t1.name.equals(t2.name);
-            if(areNodeEquals) {
-                name = t1.name;
-                level = t1.level;
-            } else {
-                System.out.println("diff: " + t1.name + " != " + t2.name);
-            }
-
-            List<CallTree> children1 = t1.getChildren();
-            List<CallTree> children2 = t2.getChildren();
-            List<CallTree> childrenMax;
-            if(children1.size() > children2.size()) childrenMax = children1;
-            else  childrenMax = children2;
-
-            int i = 0;
-            for(CallTree c : childrenMax) {
-                CompareCallTree cc = new CompareCallTree(childGetter(children1, i), childGetter(children2, i));
-                addChild(cc);
-                i++;
-            }
-        } else if(t1 != null) {
-            name = t1.name;
-            level = t1.level;
-            areNodeEquals = false;
-            int i = 0;
-            for(CallTree c : t1.getChildren()) {
-                CompareCallTree cc = new CompareCallTree(c, null);
-                addChild(cc);
-                i++;
-            }
-        } else if(t2 != null) {
-            name = t2.name;
-            level = t2.level;
-            areNodeEquals = false;
-            int i = 0;
-            for(CallTree c : t2.getChildren()) {
-                CompareCallTree cc = new CompareCallTree(null, c);
-                addChild(cc);
-                i++;
-            }
-        } else {
-            areNodeEquals = false;
-        }
-
-    }*/
 
     public int[] getWidthArray() {
         int[] result = new int[depth];
@@ -214,7 +108,7 @@ public class CompareCallTree {
         //0 nodes
         //1 common nodes
         //2 arcs
-        //3common arcs
+        //3 common arcs
 
         data[0]++;
         if(areNodeEquals) data[1]++;

@@ -16,6 +16,10 @@ public class CallTree implements OrderedTree<String> {
     public int level = 0;
     public int d2;
 
+    public String toString() {
+        return name;
+    }
+
     public CallTree() {}
 
     public CallTree(String name, int w) {

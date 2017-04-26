@@ -2,7 +2,7 @@ package fr.inria;
 
 import fr.inria.DataStructure.*;
 import fr.inria.DataStructure.Compare.CompareExecution;
-import fr.inria.Inputs.*;
+import fr.inria.IOs.*;
 import fr.inria.View.WebStrataView;
 import org.apache.commons.io.FileUtils;
 import processing.core.PApplet;
@@ -10,10 +10,6 @@ import processing.core.PApplet;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
-import java.util.jar.JarFile;
-
-import static fr.inria.DataStructure.SysCall.types;
 
 
 /**
@@ -26,10 +22,18 @@ public class App
     public static void main(String... args){
         //generateCodeStrata(new File(args[0]));
 
-        /*Context.currentCompareExec = new CompareExecution();
-        Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test.properties"));
-        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
-        PApplet.main("fr.inria.View.Compare.CompareCallTreeView");*/
+        Context.currentCompareExec = new CompareExecution();
+        //Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test.properties"));
+        //Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
+        Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_addMI.properties"));
+        Context.currentExec = Context.currentCompareExec.e1;
+        PApplet.main("fr.inria.View.CallTreeAlterView");
+        Context.currentExec = Context.currentCompareExec.e2;
+        PApplet.main("fr.inria.View.CallTreeAlterView");
+        PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
+
+        //export();
 
         //generateCodeStrata(new File("inputsFiles/Base32/Base32InputStreamTest.properties"));
         //generateCodeStrata(new File("inputsFiles/Base32/Base32InputStreamTest_addMI.properties"));
@@ -46,9 +50,9 @@ public class App
         //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest.properties"));
         //generateCodeStrata(new File("inputsFiles/Sort/BoGoSortTest_full.properties"));
 
-        Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
+        //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
         //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_addMI.properties"));
-        PApplet.main("fr.inria.View.CallTreeAlterView");
+        //PApplet.main("fr.inria.View.CallTreeAlterView");
         //Context.currentExec = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
         //PApplet.main("fr.inria.View.CallTreeAlterView");
 
@@ -125,5 +129,15 @@ public class App
         PApplet.main("fr.inria.View.SysCallView");
         PApplet.main("fr.inria.View.X86View");
         PApplet.main("fr.inria.View.MiniMapView");
+    }
+
+    public static void export() {
+        JSONReader r = new SimpleReader();
+        CallTree t1 = r.readFromFile(Context.currentCompareExec.e1.trace);
+        CallTree t2 = r.readFromFile(Context.currentCompareExec.e2.trace);
+        RawWriter w = new RawWriter();
+        w.writeInFile(t1, new File("QuickSort.raw"), false);
+        w.writeInFile(t2, new File("QuickSort_r.raw"), false);
+
     }
 }

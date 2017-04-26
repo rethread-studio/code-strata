@@ -27,8 +27,8 @@ public class Cleaner {
         String line = b.readLine();
         if(line == null) return null;
             //else if (line.matches("\\[inria filter\\].*")) {
-        else if (line.matches(".*\\[inria filter\\].*")) {
-            return  line.split("\\[inria filter\\]")[1];
+        else if (line.matches(".*\\[yalta filter\\].*")) {
+            return  line.split("\\[yalta filter\\]")[1];
             //return  line.substring(14);
         }
         else return readLineFiltered(b);
