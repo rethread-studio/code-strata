@@ -78,10 +78,10 @@ public class Tracer implements ClassFileTransformer {
         }
         params += ")";
 
-        method.insertBefore("System.out.println(\"[inria filter]{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName()  + params +  "\\\",\\n" +
+        method.insertBefore("System.out.println(\"[yalta filter]{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName()  + params +  "\\\",\\n" +
                 "[inria filter]\\\"children\\\":[\");" );
 
-        method.insertAfter("System.out.println(\"[inria filter]]},\");" );
+        method.insertAfter("System.out.println(\"[yalta filter]]},\");" );
 
 
     }

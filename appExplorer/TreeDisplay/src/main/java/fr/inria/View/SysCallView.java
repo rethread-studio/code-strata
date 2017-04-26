@@ -4,11 +4,9 @@ import fr.inria.ColorPicker;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.SysCall;
-import fr.inria.Inputs.PropertiesReader;
-import fr.inria.Inputs.SysCallReader;
+import fr.inria.IOs.SysCallReader;
 import processing.core.PApplet;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

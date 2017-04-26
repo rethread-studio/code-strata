@@ -5,13 +5,8 @@ import fr.inria.DataStructure.CallTree;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.TreeCallUtils;
-import fr.inria.Inputs.PropertiesReader;
-import fr.inria.Inputs.VisualvmReader;
+import fr.inria.IOs.VisualvmReader;
 import processing.core.PApplet;
-
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by nharrand on 21/03/17.

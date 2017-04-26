@@ -4,9 +4,9 @@ import fr.inria.DataStructure.CallTree;
 import fr.inria.DataStructure.Compare.CompareCallTree;
 import fr.inria.DataStructure.Compare.CompareExecution;
 import fr.inria.DataStructure.Context;
-import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.TreeCallUtils;
-import fr.inria.Inputs.VisualvmReader;
+import fr.inria.IOs.JSONReader;
+import fr.inria.IOs.SimpleReader;
 import processing.core.PApplet;
 
 /**
@@ -28,7 +28,8 @@ public class CompareCallTreeView extends PApplet {
     }
 
     public void setup() {
-        VisualvmReader r = new VisualvmReader();
+        //JSONReader r = new VisualvmReader();
+        JSONReader r = new SimpleReader();
         CallTree t1 = r.readFromFile(e.e1.trace);
         CallTree t2 = r.readFromFile(e.e2.trace);
 
@@ -79,9 +80,9 @@ public class CompareCallTreeView extends PApplet {
         }
 
 
-        if(t.level <= maxLevel) {
+        //if(t.level <= maxLevel) {
             rect(x, y, w, h);
-        }
+        //}
 
         for (CompareCallTree c : t.children) {
             int tmpH = Math.max(e.e1.screenSize / width[d + 1], 3);
