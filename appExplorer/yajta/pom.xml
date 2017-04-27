@@ -25,6 +25,11 @@
           <artifactId>slf4j-ext</artifactId>
           <version>1.6.6</version>
       </dependency>
+      <dependency>
+          <groupId>com.beust</groupId>
+          <artifactId>jcommander</artifactId>
+          <version>1.27</version>
+      </dependency>
   </dependencies>
 
     <build>
@@ -60,6 +65,9 @@
                         <manifestEntries>
                             <Premain-Class>fr.inria.yajta.Agent</Premain-Class>
                             <Main-Class>fr.inria.yajta.Cleaner</Main-Class>
+                            <Can-Redefine-Classes>True</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>True</Can-Retransform-Classes>
+                            <Can-Set-Native-Method-Prefix>True</Can-Set-Native-Method-Prefix>
                         </manifestEntries>
                     </archive>
                     <descriptorRefs>

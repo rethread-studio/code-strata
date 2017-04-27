@@ -26,7 +26,7 @@ public class App
         //Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test.properties"));
         //Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Base32/Base32Test_addMI.properties"));
         Context.currentCompareExec.e1 = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest.properties"));
-        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_addMI.properties"));
+        Context.currentCompareExec.e2 = PropertiesReader.readProperties(new File("inputsFiles/Sort/QuickSortTest_arraylist.properties"));
         Context.currentExec = Context.currentCompareExec.e1;
         PApplet.main("fr.inria.View.CallTreeAlterView");
         Context.currentExec = Context.currentCompareExec.e2;
@@ -65,6 +65,19 @@ public class App
         //PApplet.main("fr.inria.View.CallTreeAlterView");
         //PApplet.main("fr.inria.View.ByteCodeAlterView");
         //PApplet.main("fr.inria.View.x86AlterView");
+    }
+
+    public static void flatTrace() {}
+
+    public static void generateComparaison(File prop1, File prop2) {
+        Context.currentCompareExec = new CompareExecution();
+        Context.currentCompareExec.e1 = PropertiesReader.readProperties(prop1);
+        Context.currentCompareExec.e2 = PropertiesReader.readProperties(prop2);
+        Context.currentExec = Context.currentCompareExec.e1;
+        PApplet.main("fr.inria.View.CallTreeAlterView");
+        Context.currentExec = Context.currentCompareExec.e2;
+        PApplet.main("fr.inria.View.CallTreeAlterView");
+        PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
     }
 
     public static void generateCodeStrata(File properties) {
@@ -137,7 +150,7 @@ public class App
         CallTree t2 = r.readFromFile(Context.currentCompareExec.e2.trace);
         RawWriter w = new RawWriter();
         w.writeInFile(t1, new File("QuickSort.raw"), false);
-        w.writeInFile(t2, new File("QuickSort_r.raw"), false);
+        w.writeInFile(t2, new File("QuickSort_addMI.raw"), false);
 
     }
 }

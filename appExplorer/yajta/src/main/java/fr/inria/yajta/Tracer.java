@@ -7,13 +7,45 @@ import javassist.CtClass;
 import javassist.NotFoundException;
 import java.lang.instrument.ClassFileTransformer;
 
-
 public class Tracer implements ClassFileTransformer {
 
+    boolean verbose = false;
 
-    static final String[] DEFAULT_EXCLUDES = new String[] {};
 
-    static final String[] INCLUDES = new String[] {};
+    public Tracer () {
+        this(new String[]{}, new String[]{"fr/inria/yajta"});
+    }
+
+    public Tracer (String[] includes, String excludes[]) {
+        INCLUDES = includes;
+        DEFAULT_EXCLUDES = excludes;
+    }
+
+    String[] DEFAULT_EXCLUDES;// = new String[] {
+            /*"java/lang/reflect.Type",
+            "java/lang/Class",
+            "java/lang/Cloneable",
+            "java/lang/ClassLoader",
+            "java/lang/System",
+            "java/lang/Throwable",
+            "java/lang/Error",
+            "java/lang/ThreadDeath",
+            "java/lang/Exception",
+            "java/lang/RuntimeException",
+            "java/lang/SecurityManager",
+            "java/security",
+            "sun/reflect",
+            "java/lang/annotation",
+            "java/nio",
+            "java/lang/Math",
+            "sun/nio",
+            "java/io",*/
+
+    //};
+
+    String[] INCLUDES;// = new String[] {};
+
+    static final String PREFIX = "[yalta filter]";
 
     public byte[] transform( final ClassLoader loader, final String className, final Class clazz,
                              final java.security.ProtectionDomain domain, final byte[] bytes ) {
@@ -35,13 +67,12 @@ public class Tracer implements ClassFileTransformer {
         return doClass( className, clazz, bytes );
     }
 
-    private byte[] doClass( final String name, final Class clazz, byte[] b ) {
+    public byte[] doClass( final String name, final Class clazz, byte[] b ) {
         ClassPool pool = ClassPool.getDefault();
         CtClass cl = null;
 
         try {
             cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
-
             if( cl.isInterface() == false ) {
 
                 CtBehavior[] methods = cl.getDeclaredBehaviors();
@@ -54,6 +85,7 @@ public class Tracer implements ClassFileTransformer {
                 }
 
                 b = cl.toBytecode();
+                if(verbose) System.err.println( "-> Instrument  " + name);
             }
         } catch( Exception e ) {
             System.err.println( "Could not instrument  " + name + ",  exception : " + e.getMessage() );
@@ -68,7 +100,6 @@ public class Tracer implements ClassFileTransformer {
     }
 
     private void doMethod( final CtBehavior method , String className) throws NotFoundException, CannotCompileException {
-
         String params = "(";
         boolean first = true;
         for(CtClass c : method.getParameterTypes()) {
@@ -78,11 +109,12 @@ public class Tracer implements ClassFileTransformer {
         }
         params += ")";
 
-        method.insertBefore("System.out.println(\"[yalta filter]{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName()  + params +  "\\\",\\n" +
-                "[inria filter]\\\"children\\\":[\");" );
+        //if(className.compareTo("java/util/ArrayList") != 0 || method.getModifiers() == 1) {
+            method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                    "" + PREFIX + "\\\"children\\\":[\");");
 
-        method.insertAfter("System.out.println(\"[yalta filter]]},\");" );
-
+            method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+        //}
 
     }
 }
