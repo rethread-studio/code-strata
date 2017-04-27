@@ -10,6 +10,11 @@ import fr.inria.DataStructure.TreeCallUtils;
 import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.SimpleReader;
 import processing.core.PApplet;
+import processing.core.PFont;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by nharrand on 25/04/17.
@@ -27,7 +32,7 @@ public class CompareCallTreeAlterView extends PApplet {
         e = Context.currentCompareExec;
         //e = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
 
-        size(e.e1.screenSize, e.e1.screenSize);
+        size(e.e1.screenSize+400, e.e1.screenSize+400);
 
     }
 
@@ -39,6 +44,8 @@ public class CompareCallTreeAlterView extends PApplet {
 
         TreeCallUtils.label(t1, e.e1.packages, e.e1.defaultLevel);
         TreeCallUtils.label(t2, e.e2.packages, e.e2.defaultLevel);
+        t1 = TreeCallUtils.from(t1, "QuickSortTest");
+        t2 = TreeCallUtils.from(t2, "QuickSortTest");
 
         //CompareCallTree t = new CompareCallTree(t1,t2);
         CompareTree<CallTree> t = new CompareTree(t1,t2);
@@ -68,38 +75,16 @@ public class CompareCallTreeAlterView extends PApplet {
         fill(204, 102, 0);
         stroke(strokeLight);
         drawNode(t, e.e1.screenSize/(3*t.depth), 0, width, pop, 10);
+
+
+        List<String> labels = new ArrayList<>();
+        labels.add("common");
+        labels.add("diff");
+        labels.add("unique 1");
+        labels.add("unique 2");
+        drawLegend(labels, e.e1.screenSize,0, 32);
         if(e.e1.save) save(e.e1.outputDir + "/img/" + e.e1.name + "_comp_" + e.e2.name +"_calltree.png");
     }
-
-    /*public void drawNode(CompareCallTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
-        int h = Math.max(e.e1.screenSize / width[d], 3);
-        int x = d * w * 3;
-        int y = pop[d] * h;
-        pop[d]++;
-        if (t.level == 0) {
-            fill(0, 102, 204);
-        } else if (t.level == 1) {
-            fill(0, 204, 102);
-        } else {
-            fill(204, 102, 0);
-        }
-        if(!t.areNodeEquals) {
-            fill(200, 0, 0);
-        }
-
-
-        //if(t.level <= maxLevel) {
-        rect(x, y, w, h);
-        //}
-
-        for (CompareCallTree c : t.children) {
-            int tmpH = Math.max(e.e1.screenSize / width[d + 1], 3);
-            if(c.level <= maxLevel) {
-                line(x + w, y + (h / 2), x + 3 * w, tmpH * pop[d + 1] + (tmpH / 2));
-            }
-            drawNode(c, w, d + 1, width, pop, maxLevel);
-        }
-    }*/
 
     public void drawNode(CompareTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
         int h = Math.max(e.e1.screenSize / width[d], 3);
@@ -132,6 +117,9 @@ public class CompareCallTreeAlterView extends PApplet {
             int[] c = picker.getColor(0);
             fill(c[0], c[1], c[2]);
             stroke(c[0], c[1], c[2]);
+
+            /*fill(0,0,0,0);
+            stroke(0,0,0,0);*/
         } else if (t.t1 != null && t.t2 != null) {
             int[] c = picker.getColor(1);
             fill(c[0], c[1], c[2]);
@@ -149,5 +137,16 @@ public class CompareCallTreeAlterView extends PApplet {
     }
 
     public void draw(){
+    }
+
+    public void drawLegend(List<String> labels, int x, int y, int size) {
+        PFont f;
+        f = createFont("Arial",size,true);
+        textFont(f);                  // STEP 3 Specify font to be used
+        for(int i = 0; i < labels.size(); i++) {
+            int[] c = picker.getColor(i);
+            fill(c[0], c[1], c[2]);
+            text(labels.get(i), x, 100+y+2*i*size);
+        }
     }
 }
