@@ -30,8 +30,8 @@ public class App
         Context.currentExec = Context.currentCompareExec.e1;
         PApplet.main("fr.inria.View.CallTreeAlterView");
         Context.currentExec = Context.currentCompareExec.e2;
-        PApplet.main("fr.inria.View.CallTreeAlterView");
-        PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
+        //PApplet.main("fr.inria.View.CallTreeAlterView");
+        //PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
 
         //export();
 

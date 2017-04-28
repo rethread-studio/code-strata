@@ -32,19 +32,25 @@ public class CompareCallTreeAlterView extends PApplet {
         e = Context.currentCompareExec;
         //e = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
 
-        size(e.e1.screenSize+400, e.e1.screenSize+400);
+        size(e.e1.screenSize+300, e.e1.screenSize+800);
 
     }
 
     public void setup() {
         //JSONReader r = new VisualvmReader();
         JSONReader r = new SimpleReader();
+        System.out.println("read f1");
         CallTree t1 = r.readFromFile(e.e1.trace);
+        System.out.println("read f2");
         CallTree t2 = r.readFromFile(e.e2.trace);
 
+        System.out.println("label 1");
         TreeCallUtils.label(t1, e.e1.packages, e.e1.defaultLevel);
+        System.out.println("label 2");
         TreeCallUtils.label(t2, e.e2.packages, e.e2.defaultLevel);
+        System.out.println("from 1");
         t1 = TreeCallUtils.from(t1, "QuickSortTest");
+        System.out.println("from 2");
         t2 = TreeCallUtils.from(t2, "QuickSortTest");
 
         //CompareCallTree t = new CompareCallTree(t1,t2);
@@ -79,7 +85,7 @@ public class CompareCallTreeAlterView extends PApplet {
 
         List<String> labels = new ArrayList<>();
         labels.add("common");
-        labels.add("diff");
+        labels.add("");//diff");
         labels.add("unique 1");
         labels.add("unique 2");
         drawLegend(labels, e.e1.screenSize,0, 32);
