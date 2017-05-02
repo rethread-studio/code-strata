@@ -1,10 +1,7 @@
 package fr.inria.yajta;
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtBehavior;
-import javassist.CtClass;
-import javassist.NotFoundException;
+import javassist.*;
+
 import java.lang.instrument.ClassFileTransformer;
 
 public class Tracer implements ClassFileTransformer {
@@ -106,6 +103,17 @@ public class Tracer implements ClassFileTransformer {
         try {
             cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
             if( cl.isInterface() == false ) {
+
+                //doMethod(cl.getClassInitializer() , name);
+
+                CtConstructor[] constructors = cl.getConstructors();
+
+                for( int i = 0; i < constructors.length; i++ ) {
+
+                    if( constructors[i].isEmpty() == false ) {
+                        doMethod( constructors[i] , name);
+                    }
+                }
 
                 CtBehavior[] methods = cl.getDeclaredBehaviors();
 
