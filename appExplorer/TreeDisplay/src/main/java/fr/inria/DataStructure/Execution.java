@@ -11,6 +11,7 @@ import java.util.jar.JarFile;
 public class Execution {
 
     public String name;
+    public String entry;
     public int defaultLevel;
     public int nbLevel;
     public Map<Integer,Set<String>> packages;

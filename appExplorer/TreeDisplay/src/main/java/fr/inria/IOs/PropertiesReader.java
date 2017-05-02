@@ -36,7 +36,7 @@ public class PropertiesReader {
             e.packages = new HashMap<>();
 
             for(int i =0; i < e.nbLevel; i++) {
-                String pack = p.getProperty("packages_" + i);
+                String pack = p.getProperty("packages_" + i, "");
                 if(pack != null) {
                     Set<String> packs = new HashSet<>();
                     for(String s : pack.replace(" ", "").split(",")) {
