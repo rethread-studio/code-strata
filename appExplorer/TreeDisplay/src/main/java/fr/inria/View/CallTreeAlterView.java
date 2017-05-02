@@ -2,7 +2,8 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.VisualvmReader;
+import fr.inria.IOs.JSONReader;
+import fr.inria.IOs.SimpleReader;
 import processing.core.PApplet;
 
 /**
@@ -19,23 +20,33 @@ public class CallTreeAlterView  extends PApplet {
     public void settings(){
 
         e = Context.currentExec;
-        //e = PropertiesReader.readProperties(new File("inputsFiles/simple-java-editor/simple-java-editor.properties"));
 
-        size(e.screenSize, e.screenSize);
+        size(e.screenSize, e.screenSize+400);
 
     }
 
     public void setup() {
-        VisualvmReader r = new VisualvmReader();
+        //JSONReader r = new VisualvmReader();
+        //JSONReader r = new AgentReader();
+        JSONReader r = new SimpleReader();
+
         CallTree t = r.readFromFile(e.trace);
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
-        t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
-        t = TreeCallUtils.trim(t, e.excludes);
+        //t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
+        //t = TreeCallUtils.from(t, "QuickSortTest.quickSort()");
+        t = TreeCallUtils.from(t, "QuickSort.sort(");
 
 
-        picker = new ColorPicker(255,100,0, e.nbLevel, 30);
+
+        t = TreeCallUtils.trimWrapper(t, e.excludes);
+
+
+        //picker = new ColorPicker(255,100,0, e.nbLevel, 30);
+        //background(0);
+        picker = new ColorPicker(127+64+32,75+12,0, e.nbLevel, 70);
+        background(255);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
         //System.out.println("Most frequent method: " + mostFMethod);
@@ -45,8 +56,7 @@ public class CallTreeAlterView  extends PApplet {
         int[] pop = new int[t.depth];
         maxWeight = TreeCallUtils.maxWeight(t);
 
-        background(0);
-        fill(204, 102, 0);
+        //fill(204, 102, 0);
         noStroke();
         drawNode(t, e.screenSize/(3*t.depth), 0, width, pop, e.nbLevel);
         if(e.save) save(e.outputDir + "/img/" + e.name + "_a_calltree.png");
@@ -69,8 +79,8 @@ public class CallTreeAlterView  extends PApplet {
         }
         if(t.level <= maxLevel) {
             //rect(x, y, w, h);
-            int r = 3 + ((t.weight * 22)/ maxWeight) ;
-            //int r = 10 ;
+            //int r = 3 + ((t.weight * 22)/ maxWeight) ;
+            int r = 10 ;
             setColors(t.level);
             //rect(x+w/2, y+h/2, r, r);
             ellipse(x+w/2, y+h/2, r, r);
@@ -90,9 +100,9 @@ public class CallTreeAlterView  extends PApplet {
             fill(204, 102, 0);
             stroke(204, 102, 0);
         }*/
-        //if(false) {
+        if(false) {
         //if(level > 1) {
-        if(level != 0) {
+        //if(level != 0) {
 
             fill(0);
             stroke(0);

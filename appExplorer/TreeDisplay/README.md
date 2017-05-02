@@ -2,11 +2,7 @@
 
 ### Call tree
 
- * Install visualvm
- * Install the plugin Startup profiler
- * Use it to monitor your application
- * Export the call tree in xml
- * Translate it in json
+ * See ../yalta
 
 ### Bytecode
 

@@ -2,14 +2,9 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.PropertiesReader;
-import fr.inria.Inputs.VisualvmReader;
-import fr.inria.Inputs.x86Parser;
+import fr.inria.IOs.VisualvmReader;
+import fr.inria.IOs.x86Parser;
 import processing.core.PApplet;
-
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by nharrand on 21/03/17.

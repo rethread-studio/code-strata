@@ -2,8 +2,8 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.VisualvmReader;
-import fr.inria.Inputs.x86Parser;
+import fr.inria.IOs.VisualvmReader;
+import fr.inria.IOs.x86Parser;
 import processing.core.PApplet;
 
 /**

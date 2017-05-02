@@ -1,6 +1,7 @@
 package fr.inria.DataStructure;
 
 import fr.inria.DataStructure.CallTree;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +15,7 @@ public class TreeCallUtils {
 
     public static boolean isIn(String str, Set<String> set) {
         for(String s : set) {
-            if(str.startsWith(s)) return true;
+            if(!str.equals("") && str.startsWith(s)) return true;
         }
         return false;
     }
@@ -65,6 +66,42 @@ public class TreeCallUtils {
         }
 
         return t;
+    }
+
+    public static CallTree trimWrapper (CallTree t, Set<String> toRemove) {
+        CallTree r = null;
+        List<CallTree> lr = trim2(t,toRemove);
+
+        if(!lr.isEmpty()) {
+            r = lr.get(0);
+            correctDepth(r);
+        }
+        return r;
+    }
+
+    public static List<CallTree> trim2 (CallTree t, Set<String> toRemove) {
+        List<CallTree> tmp = new ArrayList<>();
+        for(CallTree c : t.getChildren())
+            tmp.addAll(trim2(c,toRemove));
+        if(isIn(t.name, toRemove)) {
+            return tmp;
+        } else {
+
+            t.children = new ArrayList<CallTree>();
+            t.children.addAll(tmp);
+            List<CallTree> res = new ArrayList<>();
+            res.add(t);
+            return res;
+        }
+    }
+
+    public static int correctDepth(CallTree t) {
+        int d = 1;
+        for(CallTree c : t.children) {
+            d = Math.max(d, correctDepth(c) + 1);
+        }
+        t.depth = d;
+        return d;
     }
 
     public static Map<String, Integer> frequencies(CallTree t) {

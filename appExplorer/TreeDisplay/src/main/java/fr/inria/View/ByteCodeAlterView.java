@@ -2,7 +2,7 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
-import fr.inria.Inputs.VisualvmReader;
+import fr.inria.IOs.VisualvmReader;
 import processing.core.PApplet;
 
 import java.util.jar.JarFile;
