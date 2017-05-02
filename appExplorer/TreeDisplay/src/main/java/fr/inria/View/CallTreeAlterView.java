@@ -21,7 +21,7 @@ public class CallTreeAlterView  extends PApplet {
 
         e = Context.currentExec;
 
-        size(e.screenSize, e.screenSize);
+        size(e.screenSize, e.screenSize+400);
 
     }
 
@@ -36,11 +36,16 @@ public class CallTreeAlterView  extends PApplet {
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
         //t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
         t= TreeCallUtils.from(t, "QuickSortTest.quickSort()");
-        //t = TreeCallUtils.trim(t, e.excludes);
-        t = TreeCallUtils.trim2(t, e.excludes).get(0);
 
 
-        picker = new ColorPicker(255,100,0, e.nbLevel, 30);
+
+        t = TreeCallUtils.trimWrapper(t, e.excludes);
+
+
+        //picker = new ColorPicker(255,100,0, e.nbLevel, 30);
+        //background(0);
+        picker = new ColorPicker(127+64+32,75+12,0, e.nbLevel, 70);
+        background(255);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
         //System.out.println("Most frequent method: " + mostFMethod);
@@ -50,8 +55,7 @@ public class CallTreeAlterView  extends PApplet {
         int[] pop = new int[t.depth];
         maxWeight = TreeCallUtils.maxWeight(t);
 
-        background(0);
-        fill(204, 102, 0);
+        //fill(204, 102, 0);
         noStroke();
         drawNode(t, e.screenSize/(3*t.depth), 0, width, pop, e.nbLevel);
         if(e.save) save(e.outputDir + "/img/" + e.name + "_a_calltree.png");

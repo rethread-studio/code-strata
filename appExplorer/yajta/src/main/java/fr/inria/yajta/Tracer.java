@@ -132,6 +132,8 @@ public class Tracer implements ClassFileTransformer {
     }
 
     private void doMethod( final CtBehavior method , String className) throws NotFoundException, CannotCompileException {
+        String THREAD = "";
+        //String THREAD = "\"thread\":\"" + Thread.currentThread().getName() + "\", ";
         String params = "(";
         boolean first = true;
         for(CtClass c : method.getParameterTypes()) {
@@ -140,12 +142,11 @@ public class Tracer implements ClassFileTransformer {
             params += c.getName();
         }
         params += ")";
-
         //if(className.compareTo("java/util/ArrayList") != 0 || method.getModifiers() == 1) {
-            method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
-                    "" + PREFIX + "\\\"children\\\":[\");");
+        method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                "" + PREFIX + THREAD + "\\\"children\\\":[\");");
 
-            method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+        method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
         //}
 
     }

@@ -19,6 +19,11 @@ public class SimpleReader extends JSONReader {
 
             res = new CallTree(name,w);
 
+            try {
+                String t = o.getString("thread");
+                res.thread = t;
+            } catch (Exception e) {}
+
             for(int i = 0; i < children.length(); i++) {
                 res.addChild(read(children.getJSONObject(i)));
             }
