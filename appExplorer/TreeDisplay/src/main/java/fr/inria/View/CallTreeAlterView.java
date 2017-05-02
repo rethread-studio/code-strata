@@ -35,7 +35,8 @@ public class CallTreeAlterView  extends PApplet {
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
         //t= TreeCallUtils.from(t, "java.lang.reflect.Method.invoke");
-        t= TreeCallUtils.from(t, "QuickSortTest.quickSort()");
+        //t = TreeCallUtils.from(t, "QuickSortTest.quickSort()");
+        t = TreeCallUtils.from(t, "QuickSort.sort(");
 
 
 
