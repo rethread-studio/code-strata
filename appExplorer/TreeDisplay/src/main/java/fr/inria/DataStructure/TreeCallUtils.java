@@ -95,6 +95,13 @@ public class TreeCallUtils {
         }
     }
 
+    public static void removeLibsLeaf(CallTree t) {
+        for(CallTree c : t.getChildren()) {
+            if(c.level > 2 && c.children.isEmpty()) t.children.remove(c);
+            else removeLibsLeaf(c);
+        }
+    }
+
     public static int correctDepth(CallTree t) {
         int d = 1;
         for(CallTree c : t.children) {
