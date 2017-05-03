@@ -55,7 +55,7 @@ public class PropertiesReader {
 
             String ex = p.getProperty("excludes");
             e.excludes = new HashSet<>();
-            if(ex != null) {
+            if(ex != null && !ex.equals("")) {
 
                 for(String s : ex.replace(" ", "").split(",")) {
                     e.excludes.add(s);

@@ -25,4 +25,5 @@ public class Execution {
 
     public int screenSize;
     public boolean save;
+    public boolean exit = false;
 }

@@ -77,7 +77,7 @@ public class Cleaner {
                 if(line2.startsWith("]") && line.endsWith(",")) {
                     line = line.substring(0,line2.length()-1);
                 }
-                sb.append(line);
+                sb.append(line + "\n");
                 line = line2;
                 line2 = readLineFiltered(br);
             }

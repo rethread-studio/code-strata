@@ -8,6 +8,9 @@ import java.util.List;
  * Created by nharrand on 14/03/17.
  */
 public class ColorPicker {
+    public ColorPicker() {
+    }
+
     //Fully (saturated / lighted) complementary triplets are formed as following
     // (255, 0, x), (x, 255, 0), ((0, x, 255)
     enum order {DSZ, ZDS, SZD, SDZ, ZSD, DZS}
