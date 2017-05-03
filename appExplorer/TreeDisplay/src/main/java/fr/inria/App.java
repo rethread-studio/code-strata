@@ -112,7 +112,7 @@ public class App
 
         String ex = app.excludes;
         e.excludes = new HashSet<>();
-        if(ex != null) {
+        if(ex != null && !ex.equals("")) {
 
             for(String s : ex.replace(" ", "").split(",")) {
                 e.excludes.add(s);
@@ -142,6 +142,7 @@ public class App
                 case "callTree":
                     if(app.propFile != null) Context.currentExec = PropertiesReader.readProperties(new File(app.propFile));
                     else Context.currentExec = readProperties(app);
+                    PApplet.main("fr.inria.View.Legend");
                     PApplet.main("fr.inria.View.CallTreeAlterView");
                     break;
                 case "compCallTree":
