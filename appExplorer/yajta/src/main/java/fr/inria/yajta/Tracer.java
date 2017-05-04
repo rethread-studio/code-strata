@@ -3,10 +3,14 @@ package fr.inria.yajta;
 import javassist.*;
 
 import java.lang.instrument.ClassFileTransformer;
+import java.lang.reflect.*;
+import java.lang.reflect.Modifier;
 
 public class Tracer implements ClassFileTransformer {
 
     boolean verbose = false;
+    boolean strictIncludes = false;
+    boolean printTree = true;
 
 
     public Tracer () {
@@ -93,7 +97,8 @@ public class Tracer implements ClassFileTransformer {
             }
         }
 
-        return doClass( className, clazz, bytes );
+        if(!strictIncludes) return doClass( className, clazz, bytes );
+        else return bytes;
     }
 
     public byte[] doClass( final String name, final Class clazz, byte[] b ) {
@@ -103,7 +108,6 @@ public class Tracer implements ClassFileTransformer {
         try {
             cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
             if( cl.isInterface() == false ) {
-
                 //doMethod(cl.getClassInitializer() , name);
 
                 CtConstructor[] constructors = cl.getConstructors();
@@ -151,10 +155,14 @@ public class Tracer implements ClassFileTransformer {
         }
         params += ")";
         //if(className.compareTo("java/util/ArrayList") != 0 || method.getModifiers() == 1) {
-        method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
-                "" + PREFIX + THREAD + "\\\"children\\\":[\");");
+        if(printTree) {
+            method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                    "" + PREFIX + THREAD + "\\\"children\\\":[\");");
 
-        method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+            method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+        } else {
+            method.insertBefore("System.out.println(\"" + PREFIX  + className.replace("/", ".") + "." + method.getName() + params + "\");");
+        }
         //}
 
     }

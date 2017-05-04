@@ -11,11 +11,13 @@ public class Agent {
 
     public static void premain(String agentArgs, Instrumentation inst) {
         //java.util.logging.Logger logger = java.util.logging.Logger.getGlobal();
-        System.err.println("[Premain] Begin");
+        System.err.println("[Premain] Begin '" + agentArgs + "'");
         Args a = new Args();
         a.parseArgs(agentArgs);
 
         final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES));
+        if(a.strictIncludes) transformer.strictIncludes = true;
+        if(!a.printTree) transformer.printTree = false;
         INCLUDES = a.INCLUDES;
         inst.addTransformer(transformer, true);
 
