@@ -14,7 +14,7 @@ java -jar path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar outp
 
 ## Known Limitations
 
-Does not logg final classes yet.
+Does not log native methods yet.
 
 # tie (Test Impact Explorer)
 
