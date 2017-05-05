@@ -18,6 +18,8 @@ public class Cleaner {
     private String outputFileName;
     @Parameter(names = {"--main-not-traced", "-m"}, description = "If the main method is traced, an additional ']}' nedd to be added. Default: false")
     private boolean isMainTraced;
+    @Parameter(names = {"--Shutdown-traced", "-s"}, description = "If the main method is traced, an additional ']}' nedd to be added. Default: true")
+    private boolean isShutdownTraced;
 
     public static void printUsage(JCommander jcom) {
         jcom.usage();
@@ -35,7 +37,7 @@ public class Cleaner {
             if(cleaner.outputFileName != null) out = new File(cleaner.outputFileName);
             else out = new File(cleaner.inputFileName);
 
-            correct(in,out, cleaner.isMainTraced);
+            correct(in,out, cleaner.isMainTraced, cleaner.isShutdownTraced);
         }
 
 
@@ -66,7 +68,7 @@ public class Cleaner {
     }
 
 
-    public static void correct(File in, File out, boolean isMainTraced) {
+    public static void correct(File in, File out, boolean isMainTraced, boolean isShutdownTraced) {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(in));
@@ -84,6 +86,7 @@ public class Cleaner {
 
             String buf = "{ \"name\": \"Thread\", \"children\": [\n" + sb.toString() + line.substring(0,line.length()-1) + "\n]}";
             if(!isMainTraced) buf += "\n]}";
+            if(isShutdownTraced) buf += "\n]}\n]}";
 
             try {
                 PrintWriter w = new PrintWriter(out);
