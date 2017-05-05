@@ -12,6 +12,10 @@ To clean the output file:
 java -jar path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar output.json
 ```
 
+## Known Limitations
+
+Does not logg final classes yet.
+
 # tie (Test Impact Explorer)
 
 

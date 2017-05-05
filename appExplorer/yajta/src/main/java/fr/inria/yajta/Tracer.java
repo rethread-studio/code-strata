@@ -1,6 +1,8 @@
 package fr.inria.yajta;
 
 import javassist.*;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.reflect.*;
@@ -105,8 +107,19 @@ public class Tracer implements ClassFileTransformer {
         ClassPool pool = ClassPool.getDefault();
         CtClass cl = null;
 
+
+        /*ClassReader reader = new ClassReader(b);
+        ClassWriter writer = new ClassWriter(reader, 0);
+        reader.accept(new UnFinalVisitor(writer), 0);
+        byte[] b2 = writer.toByteArray();*/
+        byte[] b2 = b;
+
+
+
         try {
-            cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
+            //cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
+            cl = pool.makeClass( new java.io.ByteArrayInputStream( b2 ) );
+            //System.err.println("ja: " + cl.getName() + ", mod: " + Modifier.isFinal(cl.getModifiers()) );
             if( cl.isInterface() == false ) {
                 //doMethod(cl.getClassInitializer() , name);
 
@@ -128,7 +141,8 @@ public class Tracer implements ClassFileTransformer {
                     }
                 }
 
-                b = cl.toBytecode();
+                b2 = cl.toBytecode();
+                //b = cl.toBytecode();
                 if(verbose) System.err.println( "-> Instrument  " + name);
             }
         } catch( Exception e ) {
@@ -140,7 +154,8 @@ public class Tracer implements ClassFileTransformer {
             }
         }
 
-        return b;
+        return b2;
+        //return b;
     }
 
     private void doMethod( final CtBehavior method , String className) throws NotFoundException, CannotCompileException {

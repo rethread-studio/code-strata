@@ -146,6 +146,8 @@ public class App
                     PApplet.main("fr.inria.View.CallTreeAlterView");
                     break;
                 case "compCallTree":
+
+                    generateComparaison(new File(app.propFile), new File(app.propFile2));
                     break;
                 case "webReport":
                     generateCodeStrata(new File(app.propFile));
@@ -224,11 +226,12 @@ public class App
         Context.currentCompareExec = new CompareExecution();
         Context.currentCompareExec.e1 = PropertiesReader.readProperties(prop1);
         Context.currentCompareExec.e2 = PropertiesReader.readProperties(prop2);
-        Context.currentExec = Context.currentCompareExec.e1;
+        /*Context.currentExec = Context.currentCompareExec.e1;
         PApplet.main("fr.inria.View.CallTreeAlterView");
         Context.currentExec = Context.currentCompareExec.e2;
-        PApplet.main("fr.inria.View.CallTreeAlterView");
-        PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
+        PApplet.main("fr.inria.View.CallTreeAlterView");*/
+        //PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
+        PApplet.main("fr.inria.View.Compare.CompareCallTreeYAView");
     }
 
     public static void generateCodeStrata(File properties) {

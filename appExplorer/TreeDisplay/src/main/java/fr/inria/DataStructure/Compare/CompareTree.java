@@ -22,6 +22,9 @@ public class CompareTree<T> {
     public int depth;
     public int level = 0;
 
+    public int x = 0;
+    public int y = 0;
+
     public boolean areNodeEquals;
 
     public CompareTree parent = null;
