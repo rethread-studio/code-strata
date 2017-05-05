@@ -2,24 +2,23 @@ package fr.inria.View.Compare;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.CallTree;
-import fr.inria.DataStructure.Compare.CompareCallTree;
 import fr.inria.DataStructure.Compare.CompareExecution;
 import fr.inria.DataStructure.Compare.CompareTree;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.TreeCallUtils;
 import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.SimpleReader;
+import fr.inria.SimpleColor;
 import processing.core.PApplet;
 import processing.core.PFont;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by nharrand on 25/04/17.
+ * Created by nharrand on 05/05/17.
  */
-public class CompareCallTreeAlterView extends PApplet {
+public class CompareCallTreeYAView extends PApplet {
     public static ColorPicker picker;
 
     static int strokeLight = 255;
@@ -63,16 +62,10 @@ public class CompareCallTreeAlterView extends PApplet {
         //TreeCallUtils.color(t,mostFMethod);
 
 
-        picker = new ColorPicker(255,100,0, 4, 30);
+        picker = new SimpleColor(255,100,0, 4, 30);
 
         int[] width = t.getWidthArray();
         int[] pop = new int[t.depth];
-
-        background(255);
-        fill(204, 102, 0);
-        stroke(strokeLight);
-        drawNode(t, e.e1.screenSize/(3*t.depth), 0, width, pop, 0);
-        if(e.e1.save) save(e.e1.outputDir + "/img/" + e.e1.name + "_comp_" + e.e2.name +"_calltree_app.png");
 
         width = t.getWidthArray();
         pop = new int[t.depth];
@@ -80,7 +73,9 @@ public class CompareCallTreeAlterView extends PApplet {
         background(255);
         fill(204, 102, 0);
         stroke(strokeLight);
-        drawNode(t, e.e1.screenSize/(3*t.depth), 0, width, pop, 10);
+        annotateNode(t, e.e1.screenSize/(3*t.depth), 0, width, pop, 10);
+        drawNode(t, false);
+        drawNode(t, true);
 
 
         List<String> labels = new ArrayList<>();
@@ -92,56 +87,49 @@ public class CompareCallTreeAlterView extends PApplet {
         if(e.e1.save) save(e.e1.outputDir + "/img/" + e.e1.name + "_comp_" + e.e2.name +"_calltree.png");
     }
 
-    public void drawNode(CompareTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
-        //int h = Math.max(e.e1.screenSize / width[d], 3);
+    public void annotateNode(CompareTree t, int w, int d, int[] width, int[] pop, int maxLevel) {
         float h = (float)e.e1.screenSize / (float)width[d];
         int x = d * w * 3;
-        //int y = pop[d] * h;
         int y = Math.round((int)((float) pop[d] * h));
         pop[d]++;
 
         for (Object child : t.children) {
             CompareTree<CallTree> c = (CompareTree<CallTree>) child;
-            //int tmpH = Math.max(e.e1.screenSize / width[d + 1], 3);
-            float tmpH = (float)e.e1.screenSize / (float)(width[d + 1]);
-            if(c.level <= maxLevel) {
-                setColors(c);
-                //stroke(255);
-                line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
-            }
-            drawNode(c, w, d + 1, width, pop, maxLevel);
+            annotateNode(c, w, d + 1, width, pop, maxLevel);
         }
         if(t.level <= maxLevel) {
-            //int r = 3 + ((t.weight * 22)/ maxWeight) ;
-            //int r = 10 ;
+            t.x = x+w/2;
+            t.y = (int)(y+h/2);
+        }
+    }
+
+    public void drawNode(CompareTree t, boolean select) {
+        for (Object child : t.children) {
+            CompareTree<CallTree> c = (CompareTree<CallTree>) child;
+            if(!c.areNodeEquals || !select) {
+                setColors(c);
+                line(t.x, t.y, c.x, c.y);
+            }
+            drawNode(c,select);
+        }
+
+        if(!t.areNodeEquals || !select) {
             int r = 6 ;
             setColors(t);
-            ellipse(x+w/2, y+h/2, r, r);
+            ellipse(t.x, t.y, r, r);
         }
     }
 
     static int strokeW = 2;
 
-    public void setColors(CompareTree t) {
+    public void setColors(CompareTree<CallTree> t) {
         if(t.areNodeEquals) {
-            int[] c = picker.getColor(0);
-            fill(c[0], c[1], c[2]);
-            stroke(c[0], c[1], c[2]);
-
-            /*fill(0,0,0,0);
-            stroke(0,0,0,0);*/
-        } else if (t.t1 != null && t.t2 != null) {
-            int[] c = picker.getColor(1);
-            fill(c[0], c[1], c[2]);
-            stroke(c[0], c[1], c[2]);
-        } else if (t.t1 != null) {
-            int[] c = picker.getColor(2);
+            int[] c = picker.getColor(t.level);
             fill(c[0], c[1], c[2]);
             stroke(c[0], c[1], c[2]);
         } else {
-            int[] c = picker.getColor(3);
-            fill(c[0], c[1], c[2]);
-            stroke(c[0], c[1], c[2]);
+            fill(255, 157, 0);
+            stroke(255, 157, 0);
         }
         strokeWeight(strokeW);
     }
