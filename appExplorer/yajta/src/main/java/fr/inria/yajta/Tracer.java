@@ -1,12 +1,13 @@
 package fr.inria.yajta;
 
 import javassist.*;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
+import javassist.Modifier;
 
+import java.io.*;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.reflect.*;
-import java.lang.reflect.Modifier;
+
+import static javassist.CtClass.voidType;
 
 public class Tracer implements ClassFileTransformer {
 
@@ -106,33 +107,53 @@ public class Tracer implements ClassFileTransformer {
     public byte[] doClass( final String name, final Class clazz, byte[] b ) {
         ClassPool pool = ClassPool.getDefault();
         CtClass cl = null;
-
-
-        /*ClassReader reader = new ClassReader(b);
-        ClassWriter writer = new ClassWriter(reader, 0);
-        reader.accept(new UnFinalVisitor(writer), 0);
-        byte[] b2 = writer.toByteArray();*/
-        byte[] b2 = b;
-
-
-
         try {
-            //cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
-            cl = pool.makeClass( new java.io.ByteArrayInputStream( b2 ) );
-            //System.err.println("ja: " + cl.getName() + ", mod: " + Modifier.isFinal(cl.getModifiers()) );
+            cl = pool.makeClass( new java.io.ByteArrayInputStream( b ) );
             if( cl.isInterface() == false ) {
                 //doMethod(cl.getClassInitializer() , name);
 
-                CtConstructor[] constructors = cl.getConstructors();
+                /*CtConstructor[] constructors = cl.getConstructors();
 
                 for( int i = 0; i < constructors.length; i++ ) {
 
                     if( constructors[i].isEmpty() == false ) {
                         doMethod( constructors[i] , name);
                     }
-                }
+                }*/
 
                 CtBehavior[] methods = cl.getDeclaredBehaviors();
+
+                /*for( int i = 0; i < methods.length; i++ ) {
+
+
+                    if(Modifier.isNative(methods[i].getModifiers()) && !methods[i].getName().startsWith("wrapped__native__method__")) {
+                        System.err.println( "Class  " + name + ", m : " + methods[i].getName() );
+                        CtMethod m = (CtMethod) methods[i];
+                        String mName = m.getName();
+                        m.setName("wrapped__native__method__" + m.getName());
+                        String body = "{";
+                        if(!m.getReturnType().getName().equals("java.lang.void")) {
+                            body += "return ";
+                        }
+                        body += m.getName() + "($$);}";
+                        System.err.println( "1");
+
+                        CtMethod newM = CtNewMethod.make(
+                                m.getModifiers() & (~java.lang.reflect.Modifier.NATIVE),
+                                m.getReturnType(),
+                                mName,
+                                m.getParameterTypes(),
+                                m.getExceptionTypes(),
+                                body,
+                                cl
+                        );
+                        System.err.println( "2");
+                        cl.addMethod(newM);
+                        System.err.println( "3");
+
+                    }
+                }
+                methods = cl.getDeclaredBehaviors();*/
 
                 for( int i = 0; i < methods.length; i++ ) {
 
@@ -141,8 +162,8 @@ public class Tracer implements ClassFileTransformer {
                     }
                 }
 
-                b2 = cl.toBytecode();
-                //b = cl.toBytecode();
+                b = cl.toBytecode();
+
                 if(verbose) System.err.println( "-> Instrument  " + name);
             }
         } catch( Exception e ) {
@@ -154,31 +175,51 @@ public class Tracer implements ClassFileTransformer {
             }
         }
 
-        return b2;
-        //return b;
+        return b;
     }
 
     private void doMethod( final CtBehavior method , String className) throws NotFoundException, CannotCompileException {
-        String THREAD = "";
-        //String THREAD = "\"thread\":\"" + Thread.currentThread().getName() + "\", ";
-        String params = "(";
-        boolean first = true;
-        for(CtClass c : method.getParameterTypes()) {
-            if(first) first = false;
-            else params +=", ";
-            params += c.getName();
-        }
-        params += ")";
-        //if(className.compareTo("java/util/ArrayList") != 0 || method.getModifiers() == 1) {
-        if(printTree) {
-            method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
-                    "" + PREFIX + THREAD + "\\\"children\\\":[\");");
+        if(!Modifier.isNative(method.getModifiers())) {
+            String THREAD = "";
+            //String THREAD = "\"thread\":\"" + Thread.currentThread().getName() + "\", ";
+            String params = "(";
+            boolean first = true;
+            for (CtClass c : method.getParameterTypes()) {
+                if (first) first = false;
+                else params += ", ";
+                params += c.getName();
+            }
+            params += ")";
 
-            method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+            if (printTree) {
+                method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                        "" + PREFIX + THREAD + "\\\"children\\\":[\");");
+
+                method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+            } else {
+                method.insertBefore("System.out.println(\"" + PREFIX + className.replace("/", ".") + "." + method.getName() + params + "\");");
+            }
+
+            //}
         } else {
-            method.insertBefore("System.out.println(\"" + PREFIX  + className.replace("/", ".") + "." + method.getName() + params + "\");");
+            if(verbose) System.err.println("Method: " + className.replace("/", ".") + "." + method.getName() + " is native");
         }
-        //}
-
     }
+
+    /*public static void print(byte[] b, File f) {
+        try {
+
+            try {
+                PrintWriter w = new PrintWriter(f);
+                w.print(b);
+                w.close();
+            } catch (Exception ex) {
+                System.err.println("Problem writing log");
+                ex.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 }

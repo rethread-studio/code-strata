@@ -16,10 +16,14 @@ public class Agent {
         a.parseArgs(agentArgs);
 
         final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES));
+
         if(a.strictIncludes) transformer.strictIncludes = true;
         if(!a.printTree) transformer.printTree = false;
         INCLUDES = a.INCLUDES;
         inst.addTransformer(transformer, true);
+        if(inst.isNativeMethodPrefixSupported()) {
+            inst.setNativeMethodPrefix(transformer,"wrapped_native_method_");
+        }
 
         Class cl[] = inst.getAllLoadedClasses();
 
