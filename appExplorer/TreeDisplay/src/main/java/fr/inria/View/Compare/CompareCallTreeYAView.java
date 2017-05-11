@@ -13,7 +13,9 @@ import processing.core.PApplet;
 import processing.core.PFont;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by nharrand on 05/05/17.
@@ -47,10 +49,12 @@ public class CompareCallTreeYAView extends PApplet {
         TreeCallUtils.label(t1, e.e1.packages, e.e1.defaultLevel);
         System.out.println("label 2");
         TreeCallUtils.label(t2, e.e2.packages, e.e2.defaultLevel);
+
         System.out.println("from 1");
-        t1 = TreeCallUtils.from(t1, "QuickSortTest");
+        if(e.e1.from != null && !e.e1.from.equals("")) t1 = TreeCallUtils.from(t1, e.e1.from);
         System.out.println("from 2");
-        t2 = TreeCallUtils.from(t2, "QuickSortTest");
+        if(e.e2.from != null && !e.e2.from.equals("")) t2 = TreeCallUtils.from(t2, e.e2.from);
+
 
         //CompareCallTree t = new CompareCallTree(t1,t2);
         CompareTree<CallTree> t = new CompareTree(t1,t2);
@@ -79,10 +83,16 @@ public class CompareCallTreeYAView extends PApplet {
 
 
         List<String> labels = new ArrayList<>();
-        labels.add("common");
-        labels.add("");//diff");
-        labels.add("unique 1");
-        labels.add("unique 2");
+        for(Set<String> s : e.e1.packages.values()) {
+            String str = "";
+            boolean first = true;
+            for(String ss : s) {
+                if(first) first = false;
+                else str += ", ";
+                str += ss;
+            }
+            labels.add(str);
+        }
         drawLegend(labels, e.e1.screenSize,0, 32);
         if(e.e1.save) save(e.e1.outputDir + "/img/" + e.e1.name + "_comp_" + e.e2.name +"_calltree.png");
     }
@@ -97,6 +107,9 @@ public class CompareCallTreeYAView extends PApplet {
             CompareTree<CallTree> c = (CompareTree<CallTree>) child;
             annotateNode(c, w, d + 1, width, pop, maxLevel);
         }
+
+        if(t.areNodeEquals)
+            t.level = ((CallTree) t.t1).level;
         if(t.level <= maxLevel) {
             t.x = x+w/2;
             t.y = (int)(y+h/2);
@@ -128,8 +141,8 @@ public class CompareCallTreeYAView extends PApplet {
             fill(c[0], c[1], c[2]);
             stroke(c[0], c[1], c[2]);
         } else {
-            fill(255, 157, 0);
-            stroke(255, 157, 0);
+            fill(diffColor[0], diffColor[1], diffColor[2]);
+            stroke(diffColor[0], diffColor[1], diffColor[2]);
         }
         strokeWeight(strokeW);
     }
@@ -140,11 +153,16 @@ public class CompareCallTreeYAView extends PApplet {
     public void drawLegend(List<String> labels, int x, int y, int size) {
         PFont f;
         f = createFont("Arial",size,true);
-        textFont(f);                  // STEP 3 Specify font to be used
-        for(int i = 0; i < labels.size(); i++) {
+        textFont(f);
+        int i = 0;// STEP 3 Specify font to be used
+        for(; i < labels.size(); i++) {
             int[] c = picker.getColor(i);
             fill(c[0], c[1], c[2]);
             text(labels.get(i), x, 100+y+2*i*size);
         }
+        fill(diffColor[0], diffColor[1], diffColor[2]);
+        text("differences", x, 100+y+2*i*size);
     }
+
+    int diffColor[] = {0xE3,0x26,0x36};
 }
