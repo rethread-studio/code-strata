@@ -40,7 +40,7 @@ public class PropertiesReader {
                 if(pack != null) {
                     Set<String> packs = new HashSet<>();
                     for(String s : pack.replace(" ", "").split(",")) {
-                        packs.add(s);
+                        if(!s.equals("")) packs.add(s);
                     }
                     e.packages.put(new Integer(i), packs);
                 }
@@ -53,7 +53,7 @@ public class PropertiesReader {
                 }
             }
 
-            String ex = p.getProperty("excludes");
+            String ex = p.getProperty("excludes", "");
             e.excludes = new HashSet<>();
             if(ex != null && !ex.equals("")) {
 
@@ -68,8 +68,9 @@ public class PropertiesReader {
             if(x86log != null) e.x86log = new File(x86log);
             syscalls = p.getProperty("syscalls");
             if(syscalls != null) e.syscalls = new File(syscalls);
-            outputDir = p.getProperty("outputDir");
+            outputDir = p.getProperty("outputDir","./");
             if(outputDir != null) e.outputDir = new File(outputDir);
+            e.from = p.getProperty("from");
 
 
         } catch (Exception ex) {

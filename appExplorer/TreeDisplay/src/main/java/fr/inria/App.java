@@ -2,6 +2,7 @@ package fr.inria;
 
 import fr.inria.DataStructure.*;
 import fr.inria.DataStructure.Compare.CompareExecution;
+import fr.inria.DataStructure.Compare.CompareTraces;
 import fr.inria.IOs.*;
 import fr.inria.View.WebStrataView;
 import org.apache.commons.io.FileUtils;
@@ -54,7 +55,11 @@ public class App
     private String name = "CallTree";
     @Parameter(names = {"--entry", "-i"}, description = "First method to display")
     private String entry = "";
-    @Parameter(names = {"--command", "-c"}, description = "")
+    @Parameter(names = {"--from", "-f"}, description = "Start analysis from a specific node")
+    private String from;
+    @Parameter(names = {"--cut", "-r"}, description = "Cut nodes starting by ")
+    private String cut;
+    @Parameter(names = {"--command", "-c"}, description = "Command")
     private String command = "CallTree";
     @Parameter(names = {"--screen-size", "-z"}, description = "Screen size. Default 1200px")
     private int screenSize = 1200;
@@ -70,6 +75,7 @@ public class App
         System.out.println("\t callTree: Generates an image of the call tree contained in the traces.");
         System.out.println("\t compCallTree: Generates an image of the comparison of call trees contained in the traces.");
         System.out.println("\t webReport: Generates a full web report.");
+        System.out.println("\t compTraces: Compute the distance between two traces");
     }
 
     public static void callTree() {
@@ -137,7 +143,7 @@ public class App
 
         if(app.help || (app.propFile == null && app.traces == null)) {
             printUsage(jcom);
-        } else if (app.command != null){
+        } else if (app.command != null && !app.command.equals("")){
             switch (app.command) {
                 case "callTree":
                     if(app.propFile != null) Context.currentExec = PropertiesReader.readProperties(new File(app.propFile));
@@ -152,11 +158,36 @@ public class App
                 case "webReport":
                     generateCodeStrata(new File(app.propFile));
                     break;
+                case "compTraces":
+                    if (app.traces != null && app.traces2 != null) {
+                        Set<String> toRemove = new HashSet<>();
+                        if(app.cut != null && !app.cut.equals("")) toRemove.add(app.cut);
+
+                        new CompareTraces(new File(app.traces),
+                                new File(app.traces2),
+                                new SimpleReader(),
+                                toRemove,
+                                app.from
+                        );
+                    }
+                    break;
                 default:
                     printUsage(jcom);
                     printCmdList();
             }
         } else if (app.traces != null && app.traces2 != null) {
+
+            Context.currentCompareExec = new CompareExecution();
+            Context.currentCompareExec.e1 = Execution.defaultJunitExecution();
+            Context.currentCompareExec.e1.trace = new File(app.traces);
+            Context.currentCompareExec.e2 = Execution.defaultJunitExecution();
+            Context.currentCompareExec.e2.trace = new File(app.traces2);
+            /*Context.currentExec = Context.currentCompareExec.e1;
+            PApplet.main("fr.inria.View.CallTreeAlterView");
+            Context.currentExec = Context.currentCompareExec.e2;
+            PApplet.main("fr.inria.View.CallTreeAlterView");*/
+            //PApplet.main("fr.inria.View.Compare.CompareCallTreeAlterView");
+            PApplet.main("fr.inria.View.Compare.CompareCallTreeYAView");
         } else if (app.traces != null) {
             Context.currentExec = readProperties(app);
             PApplet.main("fr.inria.View.CallTreeAlterView");

@@ -15,10 +15,6 @@ public class SimpleColor extends ColorPicker{
         colors[i][1] = 0xBF;
         colors[i][2] = 0x00;
         i++;
-        colors[i][0] = 0xE3;
-        colors[i][1] = 0x26;
-        colors[i][2] = 0x36;
-        i++;
         colors[i][0] = 0x99;
         colors[i][1] = 0x66;
         colors[i][2] = 0xCC;
@@ -38,6 +34,10 @@ public class SimpleColor extends ColorPicker{
         colors[i][0] = 0xCC;
         colors[i][1] = 0x55;
         colors[i][2] = 0x00;
+        i++;
+        colors[i][0] = 0xE3;
+        colors[i][1] = 0x26;
+        colors[i][2] = 0x36;
         i++;
     }
 

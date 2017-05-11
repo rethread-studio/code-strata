@@ -15,7 +15,8 @@ public class TreeCallUtils {
 
     public static boolean isIn(String str, Set<String> set) {
         for(String s : set) {
-            if(!str.equals("") && str.startsWith(s)) return true;
+            if(!str.equals("") && str.startsWith(s))
+                return true;
         }
         return false;
     }
@@ -93,6 +94,14 @@ public class TreeCallUtils {
             res.add(t);
             return res;
         }
+    }
+
+    public static CallTree cut(CallTree t, Set<String> toRemove) {
+        for(CallTree c : t.getChildren()) {
+            if(isIn(c.name, toRemove)) t.children.remove(c);
+            else cut(c,toRemove);
+        }
+        return t;
     }
 
     public static void removeLibsLeaf(CallTree t) {
