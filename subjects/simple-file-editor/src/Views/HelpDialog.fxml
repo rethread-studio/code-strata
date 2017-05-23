@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HelpDialogController">
+   <children>
+      <ImageView>
+         <image>
+            <Image url="@../Styling/icon.png" />
+         </image>
+         <VBox.margin>
+            <Insets left="60.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </ImageView>
+      <Label text="SimpleTextEditor v1.0">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Author: João Guitana">
+         <VBox.margin>
+            <Insets bottom="5.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="MIT License">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>

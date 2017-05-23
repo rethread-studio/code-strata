@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="findDialogHBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FindDialogController">
+   <children>
+      <Label focusTraversable="false" text="Find:">
+         <HBox.margin>
+            <Insets left="4.0" top="8.0" />
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="textField" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </HBox.margin>
+      </TextField>
+      <Button fx:id="previousButton" focusTraversable="false" mnemonicParsing="false" onAction="#previous" prefWidth="75.0" text="Previous">
+         <HBox.margin>
+            <Insets right="4.0" top="4.0" />
+         </HBox.margin>
+      </Button>
+      <Button fx:id="nextButton" focusTraversable="false" mnemonicParsing="false" onAction="#next" prefWidth="75.0" text="Next">
+         <HBox.margin>
+            <Insets right="4.0" top="4.0" />
+         </HBox.margin>
+      </Button>
+      <Button fx:id="closeButton" focusTraversable="false" mnemonicParsing="false" onAction="#close" style="-fx-background-color: transparent;" text="X">
+         <HBox.margin>
+            <Insets right="4.0" top="4.0" />
+         </HBox.margin>
+      </Button>
+      <Label fx:id="messageLabel" focusTraversable="false" style="-fx-font-color: red;">
+         <HBox.margin>
+            <Insets right="4.0" top="8.0" />
+         </HBox.margin>
+      </Label>
+   </children>
+</HBox>

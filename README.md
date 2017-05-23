@@ -16,3 +16,19 @@ We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that
 ## music, light and software
 
 Music and light share the characteristics of invisibility and abstraction with software. Despite the fundamental differences in the nature of these objects (music and light are perceived through a combination of waves and neuroprocessing, while software results from the interactions of signals on digital processor), we believe they fit the purpose of representing code complexity in artistic devices.
+
+## project structure
+
+### code-analyser
+
+This section regroups tools to trace programs and visualize the results.
+
+### code-sonifier
+
+### data
+
+### docs
+
+### resources
+
+### subjects

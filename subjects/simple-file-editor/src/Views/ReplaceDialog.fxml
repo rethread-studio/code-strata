@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="replaceDialogHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReplaceDialogController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <AnchorPane>
+               <children>
+                  <fx:include fx:id="findDialog" source="FindDialog.fxml" />
+               </children>
+               <VBox.margin>
+                  <Insets left="18.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Label focusTraversable="false" text="Replace:">
+                     <HBox.margin>
+                        <Insets left="4.0" top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="replaceTextField" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="replaceButton" focusTraversable="false" mnemonicParsing="false" onAction="#replace" prefWidth="75.0" text="Replace">
+                     <HBox.margin>
+                        <Insets right="4.0" top="4.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="replaceAllButton" focusTraversable="false" mnemonicParsing="false" onAction="#replaceAll" prefWidth="75.0" text="Replace All">
+                     <HBox.margin>
+                        <Insets right="4.0" top="4.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

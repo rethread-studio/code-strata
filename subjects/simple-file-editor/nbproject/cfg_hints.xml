@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//NetBeans//DTD Tool Configuration 1.0//EN" "http://www.netbeans.org/dtds/ToolConfiguration-1_0.dtd">
+<configuration>
+    <tool kind="hints" type="text/x-java">
+        <node name="Braces_IF">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_DIVISION_BY_ZERO">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.FieldEncapsulation.protectedField">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ReturnEncapsulation.array">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ReturnEncapsulation.collection">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.suggestions.TooStrongCast.broadTypeCast">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_FOR_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_DO_WHILE_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_FINALLY">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ClassEncapsulation.packageCls">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_DEPRECATED">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.FieldEncapsulation.packageField">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.assignmentToCatchBlockParameter">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_FALLTHROUGH">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ParamEncapsulation.array">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.IllegalInstanceOf">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.FieldEncapsulation.privateField">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_SERIALIZATION">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ClassEncapsulation.protectedCls">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ParamEncapsulation.date">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_UNCHECKED">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.FieldEncapsulation.publicField">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.assignmentToForLoopParam">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_UNNECESSARY_CAST">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_RAWTYPES">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ParamEncapsulation.collection">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.assignmentToMethodParam">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_EMPTY_STATEMENT_AFTER_IF">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ClassEncapsulation.publicCls">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Javac_OVERRIDES">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.incrementDecrementUsed">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.EmptyCancelForCancellableTask">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.encapsulation.ReturnEncapsulation.date">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.replaceAssignWithOpAssign">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="org.netbeans.modules.java.hints.AssignmentIssues.nestedAssignment">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_WHILE_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+    </tool>
+</configuration>
