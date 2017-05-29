@@ -58,7 +58,6 @@ public class EquiDistantColors extends ColorPicker {
             double d = fmod((double)i * 0.618033988749895, 1.0);
             //double d = ((double)i) / ((double)n) ;
             colors[i] = hsvToRgb(d, 0.5, 1.0);
-            System.out.println("c");
         }
     }
 
