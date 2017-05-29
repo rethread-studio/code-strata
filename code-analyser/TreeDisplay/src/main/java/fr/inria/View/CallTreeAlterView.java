@@ -2,6 +2,7 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
+import fr.inria.EquiDistantColors;
 import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.SimpleReader;
 import fr.inria.IOs.VisualvmReader;
@@ -48,7 +49,8 @@ public class CallTreeAlterView  extends PApplet {
         //picker = new ColorPicker(255,100,0, e.nbLevel, 30);
         //background(0);
         //picker = new ColorPicker(127+64+32,75+12,0, e.nbLevel, 100);
-        picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
+        //picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
+        picker = new EquiDistantColors(127+64+32,75+12,0, e.nbLevel, 100);
         background(255);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));
