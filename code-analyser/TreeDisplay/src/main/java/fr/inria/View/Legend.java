@@ -3,6 +3,7 @@ package fr.inria.View;
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.Execution;
+import fr.inria.EquiDistantColors;
 import fr.inria.SimpleColor;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -28,7 +29,8 @@ public class Legend extends PApplet {
 
     public void setup() {
 
-        picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
+        //picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
+        picker = new EquiDistantColors(127+64+32,75+12,0, e.nbLevel, 100);
         background(255);
 
         List<String> labels = new ArrayList<>();
