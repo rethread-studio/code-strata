@@ -93,15 +93,21 @@ public Languages.LanguageSet guessLanguages(final String input) {
 }
 ```
 @[1-21]
-@[1,18-20]
+@[1]
+@[18-20]
 
 ---
 
 ## Swap SubType
 
- * Static / non static call
- * Static / non context
- * Internal / external
+ * Target 
+```
+Interface identifier = new ImplementingType1( (parameter)* );
+```
+ * replace with 
+```
+Interface identifier = new ImplementingType2( (parameter)* );
+```
 
 
 ---
