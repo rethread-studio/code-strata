@@ -73,6 +73,7 @@ public class App
     public static void printCmdList() {
         System.out.println(" -- Command list --");
         System.out.println("\t callTree: Generates an image of the call tree contained in the traces.");
+        System.out.println("\t callTreeGif: Generates an image of the call tree contained in the traces.");
         System.out.println("\t compCallTree: Generates an image of the comparison of call trees contained in the traces.");
         System.out.println("\t webReport: Generates a full web report.");
         System.out.println("\t compTraces: Compute the distance between two traces");
@@ -169,6 +170,12 @@ public class App
                                 toRemove,
                                 app.from
                         );
+                    }
+                    break;
+                case "callTreeGif":
+                    if (app.traces != null) {
+                        Context.currentExec = readProperties(app);
+                        PApplet.main("fr.inria.View.CallTreeGifView");
                     }
                     break;
                 default:
