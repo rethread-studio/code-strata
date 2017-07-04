@@ -6,7 +6,7 @@ package fr.inria.yajta;
 
 
 public class Args {
-    public String[] INCLUDES, EXCLUDES;
+    public String[] INCLUDES, EXCLUDES, ISOTOPES;
     public boolean strictIncludes = false, printTree = true;
     //includes=|excludes=
     public void parseArgs(String args) {
@@ -42,9 +42,14 @@ public class Args {
             parseIncludes(p);
         } else if (p.startsWith("excludes=")) {
             parseExcludes(p);
+        } else if (p.startsWith("isotopes=")) {
+            parseIsotopes(p);
         }
     }
 
+    public void parseIsotopes(String p) {
+        ISOTOPES = parseArray(p.split("isotopes=")[1]);
+    }
     public void parseIncludes(String p) {
         INCLUDES = parseArray(p.split("includes=")[1]);
     }

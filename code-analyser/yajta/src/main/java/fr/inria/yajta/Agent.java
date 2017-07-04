@@ -8,6 +8,8 @@ import java.lang.instrument.UnmodifiableClassException;
 public class Agent {
     static String[] INCLUDES = new String[] {
     };
+    static String[] ISOTOPES = new String[] {
+    };
 
     public static void premain(String agentArgs, Instrumentation inst) {
         //java.util.logging.Logger logger = java.util.logging.Logger.getGlobal();
@@ -15,11 +17,12 @@ public class Agent {
         Args a = new Args();
         a.parseArgs(agentArgs);
 
-        final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES));
+        final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES),format(a.ISOTOPES));
 
         if(a.strictIncludes) transformer.strictIncludes = true;
         if(!a.printTree) transformer.printTree = false;
         INCLUDES = a.INCLUDES;
+        ISOTOPES = a.ISOTOPES;
         inst.addTransformer(transformer, true);
         if(inst.isNativeMethodPrefixSupported()) {
             inst.setNativeMethodPrefix(transformer,"wrapped_native_method_");
@@ -42,6 +45,15 @@ public class Agent {
                     }
                 } else {
 
+                }
+            }
+            for( String isotope : ISOTOPES ) {
+                if (cl[i].getName().startsWith(isotope)) {
+                    try {
+                        inst.retransformClasses(cl[i]);
+                    } catch (UnmodifiableClassException e) {
+                        System.err.println("err: " + cl[i].getName());
+                    }
                 }
             }
         }

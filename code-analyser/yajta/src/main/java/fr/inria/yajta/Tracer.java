@@ -53,8 +53,13 @@ public class Tracer implements ClassFileTransformer {
     }
 
     public Tracer (String[] includes, String excludes[]) {
+        new Tracer(includes,excludes,new String[0]);
+    }
+
+    public Tracer (String[] includes, String excludes[], String isotopes[]) {
         INCLUDES = includes;
         DEFAULT_EXCLUDES = excludes;
+        ISOTOPES = isotopes;
     }
 
     String[] DEFAULT_EXCLUDES;// = new String[] {
@@ -78,6 +83,7 @@ public class Tracer implements ClassFileTransformer {
             "java/io",*/
 
     //};
+    String[] ISOTOPES;
 
     String[] INCLUDES;// = new String[] {};
 
@@ -85,6 +91,13 @@ public class Tracer implements ClassFileTransformer {
 
     public byte[] transform( final ClassLoader loader, final String className, final Class clazz,
                              final java.security.ProtectionDomain domain, final byte[] bytes ) {
+
+        for( String isotope : ISOTOPES ) {
+
+            if( className.startsWith( isotope ) ) {
+                return doClass( className, clazz, bytes, true);
+            }
+        }
 
         for( String include : INCLUDES ) {
 
@@ -105,6 +118,9 @@ public class Tracer implements ClassFileTransformer {
     }
 
     public byte[] doClass( final String name, final Class clazz, byte[] b ) {
+        return doClass(name,clazz,b,false);
+    }
+    public byte[] doClass( final String name, final Class clazz, byte[] b, boolean isIsotope ) {
         ClassPool pool = ClassPool.getDefault();
         CtClass cl = null;
         try {
@@ -158,7 +174,10 @@ public class Tracer implements ClassFileTransformer {
                 for( int i = 0; i < methods.length; i++ ) {
 
                     if( methods[i].isEmpty() == false ) {
-                        doMethod( methods[i] , name);
+                        if(isIsotope)
+                            doMethod( methods[i] , name, isIsotope, "fr.inria.singleusagedemo.collections.MyMap");
+                        else
+                            doMethod( methods[i] , name);
                     }
                 }
 
@@ -179,7 +198,23 @@ public class Tracer implements ClassFileTransformer {
     }
 
     private void doMethod( final CtBehavior method , String className) throws NotFoundException, CannotCompileException {
+        doMethod(method,className,false,null);
+    }
+
+    private void doMethod( final CtBehavior method , String className, boolean isIsotope, String isotope) throws NotFoundException, CannotCompileException {
+
         if(!Modifier.isNative(method.getModifiers())) {
+            String pprefix = "", ppostfix = "";
+            if(isIsotope && !Modifier.isStatic(method.getModifiers())) {
+                System.err.println("[Isotope] " + className + " " + method.getName());
+                pprefix = "if(getClass().getName().equalsIgnoreCase(\"" + isotope + "\")) {";
+                ppostfix = "}";
+            } else if(isIsotope) {
+                pprefix = "if(false) {";
+                ppostfix = "}";
+            } else {
+                System.err.println("[Vanilla] " + className + " " + method.getName());
+            }
             String THREAD = "";
             //String THREAD = "\"thread\":\"" + Thread.currentThread().getName() + "\", ";
             String params = "(";
@@ -192,12 +227,12 @@ public class Tracer implements ClassFileTransformer {
             params += ")";
 
             if (printTree) {
-                method.insertBefore("System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
-                        "" + PREFIX + THREAD + "\\\"children\\\":[\");");
+                method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                        "" + PREFIX + THREAD + "\\\"children\\\":[\");" + ppostfix);
 
-                method.insertAfter("System.out.println(\"" + PREFIX + "]},\");");
+                method.insertAfter(pprefix + "System.out.println(\"" + PREFIX + "]},\");" + ppostfix);
             } else {
-                method.insertBefore("System.out.println(\"" + PREFIX + className.replace("/", ".") + "." + method.getName() + params + "\");");
+                method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
             }
 
             //}

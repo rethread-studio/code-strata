@@ -18,7 +18,7 @@ public class Cleaner {
     private String outputFileName;
     @Parameter(names = {"--main-not-traced", "-m"}, description = "If the main method is traced, an additional ']}' nedd to be added. Default: false")
     private boolean isMainTraced;
-    @Parameter(names = {"--Shutdown-traced", "-s"}, description = "If the main method is traced, an additional ']}' nedd to be added. Default: true")
+    @Parameter(names = {"--shutdown-traced", "-s"}, description = "If the main method is traced, an additional ']}' nedd to be added. Default: true")
     private boolean isShutdownTraced;
 
     public static void printUsage(JCommander jcom) {
