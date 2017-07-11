@@ -27,7 +27,10 @@ public class Agent {
             f.load(a.follow);
             trackingInstance = f;
         } else {
-            trackingInstance = new Logger();
+            Logger l =  new Logger();
+            if(a.output != null)
+                l.log = a.output;
+            trackingInstance = l;
         }
 
         final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES),format(a.ISOTOPES));

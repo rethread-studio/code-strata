@@ -12,7 +12,7 @@ import java.util.*;
  * Created by nharrand on 19/04/17.
  */
 public class Logger implements Tracking {
-    File log;
+    public File log;
     BufferedWriter bufferedWriter;
 
     Map<String, Map.Entry<TreeNode, TreeNode>> threadLogs = new HashMap<>();
@@ -38,8 +38,10 @@ public class Logger implements Tracking {
     }
 
     public void flush() {
-        int i = (int) Math.floor(Math.random() * (double) Integer.MAX_VALUE);
-        log = new File("log" + i + ".json");
+        if(log == null) {
+            int i = (int) Math.floor(Math.random() * (double) Integer.MAX_VALUE);
+            log = new File("log" + i + ".json");
+        }
         try {
             if(log.exists()) log.delete();
             log.createNewFile();

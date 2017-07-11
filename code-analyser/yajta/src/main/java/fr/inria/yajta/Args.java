@@ -10,6 +10,7 @@ import java.io.File;
 public class Args {
     public String[] INCLUDES, EXCLUDES, ISOTOPES;
     public File follow = null;
+    public File output = null;
     public boolean strictIncludes = false, printTree = true;
     //includes=|excludes=
     public void parseArgs(String args) {
@@ -51,6 +52,8 @@ public class Args {
             parseIsotopes(p);
         } else if (p.startsWith("follow=")) {
             parseFollow(p);
+        } else if (p.startsWith("output=")) {
+            parseOutput(p);
         }
     }
 
@@ -71,6 +74,11 @@ public class Args {
     public void parseFollow(String p) {
         follow = new File(p.split("follow=")[1]);
         if(!follow.exists()) System.err.println("Unvalid file for follow argument");
+    }
+
+    public void parseOutput(String p) {
+        output = new File(p.split("output=")[1]);
+        if(!output.exists()) System.err.println("Unvalid file for follow argument");
     }
 
     public void parsePrint(String p) {
@@ -97,6 +105,7 @@ public class Args {
         System.err.println("\t\t- print=(list,tree) Default: tree");
         System.err.println("\t\t- strict-includes Default: false");
         System.err.println("\t\t- follow=File Default: null");
+        System.err.println("\t\t- output=File Default: null");
         System.err.println("Found: \"" + args + "\"");
     }
 }
