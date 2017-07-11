@@ -11,10 +11,24 @@ public class Agent {
     static String[] ISOTOPES = new String[] {
     };
 
+    static Tracking trackingInstance;
+
+    public static Tracking getTrackingInstance() {
+        return trackingInstance;
+    }
+
     public static void premain(String agentArgs, Instrumentation inst) {
         System.err.println("[Premain] Begin '" + agentArgs + "'");
         Args a = new Args();
         a.parseArgs(agentArgs);
+
+        if(a.follow != null) {
+            Follower f = new Follower();
+            f.load(a.follow);
+            trackingInstance = f;
+        } else {
+            trackingInstance = new Logger();
+        }
 
         final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES),format(a.ISOTOPES));
 
@@ -59,7 +73,7 @@ public class Agent {
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-                Logger.getInstance().flush();
+                getTrackingInstance().flush();
             }
         });
         System.err.println("[Premain] Done");

@@ -2,6 +2,7 @@ package fr.inria.yajta;
 
 import javassist.*;
 import javassist.Modifier;
+import javassist.expr.ExprEditor;
 
 import java.io.*;
 import java.lang.instrument.ClassFileTransformer;
@@ -232,32 +233,13 @@ public class Tracer implements ClassFileTransformer {
 
                 //method.insertAfter(pprefix + "System.out.println(\"" + PREFIX + "]},\");" + ppostfix);
 
-                method.insertBefore(pprefix + "fr.inria.yajta.Logger.getInstance().log(Thread.currentThread().getName(),\"" + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
-                method.insertAfter(pprefix + "fr.inria.yajta.Logger.getInstance().done(Thread.currentThread().getName());" + ppostfix);
+                method.insertBefore(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepIn(Thread.currentThread().getName(),\"" + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
+                method.insertAfter(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepOut(Thread.currentThread().getName());" + ppostfix);
             } else {
                 method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
             }
-
-            //}
         } else {
             if(verbose) System.err.println("Method: " + className.replace("/", ".") + "." + method.getName() + " is native");
         }
     }
-
-    /*public static void print(byte[] b, File f) {
-        try {
-
-            try {
-                PrintWriter w = new PrintWriter(f);
-                w.print(b);
-                w.close();
-            } catch (Exception ex) {
-                System.err.println("Problem writing log");
-                ex.printStackTrace();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 }

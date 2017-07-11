@@ -11,21 +11,13 @@ import java.util.*;
 /**
  * Created by nharrand on 19/04/17.
  */
-public class Logger {
+public class Logger implements Tracking {
     File log;
     BufferedWriter bufferedWriter;
-    static Logger instance = new Logger();
 
     Map<String, Map.Entry<TreeNode, TreeNode>> threadLogs = new HashMap<>();
 
-    public static Logger getInstance() {
-        return instance;
-    }
-
-    private Logger() {
-    }
-
-    public synchronized void log(String thread, String method) {
+    public synchronized void stepIn(String thread, String method) {
         Map.Entry<TreeNode, TreeNode> entry = threadLogs.get(thread);
         if(entry == null) {
             TreeNode cur = new TreeNode();
@@ -38,7 +30,7 @@ public class Logger {
         }
     }
 
-    public synchronized void done(String thread) {
+    public synchronized void stepOut(String thread) {
         Map.Entry<TreeNode, TreeNode> entry = threadLogs.get(thread);
         if(entry != null) {
             if(entry.getValue() != null) entry.setValue(entry.getValue().parent);
@@ -60,35 +52,6 @@ public class Logger {
             bufferedWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-
-    public class TreeNode {
-        protected String method;
-        protected List<TreeNode> children;
-        protected TreeNode parent;
-
-        public TreeNode addChild(String m) {
-            TreeNode t = new TreeNode();
-            t.method = m;
-            t.parent = this;
-            if(children == null) children = new ArrayList<>();
-            children.add(t);
-            return t;
-        }
-
-        public void print(BufferedWriter b) throws IOException {
-            b.append("{\"name\":\"" + method + "\", \"children\":[");
-            if(children != null) {
-                boolean isFirst = true;
-                for (TreeNode t : children) {
-                    if (isFirst) isFirst = false;
-                    else b.append(",");
-                    t.print(b);
-                }
-            }
-            b.append("]}");
         }
     }
 

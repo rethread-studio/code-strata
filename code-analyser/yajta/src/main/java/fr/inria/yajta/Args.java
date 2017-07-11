@@ -1,5 +1,7 @@
 package fr.inria.yajta;
 
+import java.io.File;
+
 /**
  * Created by nharrand on 02/05/17.
  */
@@ -7,6 +9,7 @@ package fr.inria.yajta;
 
 public class Args {
     public String[] INCLUDES, EXCLUDES, ISOTOPES;
+    public File follow = null;
     public boolean strictIncludes = false, printTree = true;
     //includes=|excludes=
     public void parseArgs(String args) {
@@ -46,12 +49,15 @@ public class Args {
             parseExcludes(p);
         } else if (p.startsWith("isotopes=")) {
             parseIsotopes(p);
+        } else if (p.startsWith("follow=")) {
+            parseFollow(p);
         }
     }
 
     public void parseIsotopes(String p) {
         ISOTOPES = parseArray(p.split("isotopes=")[1]);
     }
+
     public void parseIncludes(String p) {
         INCLUDES = parseArray(p.split("includes=")[1]);
     }
@@ -61,6 +67,12 @@ public class Args {
     public void parseStrictIncludes(String p) {
         strictIncludes = true;
     }
+
+    public void parseFollow(String p) {
+        follow = new File(p.split("follow=")[1]);
+        if(!follow.exists()) System.err.println("Unvalid file for follow argument");
+    }
+
     public void parsePrint(String p) {
         if(p.compareTo("print=list") == 0) {
             printTree = false;
@@ -78,11 +90,13 @@ public class Args {
     }
 
     public void printUsage(String args) {
-        System.err.println("Incorrect agent arguments. Argument must belong to the following list (and be seperated by |)");
+        System.err.println("Incorrect agent arguments. Argument must belong to the following list (and be separated by |)");
         System.err.println("\t\t- includes=org.package(,org.package2)* Default: Empty");
         System.err.println("\t\t- excludes=org.package(,org.package2)* Default: fr.inria.yajta");
-        System.err.println("\t\t- print=(list,tree) Default tree");
-        System.err.println("\t\t- strinct-includes Default false");
+        System.err.println("\t\t- isotopes=org.package(,org.package2)* Default:Empty");
+        System.err.println("\t\t- print=(list,tree) Default: tree");
+        System.err.println("\t\t- strict-includes Default: false");
+        System.err.println("\t\t- follow=File Default: null");
         System.err.println("Found: \"" + args + "\"");
     }
 }
