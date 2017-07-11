@@ -12,6 +12,7 @@ public class Args {
     public void parseArgs(String args) {
         if(args == null || args.equals("")) {
             INCLUDES = new String[0];
+            ISOTOPES = new String[0];
             EXCLUDES = new String[1];
             EXCLUDES[0] = "fr.inria.yajta";
         } else {
@@ -24,6 +25,7 @@ public class Args {
             }
             EXCLUDES = new String[1];
             INCLUDES = new String[0];
+            ISOTOPES = new String[0];
             strictIncludes = false;
             printTree = true;
             for(String p : ar) {

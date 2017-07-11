@@ -206,14 +206,14 @@ public class Tracer implements ClassFileTransformer {
         if(!Modifier.isNative(method.getModifiers())) {
             String pprefix = "", ppostfix = "";
             if(isIsotope && !Modifier.isStatic(method.getModifiers())) {
-                System.err.println("[Isotope] " + className + " " + method.getName());
+                //System.err.println("[Isotope] " + className + " " + method.getName());
                 pprefix = "if(getClass().getName().equalsIgnoreCase(\"" + isotope + "\")) {";
                 ppostfix = "}";
             } else if(isIsotope) {
                 pprefix = "if(false) {";
                 ppostfix = "}";
             } else {
-                System.err.println("[Vanilla] " + className + " " + method.getName());
+                //System.err.println("[Vanilla] " + className + " " + method.getName());
             }
             String THREAD = "";
             //String THREAD = "\"thread\":\"" + Thread.currentThread().getName() + "\", ";
@@ -227,10 +227,13 @@ public class Tracer implements ClassFileTransformer {
             params += ")";
 
             if (printTree) {
-                method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
-                        "" + PREFIX + THREAD + "\\\"children\\\":[\");" + ppostfix);
+                //method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + "{ \\\"name\\\": \\\"" + className.replace("/", ".") + "." + method.getName() + params + "\\\",\\n" +
+                //        "" + PREFIX + THREAD + "\\\"children\\\":[\");" + ppostfix);
 
-                method.insertAfter(pprefix + "System.out.println(\"" + PREFIX + "]},\");" + ppostfix);
+                //method.insertAfter(pprefix + "System.out.println(\"" + PREFIX + "]},\");" + ppostfix);
+
+                method.insertBefore(pprefix + "fr.inria.yajta.Logger.getInstance().log(Thread.currentThread().getName(),\"" + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
+                method.insertAfter(pprefix + "fr.inria.yajta.Logger.getInstance().done(Thread.currentThread().getName());" + ppostfix);
             } else {
                 method.insertBefore(pprefix + "System.out.println(\"" + PREFIX + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
             }

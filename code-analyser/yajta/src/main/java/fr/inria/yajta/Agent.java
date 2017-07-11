@@ -12,7 +12,6 @@ public class Agent {
     };
 
     public static void premain(String agentArgs, Instrumentation inst) {
-        //java.util.logging.Logger logger = java.util.logging.Logger.getGlobal();
         System.err.println("[Premain] Begin '" + agentArgs + "'");
         Args a = new Args();
         a.parseArgs(agentArgs);
@@ -57,6 +56,12 @@ public class Agent {
                 }
             }
         }
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                Logger.getInstance().flush();
+            }
+        });
         System.err.println("[Premain] Done");
 
 

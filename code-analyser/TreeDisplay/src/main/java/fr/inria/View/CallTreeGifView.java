@@ -28,7 +28,7 @@ public class CallTreeGifView  extends PApplet {
 
         e = Context.currentExec;
 
-        size(e.screenSize, e.screenSize);
+        size(e.screenSize, e.screenSize+400);
 
     }
 
