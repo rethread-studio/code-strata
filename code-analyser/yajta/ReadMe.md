@@ -37,13 +37,14 @@ Does not log native methods yet.
 
 ## Run test with traces
 
+For each test:
 ```
-mvn -DargLine="-javaagent:path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar=\"strict-includes|print=list|includes=org.myApp|excludes=fr.inria.yalta\"" test > testLog
+mvn -Dtest=MyTest -DargLine="-javaagent:path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar=\"strict-includes|print=tie|includes=org.myApp|excludes=fr.inria.yalta\"" test > testLog/MyTest
 ```
 
 ## Organize the output as a map of methods / set of test
 
 ```
-java -cp path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar fr.inria.tie.Cleaner -i testLog -o methodsImpact.json -l method
+java -cp path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar fr.inria.tie.Report -i testLog -o methodsImpact.json
 ```
 
