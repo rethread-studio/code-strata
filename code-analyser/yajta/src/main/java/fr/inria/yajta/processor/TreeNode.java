@@ -1,4 +1,4 @@
-package fr.inria.yajta;
+package fr.inria.yajta.processor;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -29,16 +29,21 @@ public class TreeNode {
     }
 
     public void print(BufferedWriter b) throws IOException {
-        b.append("{\"name\":\"" + method + "\", \"children\":[");
+        print(b, true);
+    }
+
+    public void print(BufferedWriter b, boolean tree) throws IOException {
+        if(tree) b.append("{\"name\":\"" + method + "\", \"children\":[");
+        else b.append(method + "\n");
         if(children != null) {
             boolean isFirst = true;
             for (TreeNode t : children) {
                 if (isFirst) isFirst = false;
-                else b.append(",");
-                t.print(b);
+                else if(tree) b.append(",");
+                t.print(b, tree);
             }
         }
-        b.append("]}");
+        if(tree) b.append("]}");
     }
 
     public boolean hasNext() {

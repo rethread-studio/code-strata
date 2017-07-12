@@ -1,5 +1,6 @@
-package fr.inria.yajta;
+package fr.inria.yajta.processor;
 
+import fr.inria.yajta.FileHelper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +42,7 @@ public class Follower implements Tracking {
     }
 
     public void load(File trace) {
-        JSONObject o = readFromFile(trace);
+        JSONObject o = FileHelper.readFromFile(trace);
 
         try {
             JSONArray threads = o.getJSONArray("children");
@@ -54,32 +55,6 @@ public class Follower implements Tracking {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    public JSONObject readFromFile(File f) {
-        JSONObject jsonObject = null;
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(f));
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = br.readLine();
-            }
-
-            jsonObject = new JSONObject(sb.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) try {
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return jsonObject;
     }
 
     public void offTrack(String thread, String method) {

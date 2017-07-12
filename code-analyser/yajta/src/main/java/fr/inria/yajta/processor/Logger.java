@@ -1,6 +1,4 @@
-package fr.inria.yajta;
-
-import sun.reflect.generics.tree.Tree;
+package fr.inria.yajta.processor;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +11,7 @@ import java.util.*;
  */
 public class Logger implements Tracking {
     public File log;
+    public boolean tree = true;
     BufferedWriter bufferedWriter;
 
     Map<String, Map.Entry<TreeNode, TreeNode>> threadLogs = new HashMap<>();
@@ -40,17 +39,18 @@ public class Logger implements Tracking {
     public void flush() {
         if(log == null) {
             int i = (int) Math.floor(Math.random() * (double) Integer.MAX_VALUE);
-            log = new File("log" + i + ".json");
+            if(tree) log = new File("log" + i + ".json");
+            else log = new File("log" + i);
         }
         try {
             if(log.exists()) log.delete();
             log.createNewFile();
             bufferedWriter = new BufferedWriter(new FileWriter(log, true));
-            bufferedWriter.append("{\"name\":\"Threads\", \"children\":[");
+            if(tree) bufferedWriter.append("{\"name\":\"Threads\", \"children\":[");
             for(Map.Entry<String, Map.Entry<TreeNode, TreeNode>> e: threadLogs.entrySet()) {
-                e.getValue().getKey().print(bufferedWriter);
+                e.getValue().getKey().print(bufferedWriter, tree);
             }
-            bufferedWriter.append("]}");
+            if(tree) bufferedWriter.append("]}");
             bufferedWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();

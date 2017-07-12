@@ -11,7 +11,8 @@ public class Args {
     public String[] INCLUDES, EXCLUDES, ISOTOPES;
     public File follow = null;
     public File output = null;
-    public boolean strictIncludes = false, printTree = true;
+    public boolean strictIncludes = false;
+    public String print = "tree";
     //includes=|excludes=
     public void parseArgs(String args) {
         if(args == null || args.equals("")) {
@@ -31,7 +32,7 @@ public class Args {
             INCLUDES = new String[0];
             ISOTOPES = new String[0];
             strictIncludes = false;
-            printTree = true;
+            print = "tree";
             for(String p : ar) {
                 parseArg(p);
             }
@@ -78,12 +79,13 @@ public class Args {
 
     public void parseOutput(String p) {
         output = new File(p.split("output=")[1]);
-        if(!output.exists()) System.err.println("Unvalid file for follow argument");
     }
 
     public void parsePrint(String p) {
         if(p.compareTo("print=list") == 0) {
-            printTree = false;
+            print = "list";
+        } else if(p.compareTo("print=tie") == 0) {
+            print = "tie";
         }
     }
 
@@ -102,7 +104,7 @@ public class Args {
         System.err.println("\t\t- includes=org.package(,org.package2)* Default: Empty");
         System.err.println("\t\t- excludes=org.package(,org.package2)* Default: fr.inria.yajta");
         System.err.println("\t\t- isotopes=org.package(,org.package2)* Default:Empty");
-        System.err.println("\t\t- print=(list,tree) Default: tree");
+        System.err.println("\t\t- print=(list,tree,tie) Default: tree");
         System.err.println("\t\t- strict-includes Default: false");
         System.err.println("\t\t- follow=File Default: null");
         System.err.println("\t\t- output=File Default: null");

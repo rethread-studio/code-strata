@@ -82,7 +82,6 @@
                         </manifest>
                         <manifestEntries>
                             <Premain-Class>fr.inria.yajta.Agent</Premain-Class>
-                            <Main-Class>fr.inria.yajta.Cleaner</Main-Class>
                             <Can-Redefine-Classes>True</Can-Redefine-Classes>
                             <Can-Retransform-Classes>True</Can-Retransform-Classes>
                             <Can-Set-Native-Method-Prefix>True</Can-Set-Native-Method-Prefix>

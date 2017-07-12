@@ -1,6 +1,11 @@
 package fr.inria.yajta;
 
 
+import fr.inria.yajta.processor.Follower;
+import fr.inria.yajta.processor.Logger;
+import fr.inria.yajta.processor.Tie;
+import fr.inria.yajta.processor.Tracking;
+
 import java.lang.instrument.Instrumentation;
 import java.lang.instrument.UnmodifiableClassException;
 
@@ -26,17 +31,23 @@ public class Agent {
             Follower f = new Follower();
             f.load(a.follow);
             trackingInstance = f;
+        } else if(a.print.equalsIgnoreCase("tie")) {
+            Tie t = new Tie();
+            if(a.output != null)
+                t.log = a.output;
+            trackingInstance = t;
         } else {
             Logger l =  new Logger();
             if(a.output != null)
                 l.log = a.output;
+            if(!a.print.equalsIgnoreCase("tree")) l.tree = false;
             trackingInstance = l;
         }
 
         final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES),format(a.ISOTOPES));
 
         if(a.strictIncludes) transformer.strictIncludes = true;
-        if(!a.printTree) transformer.printTree = false;
+
         INCLUDES = a.INCLUDES;
         ISOTOPES = a.ISOTOPES;
         inst.addTransformer(transformer, true);

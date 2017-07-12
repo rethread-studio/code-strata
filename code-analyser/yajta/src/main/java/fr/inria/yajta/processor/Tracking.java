@@ -1,4 +1,4 @@
-package fr.inria.yajta;
+package fr.inria.yajta.processor;
 
 /**
  * Created by nharrand on 11/07/17.
