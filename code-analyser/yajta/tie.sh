@@ -1,8 +1,10 @@
 #!/bin/bash
 
-pathToJarAgent="../../projet_art_et_numerique/whistle-bits/code-analyser/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar"
+pathToJarAgent=$1
 tmpDir="log"
-packages="org.apache.commons.lang3"
+packages=$2
+#pathToJarAgent="../../projet_art_et_numerique/whistle-bits/code-analyser/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar"
+#packages="org.apache.commons.lang3"
 
 listTests() {
 	#1 test dir

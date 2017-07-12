@@ -6,7 +6,7 @@ Argument must belong to the following list (and be separated by |)
 	- includes=org.package(,org.package2)* Default: Empty
 	- excludes=org.package(,org.package2)* Default: fr.inria.yajta
 	- isotopes=org.package(,org.package2)* Default:Empty
-	- print=(list,tree) Default: tree
+	- print=(list,tree,tie) Default: tree
 	- strict-includes Default: false
 	- follow=File Default: null
 	- output=File Default: null
@@ -32,7 +32,7 @@ java javaagent:path/to/yajta/target/yajta-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 Does not log native methods yet.
 
-# tie (Test Impact Explorer)
+# |-o-| tie |-o-| (Test Impact Explorer)
 
 
 ## Run test with traces
