@@ -10,6 +10,7 @@ import java.io.File;
 public class Args {
     public String[] INCLUDES, EXCLUDES, ISOTOPES;
     public File follow = null;
+    public File includeFile = null;
     public File output = null;
     public boolean strictIncludes = false;
     public String print = "tree";
@@ -47,6 +48,8 @@ public class Args {
             parsePrint(p);
         } else if (p.startsWith("includes=")) {
             parseIncludes(p);
+        } else if (p.startsWith("includeFile=")) {
+            parseIncludeFile(p);
         } else if (p.startsWith("excludes=")) {
             parseExcludes(p);
         } else if (p.startsWith("isotopes=")) {
@@ -56,6 +59,10 @@ public class Args {
         } else if (p.startsWith("output=")) {
             parseOutput(p);
         }
+    }
+
+    private void parseIncludeFile(String p) {
+        includeFile = new File(p.split("includeFile=")[1]);
     }
 
     public void parseIsotopes(String p) {

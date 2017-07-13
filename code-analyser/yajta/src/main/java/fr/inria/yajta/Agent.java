@@ -44,17 +44,25 @@ public class Agent {
             trackingInstance = l;
         }
 
-        final Tracer transformer = new Tracer(format(a.INCLUDES),format(a.EXCLUDES),format(a.ISOTOPES));
+        if(a.includeFile == null) {
+            final Tracer transformer = new Tracer(format(a.INCLUDES), format(a.EXCLUDES), format(a.ISOTOPES));
 
-        if(a.strictIncludes) transformer.strictIncludes = true;
+            if (a.strictIncludes) transformer.strictIncludes = true;
 
-        INCLUDES = a.INCLUDES;
-        ISOTOPES = a.ISOTOPES;
-        inst.addTransformer(transformer, true);
-        if(inst.isNativeMethodPrefixSupported()) {
-            inst.setNativeMethodPrefix(transformer,"wrapped_native_method_");
+            INCLUDES = a.INCLUDES;
+            ISOTOPES = a.ISOTOPES;
+            inst.addTransformer(transformer, true);
+            if (inst.isNativeMethodPrefixSupported()) {
+                inst.setNativeMethodPrefix(transformer, "wrapped_native_method_");
+            }
+        } else {
+            final SpecializedTracer transformer = new SpecializedTracer(a.includeFile);
+
+            inst.addTransformer(transformer, true);
+            if (inst.isNativeMethodPrefixSupported()) {
+                inst.setNativeMethodPrefix(transformer, "wrapped_native_method_");
+            }
         }
-
         Class cl[] = inst.getAllLoadedClasses();
 
         //System.err.println("isRedefineClassesSupported: " + inst.isRedefineClassesSupported());

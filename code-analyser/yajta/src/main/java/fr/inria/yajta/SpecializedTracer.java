@@ -1,60 +1,46 @@
 package fr.inria.yajta;
 
 import javassist.*;
-import javassist.Modifier;
-import javassist.expr.ExprEditor;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.*;
+import java.io.File;
 import java.lang.instrument.ClassFileTransformer;
-import java.lang.reflect.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-import static javassist.CtClass.voidType;
-
-public class Tracer implements ClassFileTransformer {
+/**
+ * Created by nharrand on 12/07/17.
+ */
+public class SpecializedTracer implements ClassFileTransformer {
 
     boolean verbose = false;
-    boolean strictIncludes = false;
-
-    public Tracer (String[] includes, String excludes[]) {
-        new Tracer(includes,excludes,new String[0]);
+    public SpecializedTracer (File includeFile) {
+        //{"classes":[{"class":"myorg.myclass", "methods":["mymethod"]}]}
+        JSONObject includeJson = FileHelper.readFromFile(includeFile);
+        try {
+            JSONArray classes = includeJson.getJSONArray("classes");
+            for(int i = 0; i < classes.length(); i++) {
+                Set<String> ms = new HashSet<>();
+                String cl = classes.getJSONObject(i).getString("class");
+                JSONArray methods = classes.getJSONObject(i).getJSONArray("methods");
+                for(int j = 0; j < methods.length(); j++) ms.add(methods.getString(j));
+                methodToTrace.put(cl,ms);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Tracer (String[] includes, String excludes[], String isotopes[]) {
-        INCLUDES = includes;
-        DEFAULT_EXCLUDES = excludes;
-        ISOTOPES = isotopes;
-    }
-
-    String[] DEFAULT_EXCLUDES;
-    String[] ISOTOPES;
-
-    String[] INCLUDES;
+    Map<String, Set<String>> methodToTrace = new HashMap<>();
 
     public byte[] transform( final ClassLoader loader, final String className, final Class clazz,
                              final java.security.ProtectionDomain domain, final byte[] bytes ) {
 
-        for( String isotope : ISOTOPES ) {
-
-            if( className.startsWith( isotope ) ) {
-                return doClass( className, clazz, bytes, true);
-            }
-        }
-
-        for( String include : INCLUDES ) {
-
-            if( className.startsWith( include ) ) {
-                return doClass( className, clazz, bytes );
-            }
-        }
-
-        for( int i = 0; i < DEFAULT_EXCLUDES.length; i++ ) {
-
-            if( className.startsWith( DEFAULT_EXCLUDES[i] ) ) {
-                return bytes;
-            }
-        }
-
-        if(!strictIncludes) return doClass( className, clazz, bytes );
+        if(methodToTrace.containsKey(className.replace("/", "."))) return doClass( className, clazz, bytes );
         else return bytes;
     }
 
@@ -69,36 +55,6 @@ public class Tracer implements ClassFileTransformer {
             if( cl.isInterface() == false ) {
 
                 CtBehavior[] methods = cl.getDeclaredBehaviors();
-
-                /*for( int i = 0; i < methods.length; i++ ) {
-                    if(Modifier.isNative(methods[i].getModifiers()) && !methods[i].getName().startsWith("wrapped__native__method__")) {
-                        System.err.println( "Class  " + name + ", m : " + methods[i].getName() );
-                        CtMethod m = (CtMethod) methods[i];
-                        String mName = m.getName();
-                        m.setName("wrapped__native__method__" + m.getName());
-                        String body = "{";
-                        if(!m.getReturnType().getName().equals("java.lang.void")) {
-                            body += "return ";
-                        }
-                        body += m.getName() + "($$);}";
-                        System.err.println( "1");
-
-                        CtMethod newM = CtNewMethod.make(
-                                m.getModifiers() & (~java.lang.reflect.Modifier.NATIVE),
-                                m.getReturnType(),
-                                mName,
-                                m.getParameterTypes(),
-                                m.getExceptionTypes(),
-                                body,
-                                cl
-                        );
-                        System.err.println( "2");
-                        cl.addMethod(newM);
-                        System.err.println( "3");
-
-                    }
-                }
-                methods = cl.getDeclaredBehaviors();*/
 
                 for( int i = 0; i < methods.length; i++ ) {
 
@@ -144,6 +100,7 @@ public class Tracer implements ClassFileTransformer {
             } else {
                 if(verbose) System.err.println("[Vanilla] " + className + " " + method.getName());
             }
+            if(verbose) System.err.println("1");
             String params = "(";
             boolean first = true;
             for (CtClass c : method.getParameterTypes()) {
@@ -152,10 +109,11 @@ public class Tracer implements ClassFileTransformer {
                 params += c.getName();
             }
             params += ")";
-
-            method.insertBefore(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepIn(Thread.currentThread().getName(),\"" + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
-            method.insertAfter(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepOut(Thread.currentThread().getName());" + ppostfix);
-
+            String methodName = className.replace("/", ".") + "." + method.getName() + params;
+            if(methodToTrace.get(className.replace("/", ".")).contains(method.getName() + params)) {
+                method.insertBefore(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepIn(Thread.currentThread().getName(),\"" + methodName + "\");" + ppostfix);
+                method.insertAfter(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepOut(Thread.currentThread().getName());" + ppostfix);
+            }
         } else {
             if(verbose) System.err.println("Method: " + className.replace("/", ".") + "." + method.getName() + " is native");
         }
