@@ -66,4 +66,44 @@ public class Follower implements Tracking {
     public void flush() {
 
     }
+
+    @Override
+    public void trace(String thread, String method, Object returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, boolean returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, byte returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, int returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, long returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, float returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, double returnValue) {
+
+    }
+
+    @Override
+    public void trace(String thread, String method, short returnValue) {
+
+    }
 }

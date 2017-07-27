@@ -93,6 +93,8 @@ public class Args {
             print = "list";
         } else if(p.compareTo("print=tie") == 0) {
             print = "tie";
+        } else if(p.compareTo("print=values") == 0) {
+            print = "values";
         }
     }
 

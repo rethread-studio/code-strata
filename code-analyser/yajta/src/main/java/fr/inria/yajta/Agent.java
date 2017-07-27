@@ -1,10 +1,7 @@
 package fr.inria.yajta;
 
 
-import fr.inria.yajta.processor.Follower;
-import fr.inria.yajta.processor.Logger;
-import fr.inria.yajta.processor.Tie;
-import fr.inria.yajta.processor.Tracking;
+import fr.inria.yajta.processor.*;
 
 import java.lang.instrument.Instrumentation;
 import java.lang.instrument.UnmodifiableClassException;
@@ -36,6 +33,11 @@ public class Agent {
             if(a.output != null)
                 t.log = a.output;
             trackingInstance = t;
+        } else if(a.print.equalsIgnoreCase("values")) {
+            ReturnLogger t = new ReturnLogger();
+            if(a.output != null)
+                t.log = a.output;
+            trackingInstance = t;
         } else {
             Logger l =  new Logger();
             if(a.output != null)
@@ -43,8 +45,19 @@ public class Agent {
             if(!a.print.equalsIgnoreCase("tree")) l.tree = false;
             trackingInstance = l;
         }
+        if(a.print.equalsIgnoreCase("values")) {
+            final ReturnTracer transformer = new ReturnTracer(format(a.INCLUDES), format(a.EXCLUDES), format(a.ISOTOPES));
 
-        if(a.includeFile == null) {
+            if (a.strictIncludes) transformer.strictIncludes = true;
+
+            INCLUDES = a.INCLUDES;
+            ISOTOPES = a.ISOTOPES;
+            inst.addTransformer(transformer, true);
+            if (inst.isNativeMethodPrefixSupported()) {
+                inst.setNativeMethodPrefix(transformer, "wrapped_native_method_");
+            }
+
+        } else if(a.includeFile == null) {
             final Tracer transformer = new Tracer(format(a.INCLUDES), format(a.EXCLUDES), format(a.ISOTOPES));
 
             if (a.strictIncludes) transformer.strictIncludes = true;

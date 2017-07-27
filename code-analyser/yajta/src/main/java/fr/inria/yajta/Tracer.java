@@ -153,6 +153,8 @@ public class Tracer implements ClassFileTransformer {
             }
             params += ")";
 
+            //method.insertAfter( "System.err.println( $_ );");
+
             method.insertBefore(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepIn(Thread.currentThread().getName(),\"" + className.replace("/", ".") + "." + method.getName() + params + "\");" + ppostfix);
             method.insertAfter(pprefix + "fr.inria.yajta.Agent.getTrackingInstance().stepOut(Thread.currentThread().getName());" + ppostfix);
 
