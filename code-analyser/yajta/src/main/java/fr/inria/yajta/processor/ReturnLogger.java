@@ -15,7 +15,7 @@ public class ReturnLogger implements Tracking {
     Map<String, Map<String, List<Serializable>>> logs = new ConcurrentHashMap<>();
 
     public void trace(String thread, String method, Object returnValue) {
-        if( returnValue instanceof Serializable ) {
+        if( returnValue instanceof java.io.Serializable ) {
             Map<String, List<Serializable>> threadLogs;
             if(!logs.containsKey(thread)) threadLogs = new ConcurrentHashMap<>();
             else threadLogs = logs.get(thread);
@@ -78,12 +78,13 @@ public class ReturnLogger implements Tracking {
     public void flush() {
         if(log == null) {
             int i = (int) Math.floor(Math.random() * (double) Integer.MAX_VALUE);
-            log = new File("log" + i + ".json");
+            //log = new File("log" + i + ".json");
+            log = new File("log" + i + ".ser");
         }
         try {
             if(log.exists()) log.delete();
             log.createNewFile();
-            bufferedWriter = new BufferedWriter(new FileWriter(log, true));
+            /*bufferedWriter = new BufferedWriter(new FileWriter(log, true));
             bufferedWriter.append("{\"name\":\"Threads\", \"children\":[\n");
             Set<Map.Entry<String, Map<String, List<Serializable>>>> s = logs.entrySet();
             boolean isFirst0 = true;
@@ -110,7 +111,12 @@ public class ReturnLogger implements Tracking {
                 bufferedWriter.append("\n]}");
             }
             bufferedWriter.append("\n]}");
-            bufferedWriter.flush();
+            bufferedWriter.flush();*/
+            FileOutputStream fileOut = new FileOutputStream(log);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(logs);
+            out.close();
+            fileOut.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
