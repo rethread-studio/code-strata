@@ -1,0 +1,40 @@
+4517  execve("/usr/bin/java", ["java", "-jar", "dist/Simple Text Editor.jar"], [/* 72 vars */]) = 0
+4517  brk(NULL)                         = 0x12d0000
+4517  access("/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
+4517  mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f323e959000
+4517  readlink("/proc/self/exe", "/usr/lib/jvm/java-8-oracle/jre/b"..., 4096) = 39
+4517  access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/tls/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/tls/x86_64", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/tls/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/tls", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/x86_64", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/tls/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/tls/x86_64", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/tls/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/tls", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/x86_64", 0x7ffdcc435410) = -1 ENOENT (No such file or directory)
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+4517  stat("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+4517  open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+4517  fstat(3, {st_mode=S_IFREG|0644, st_size=130277, ...}) = 0
+4517  mmap(NULL, 130277, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f323e939000
+4517  close(3)                          = 0
+4517  access("/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
+4517  open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+4517  read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0a\0\0\0\0\0\0"..., 832) = 832
+4517  fstat(3, {st_mode=S_IFREG|0755, st_size=138760, ...}) = 0
+4517  mmap(NULL, 2212904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f323e519000
+4517  mprotect(0x7f323e531000, 2093056, PROT_NONE) = 0
+4517  mmap(0x7f323e730000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17000) = 0x7f323e730000
+4517  mmap(0x7f323e732000, 13352, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f323e732000
+4517  close(3)                          = 0
+4517  open("/usr/lib/jvm/java-8-oracle/jre/bin/../lib/amd64/jli/libjli.so", O_RDONLY|O_CLOEXEC) = 3
+4517  read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20#\0\0\0\0\0\0"..., 832) = 832
+4517  fstat(3, {st_mode=S_IFREG|0755, st_size=102352, ...}) = 0
+4517  mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f323e938000
+4517  mmap(NULL, 2184904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f323e303000

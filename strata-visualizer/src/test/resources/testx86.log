@@ -1,0 +1,1000 @@
+Loaded disassembler from /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/hsdis-amd64.so
+Decoding compiled method 0x00007f2209100010:
+Code:
+[Disassembling for mach='i386:x86-64']
+[Entry Point]
+[Verified Entry Point]
+[Constants]
+  # {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle'
+  #           [sp+0x80]  (sp of caller)
+  0x00007f2209100240: mov    %eax,-0x14000(%rsp)
+  0x00007f2209100247: push   %rbp
+  0x00007f2209100248: sub    $0x70,%rsp
+  0x00007f220910024c: mov    $0x7f220320b4c8,%rsi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100256: mov    0xdc(%rsi),%edi
+  0x00007f220910025c: add    $0x8,%edi
+  0x00007f220910025f: mov    %edi,0xdc(%rsi)
+  0x00007f2209100265: mov    $0x7f220308f0b8,%rsi  ;   {metadata({method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f220910026f: and    $0x0,%edi
+  0x00007f2209100272: cmp    $0x0,%edi
+  0x00007f2209100275: je     0x00007f22091006dc  ;*ldc
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@0 (line 421)
+
+  0x00007f220910027b: mov    $0x76d102918,%rsi  ;   {oop(a 'java/lang/Class' = 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100285: mov    %rsi,%rdi
+  0x00007f2209100288: mov    $0x7f220320b4c8,%rbx  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100292: mov    0x8(%rdi),%edi
+  0x00007f2209100295: shl    $0x3,%rdi
+  0x00007f2209100299: cmp    0x110(%rbx),%rdi
+  0x00007f22091002a0: jne    0x00007f22091002af
+  0x00007f22091002a2: addq   $0x1,0x118(%rbx)
+  0x00007f22091002aa: jmpq   0x00007f2209100315
+  0x00007f22091002af: cmp    0x120(%rbx),%rdi
+  0x00007f22091002b6: jne    0x00007f22091002c5
+  0x00007f22091002b8: addq   $0x1,0x128(%rbx)
+  0x00007f22091002c0: jmpq   0x00007f2209100315
+  0x00007f22091002c5: cmpq   $0x0,0x110(%rbx)
+  0x00007f22091002d0: jne    0x00007f22091002e9
+  0x00007f22091002d2: mov    %rdi,0x110(%rbx)
+  0x00007f22091002d9: movq   $0x1,0x118(%rbx)
+  0x00007f22091002e4: jmpq   0x00007f2209100315
+  0x00007f22091002e9: cmpq   $0x0,0x120(%rbx)
+  0x00007f22091002f4: jne    0x00007f220910030d
+  0x00007f22091002f6: mov    %rdi,0x120(%rbx)
+  0x00007f22091002fd: movq   $0x1,0x128(%rbx)
+  0x00007f2209100308: jmpq   0x00007f2209100315
+  0x00007f220910030d: addq   $0x1,0x108(%rbx)
+  0x00007f2209100315: nop    
+  0x00007f2209100316: nop    
+  0x00007f2209100317: callq  0x00007f2209046020  ; OopMap{off=220}
+                                                ;*invokevirtual desiredAssertionStatus
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@2 (line 421)
+                                                ;   {optimized virtual_call}
+  0x00007f220910031c: cmp    $0x0,%eax
+  0x00007f220910031f: mov    $0x7f220320b4c8,%rsi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100329: mov    $0x138,%rdi
+  0x00007f2209100333: jne    0x00007f2209100343
+  0x00007f2209100339: mov    $0x148,%rdi
+  0x00007f2209100343: mov    (%rsi,%rdi,1),%rbx
+  0x00007f2209100347: lea    0x1(%rbx),%rbx
+  0x00007f220910034b: mov    %rbx,(%rsi,%rdi,1)
+  0x00007f220910034f: jne    0x00007f220910036f  ;*ifne
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@5 (line 421)
+
+  0x00007f2209100355: mov    $0x7f220320b4c8,%rsi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f220910035f: incl   0x158(%rsi)
+  0x00007f2209100365: mov    $0x1,%esi
+  0x00007f220910036a: jmpq   0x00007f2209100374  ;*goto
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@9 (line 421)
+
+  0x00007f220910036f: mov    $0x0,%esi
+  0x00007f2209100374: nopl   0x0(%rax)
+  0x00007f2209100378: jmpq   0x00007f2209100748  ;   {no_reloc}
+  0x00007f220910037d: add    %al,(%rax)
+  0x00007f220910037f: add    %al,(%rax)
+  0x00007f2209100381: add    %al,-0x77bffe1a(%rbx)
+  0x00007f2209100387: ja     0x00007f22091003f9  ;*putstatic $assertionsDisabled
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@13 (line 421)
+
+  0x00007f2209100389: mov    $0x7f220320b4c8,%rsi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100393: addq   $0x1,0x170(%rsi)
+  0x00007f220910039b: nop    
+  0x00007f220910039c: nop    
+  0x00007f220910039d: nop    
+  0x00007f220910039e: nop    
+  0x00007f220910039f: callq  0x00007f2209046420  ; OopMap{off=356}
+                                                ;*invokestatic initStatics
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@16 (line 422)
+                                                ;   {static_call}
+  0x00007f22091003a4: nopl   0x0(%rax)
+  0x00007f22091003a8: jmpq   0x00007f22091007a7  ;   {no_reloc}
+  0x00007f22091003ad: add    %al,(%rax)
+  0x00007f22091003af: add    %al,(%rax)
+  0x00007f22091003b1: add    %ah,0xf(%rsi)
+  0x00007f22091003b4: (bad)  
+  0x00007f22091003b5: add    %r8b,(%rax)
+  0x00007f22091003b8: jmpq   0x00007f22091007c1  ; implicit exception: dispatches to 0x00007f22091007b1
+  0x00007f22091003bd: nop    
+  0x00007f22091003be: shl    $0x3,%rsi          ;*getstatic UNSAFE
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@19 (line 1451)
+
+  0x00007f22091003c2: mov    %rsi,0x50(%rsp)
+  0x00007f22091003c7: mov    $0x76d102918,%rdi  ;   {oop(a 'java/lang/Class' = 'java/lang/invoke/MethodHandle')}
+  0x00007f22091003d1: mov    %rdi,%rbx
+  0x00007f22091003d4: mov    $0x7f220320b4c8,%rax  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f22091003de: mov    0x8(%rbx),%ebx
+  0x00007f22091003e1: shl    $0x3,%rbx
+  0x00007f22091003e5: cmp    0x188(%rax),%rbx
+  0x00007f22091003ec: jne    0x00007f22091003fb
+  0x00007f22091003ee: addq   $0x1,0x190(%rax)
+  0x00007f22091003f6: jmpq   0x00007f2209100461
+  0x00007f22091003fb: cmp    0x198(%rax),%rbx
+  0x00007f2209100402: jne    0x00007f2209100411
+  0x00007f2209100404: addq   $0x1,0x1a0(%rax)
+  0x00007f220910040c: jmpq   0x00007f2209100461
+  0x00007f2209100411: cmpq   $0x0,0x188(%rax)
+  0x00007f220910041c: jne    0x00007f2209100435
+  0x00007f220910041e: mov    %rbx,0x188(%rax)
+  0x00007f2209100425: movq   $0x1,0x190(%rax)
+  0x00007f2209100430: jmpq   0x00007f2209100461
+  0x00007f2209100435: cmpq   $0x0,0x198(%rax)
+  0x00007f2209100440: jne    0x00007f2209100459
+  0x00007f2209100442: mov    %rbx,0x198(%rax)
+  0x00007f2209100449: movq   $0x1,0x1a0(%rax)
+  0x00007f2209100454: jmpq   0x00007f2209100461
+  0x00007f2209100459: addq   $0x1,0x180(%rax)
+  0x00007f2209100461: mov    $0x7f220320b958,%rbx  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f220910046b: mov    0xdc(%rbx),%eax
+  0x00007f2209100471: add    $0x8,%eax
+  0x00007f2209100474: mov    %eax,0xdc(%rbx)
+  0x00007f220910047a: mov    $0x7f2203047a08,%rbx  ;   {metadata({method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f2209100484: and    $0x7ffff8,%eax
+  0x00007f220910048a: cmp    $0x0,%eax
+  0x00007f220910048d: je     0x00007f22091007cb
+  0x00007f2209100493: mov    $0x7f220320b958,%rbx  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f220910049d: addq   $0x1,0x108(%rbx)
+  0x00007f22091004a5: mov    %rdi,0x48(%rsp)
+  0x00007f22091004aa: nop    
+  0x00007f22091004ab: nop    
+  0x00007f22091004ac: nop    
+  0x00007f22091004ad: nop    
+  0x00007f22091004ae: nop    
+  0x00007f22091004af: callq  0x00007f2209046420  ; OopMap{[72]=Oop [80]=Oop off=628}
+                                                ;*invokestatic getCallerClass
+                                                ; - java.lang.Class::getDeclaredField@2 (line 2067)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {static_call}
+  0x00007f22091004b4: mov    0x48(%rsp),%rdi
+  0x00007f22091004b9: mov    $0x7f220320b958,%rdx  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f22091004c3: addq   $0x1,0x118(%rdx)
+  0x00007f22091004cb: mov    $0x1,%edx
+  0x00007f22091004d0: mov    %rax,%rcx
+  0x00007f22091004d3: mov    $0x1,%r8d
+  0x00007f22091004d9: mov    0x48(%rsp),%rsi    ;*invokespecial checkMemberAccess
+                                                ; - java.lang.Class::getDeclaredField@6 (line 2067)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f22091004de: nop    
+  0x00007f22091004df: callq  0x00007f2209046020  ; OopMap{[72]=Oop [80]=Oop off=676}
+                                                ;*invokespecial checkMemberAccess
+                                                ; - java.lang.Class::getDeclaredField@6 (line 2067)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {optimized virtual_call}
+  0x00007f22091004e4: mov    0x48(%rsp),%rdi
+  0x00007f22091004e9: mov    $0x7f220320b958,%rdx  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f22091004f3: addq   $0x1,0x128(%rdx)
+  0x00007f22091004fb: mov    $0x0,%edx
+  0x00007f2209100500: mov    0x48(%rsp),%rsi    ;*invokespecial privateGetDeclaredFields
+                                                ; - java.lang.Class::getDeclaredField@11 (line 2068)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f2209100505: nop    
+  0x00007f2209100506: nop    
+  0x00007f2209100507: callq  0x00007f2209046020  ; OopMap{[80]=Oop off=716}
+                                                ;*invokespecial privateGetDeclaredFields
+                                                ; - java.lang.Class::getDeclaredField@11 (line 2068)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {optimized virtual_call}
+  0x00007f220910050c: mov    $0x7f220320b958,%rsi  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f2209100516: addq   $0x1,0x138(%rsi)
+  0x00007f220910051e: mov    $0x76d242900,%rdx  ;   {oop("form")}
+  0x00007f2209100528: mov    %rax,%rsi          ;*invokestatic searchFields
+                                                ; - java.lang.Class::getDeclaredField@15 (line 2068)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f220910052b: nop    
+  0x00007f220910052c: nop    
+  0x00007f220910052d: nop    
+  0x00007f220910052e: nop    
+  0x00007f220910052f: callq  0x00007f2209046420  ; OopMap{[80]=Oop off=756}
+                                                ;*invokestatic searchFields
+                                                ; - java.lang.Class::getDeclaredField@15 (line 2068)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {static_call}
+  0x00007f2209100534: cmp    $0x0,%rax
+  0x00007f2209100538: mov    $0x7f220320b958,%rdx  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f2209100542: mov    $0x148,%rsi
+  0x00007f220910054c: jne    0x00007f220910055c
+  0x00007f2209100552: mov    $0x158,%rsi
+  0x00007f220910055c: mov    (%rdx,%rsi,1),%rdi
+  0x00007f2209100560: lea    0x1(%rdi),%rdi
+  0x00007f2209100564: mov    %rdi,(%rdx,%rsi,1)
+  0x00007f2209100568: je     0x00007f2209100642  ;*ifnonnull
+                                                ; - java.lang.Class::getDeclaredField@20 (line 2069)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f220910056e: mov    0x50(%rsp),%rsi
+  0x00007f2209100573: cmp    (%rsi),%rax        ; implicit exception: dispatches to 0x00007f22091007e2
+  0x00007f2209100576: mov    %rsi,%rdx
+  0x00007f2209100579: mov    $0x7f220320b4c8,%rdi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f2209100583: mov    0x8(%rdx),%edx
+  0x00007f2209100586: shl    $0x3,%rdx
+  0x00007f220910058a: cmp    0x1b8(%rdi),%rdx
+  0x00007f2209100591: jne    0x00007f22091005a0
+  0x00007f2209100593: addq   $0x1,0x1c0(%rdi)
+  0x00007f220910059b: jmpq   0x00007f2209100606
+  0x00007f22091005a0: cmp    0x1c8(%rdi),%rdx
+  0x00007f22091005a7: jne    0x00007f22091005b6
+  0x00007f22091005a9: addq   $0x1,0x1d0(%rdi)
+  0x00007f22091005b1: jmpq   0x00007f2209100606
+  0x00007f22091005b6: cmpq   $0x0,0x1b8(%rdi)
+  0x00007f22091005c1: jne    0x00007f22091005da
+  0x00007f22091005c3: mov    %rdx,0x1b8(%rdi)
+  0x00007f22091005ca: movq   $0x1,0x1c0(%rdi)
+  0x00007f22091005d5: jmpq   0x00007f2209100606
+  0x00007f22091005da: cmpq   $0x0,0x1c8(%rdi)
+  0x00007f22091005e5: jne    0x00007f22091005fe
+  0x00007f22091005e7: mov    %rdx,0x1c8(%rdi)
+  0x00007f22091005ee: movq   $0x1,0x1d0(%rdi)
+  0x00007f22091005f9: jmpq   0x00007f2209100606
+  0x00007f22091005fe: addq   $0x1,0x1b0(%rdi)
+  0x00007f2209100606: mov    %rax,%rdx          ;*invokevirtual objectFieldOffset
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@29 (line 1451)
+
+  0x00007f2209100609: nop    
+  0x00007f220910060a: nop    
+  0x00007f220910060b: nop    
+  0x00007f220910060c: nop    
+  0x00007f220910060d: nop    
+  0x00007f220910060e: nop    
+  0x00007f220910060f: callq  0x00007f2209046020  ; OopMap{off=980}
+                                                ;*invokevirtual objectFieldOffset
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@29 (line 1451)
+                                                ;   {optimized virtual_call}
+  0x00007f2209100614: nopl   0x0(%rax)
+  0x00007f2209100618: jmpq   0x00007f220910083c  ;   {no_reloc}
+  0x00007f220910061d: add    %al,(%rax)
+  0x00007f220910061f: add    %al,(%rax)
+  0x00007f2209100621: add    %cl,-0x77(%rax)
+  0x00007f2209100624: rex.X pushq  $0xffffffffb4c8ba48
+                                                ;*putstatic FORM_OFFSET
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@32 (line 1451)
+                                                ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f220910062a: and    %al,(%rbx)
+  0x00007f220910062c: and    0x0(%rdi),%bh
+  0x00007f220910062f: add    %bh,%bh
+  0x00007f2209100631: (bad)  
+  0x00007f2209100632: loopne 0x00007f2209100635
+  0x00007f2209100634: add    %al,(%rax)         ;*goto
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@35 (line 1454)
+
+  0x00007f2209100636: add    $0x70,%rsp
+  0x00007f220910063a: pop    %rbp
+  0x00007f220910063b: test   %eax,0x166f0abf(%rip)        # 0x00007f221f7f1100
+                                                ;   {poll_return}
+  0x00007f2209100641: retq                      ;*return
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@44 (line 1455)
+
+  0x00007f2209100642: nopw   0x0(%rax,%rax,1)
+  0x00007f2209100648: jmpq   0x00007f2209100855  ;   {no_reloc}
+  0x00007f220910064d: add    %al,(%rax)
+  0x00007f220910064f: add    %al,(%rax)
+  0x00007f2209100651: add    %ch,%cl
+  0x00007f2209100653: or     %al,(%rdx)
+  0x00007f2209100655: add    %al,(%rax)         ;*new  ; - java.lang.Class::getDeclaredField@23 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f2209100657: mov    %rax,%rdx
+  0x00007f220910065a: mov    $0x7f220320b958,%rdi  ;   {metadata(method data for {method} {0x00007f2203047a08} 'getDeclaredField' '(Ljava/lang/String;)Ljava/lang/reflect/Field;' in 'java/lang/Class')}
+  0x00007f2209100664: addq   $0x1,0x168(%rdi)
+  0x00007f220910066c: mov    $0x76d242900,%rdx  ;   {oop("form")}
+  0x00007f2209100676: mov    %rax,%rsi          ;*invokespecial <init>
+                                                ; - java.lang.Class::getDeclaredField@28 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f2209100679: mov    %rax,0x58(%rsp)
+  0x00007f220910067e: nop    
+  0x00007f220910067f: callq  0x00007f2209046020  ; OopMap{[80]=Oop [88]=Oop off=1092}
+                                                ;*invokespecial <init>
+                                                ; - java.lang.Class::getDeclaredField@28 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {optimized virtual_call}
+  0x00007f2209100684: mov    0x58(%rsp),%rax    ; OopMap{[80]=Oop rax=Oop off=1097}
+                                                ;*athrow
+                                                ; - java.lang.Class::getDeclaredField@31 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f2209100689: mov    $0x7f2209100689,%rdx  ;   {section_word}
+  0x00007f2209100693: callq  0x00007f220906bde0  ;   {runtime_call}
+  0x00007f2209100698: nop                       ;*athrow
+                                                ; - java.lang.Class::getDeclaredField@31 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+
+  0x00007f2209100699: mov    0x2a8(%r15),%rax
+  0x00007f22091006a0: xor    %r10,%r10
+  0x00007f22091006a3: mov    %r10,0x2a8(%r15)
+  0x00007f22091006aa: xor    %r10,%r10
+  0x00007f22091006ad: mov    %r10,0x2b0(%r15)
+  0x00007f22091006b4: mov    $0x7f220320b4c8,%rsi  ;   {metadata(method data for {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle')}
+  0x00007f22091006be: addq   $0x1,0x1f8(%rsi)
+  0x00007f22091006c6: mov    %rax,%rsi          ;*invokestatic newInternalError
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@40 (line 1453)
+
+  0x00007f22091006c9: nop    
+  0x00007f22091006ca: nop    
+  0x00007f22091006cb: nop    
+  0x00007f22091006cc: nop    
+  0x00007f22091006cd: nop    
+  0x00007f22091006ce: nop    
+  0x00007f22091006cf: callq  0x00007f2209046420  ; OopMap{off=1172}
+                                                ;*invokestatic newInternalError
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@40 (line 1453)
+                                                ;   {static_call}
+  0x00007f22091006d4: cmp    (%rax),%rax        ; implicit exception: dispatches to 0x00007f220910086c
+  0x00007f22091006d7: jmpq   0x00007f220910089c
+  0x00007f22091006dc: mov    %rsi,0x8(%rsp)
+  0x00007f22091006e1: movq   $0xffffffffffffffff,(%rsp)
+  0x00007f22091006e9: callq  0x00007f22090fdea0  ; OopMap{off=1198}
+                                                ;*synchronization entry
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@-1 (line 421)
+                                                ;   {runtime_call}
+  0x00007f22091006ee: jmpq   0x00007f220910027b
+  0x00007f22091006f3: mov    $0x0,%rdi          ;   {oop(NULL)}
+  0x00007f22091006fd: push   %rax
+  0x00007f22091006fe: push   %rbx
+  0x00007f22091006ff: mov    0x48(%rdi),%rbx
+  0x00007f2209100703: push   %rdi
+  0x00007f2209100704: push   %rsi
+  0x00007f2209100705: push   %rdx
+  0x00007f2209100706: push   %rcx
+  0x00007f2209100707: push   %r8
+  0x00007f2209100709: push   %r9
+  0x00007f220910070b: push   %r10
+  0x00007f220910070d: mov    %rsp,%r10
+  0x00007f2209100710: and    $0xfffffffffffffff0,%rsp
+  0x00007f2209100714: push   %r10
+  0x00007f2209100716: push   %r11
+  0x00007f2209100718: mov    $0x1,%edi
+  0x00007f220910071d: callq  0x00007f221f3c0320  ;   {runtime_call}
+  0x00007f2209100722: pop    %r11
+  0x00007f2209100724: pop    %rsp
+  0x00007f2209100725: pop    %r10
+  0x00007f2209100727: pop    %r9
+  0x00007f2209100729: pop    %r8
+  0x00007f220910072b: pop    %rcx
+  0x00007f220910072c: pop    %rdx
+  0x00007f220910072d: pop    %rsi
+  0x00007f220910072e: pop    %rdi
+  0x00007f220910072f: cmp    0x118(%rbx),%rax
+  0x00007f2209100736: pop    %rbx
+  0x00007f2209100737: pop    %rax
+  0x00007f2209100738: jne    0x00007f2209100748
+  0x00007f220910073e: jmpq   0x00007f2209100382
+  0x00007f2209100743: mov    $0xa4b5500,%eax
+  0x00007f2209100748: callq  0x00007f22090fd2a0  ; OopMap{off=1293}
+                                                ;*putstatic $assertionsDisabled
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@13 (line 421)
+                                                ;   {runtime_call}
+  0x00007f220910074d: jmpq   0x00007f2209100378
+  0x00007f2209100752: mov    $0x0,%rsi          ;   {oop(NULL)}
+  0x00007f220910075c: push   %rax
+  0x00007f220910075d: push   %rbx
+  0x00007f220910075e: mov    0x48(%rsi),%rbx
+  0x00007f2209100762: push   %rdi
+  0x00007f2209100763: push   %rsi
+  0x00007f2209100764: push   %rdx
+  0x00007f2209100765: push   %rcx
+  0x00007f2209100766: push   %r8
+  0x00007f2209100768: push   %r9
+  0x00007f220910076a: push   %r10
+  0x00007f220910076c: mov    %rsp,%r10
+  0x00007f220910076f: and    $0xfffffffffffffff0,%rsp
+  0x00007f2209100773: push   %r10
+  0x00007f2209100775: push   %r11
+  0x00007f2209100777: mov    $0x1,%edi
+  0x00007f220910077c: callq  0x00007f221f3c0320  ;   {runtime_call}
+  0x00007f2209100781: pop    %r11
+  0x00007f2209100783: pop    %rsp
+  0x00007f2209100784: pop    %r10
+  0x00007f2209100786: pop    %r9
+  0x00007f2209100788: pop    %r8
+  0x00007f220910078a: pop    %rcx
+  0x00007f220910078b: pop    %rdx
+  0x00007f220910078c: pop    %rsi
+  0x00007f220910078d: pop    %rdi
+  0x00007f220910078e: cmp    0x118(%rbx),%rax
+  0x00007f2209100795: pop    %rbx
+  0x00007f2209100796: pop    %rax
+  0x00007f2209100797: jne    0x00007f22091007a7
+  0x00007f220910079d: jmpq   0x00007f22091003b2
+  0x00007f22091007a2: mov    $0xa4b5500,%eax
+  0x00007f22091007a7: callq  0x00007f22090fd2a0  ; OopMap{off=1388}
+                                                ;*getstatic UNSAFE
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@19 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f22091007ac: jmpq   0x00007f22091003a8
+  0x00007f22091007b1: callq  0x00007f22090f9a40  ; OopMap{rsi=Oop off=1398}
+                                                ;*getstatic UNSAFE
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@19 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f22091007b6: mov    0x0(%rsi),%esi
+  0x00007f22091007bc: mov    $0x6050b00,%eax
+  0x00007f22091007c1: callq  0x00007f22090fcaa0  ; OopMap{rsi=Oop off=1414}
+                                                ;*getstatic UNSAFE
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@19 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f22091007c6: jmpq   0x00007f22091003b8
+  0x00007f22091007cb: mov    %rbx,0x8(%rsp)
+  0x00007f22091007d0: movq   $0xffffffffffffffff,(%rsp)
+  0x00007f22091007d8: callq  0x00007f22090fdea0  ; OopMap{rsi=Oop [80]=Oop rdi=Oop off=1437}
+                                                ;*synchronization entry
+                                                ; - java.lang.Class::getDeclaredField@-1 (line 2067)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f22091007dd: jmpq   0x00007f2209100493
+  0x00007f22091007e2: callq  0x00007f22090f9a40  ; OopMap{rax=Oop rsi=Oop [80]=Oop off=1447}
+                                                ;*invokevirtual objectFieldOffset
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@29 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f22091007e7: mov    $0x0,%rdx          ;   {oop(NULL)}
+  0x00007f22091007f1: push   %rax
+  0x00007f22091007f2: push   %rbx
+  0x00007f22091007f3: mov    0x48(%rdx),%rbx
+  0x00007f22091007f7: push   %rdi
+  0x00007f22091007f8: push   %rsi
+  0x00007f22091007f9: push   %rdx
+  0x00007f22091007fa: push   %rcx
+  0x00007f22091007fb: push   %r8
+  0x00007f22091007fd: push   %r9
+  0x00007f22091007ff: push   %r10
+  0x00007f2209100801: mov    %rsp,%r10
+  0x00007f2209100804: and    $0xfffffffffffffff0,%rsp
+  0x00007f2209100808: push   %r10
+  0x00007f220910080a: push   %r11
+  0x00007f220910080c: mov    $0x1,%edi
+  0x00007f2209100811: callq  0x00007f221f3c0320  ;   {runtime_call}
+  0x00007f2209100816: pop    %r11
+  0x00007f2209100818: pop    %rsp
+  0x00007f2209100819: pop    %r10
+  0x00007f220910081b: pop    %r9
+  0x00007f220910081d: pop    %r8
+  0x00007f220910081f: pop    %rcx
+  0x00007f2209100820: pop    %rdx
+  0x00007f2209100821: pop    %rsi
+  0x00007f2209100822: pop    %rdi
+  0x00007f2209100823: cmp    0x118(%rbx),%rax
+  0x00007f220910082a: pop    %rbx
+  0x00007f220910082b: pop    %rax
+  0x00007f220910082c: jne    0x00007f220910083c
+  0x00007f2209100832: jmpq   0x00007f2209100622
+  0x00007f2209100837: mov    $0xa4b5500,%eax
+  0x00007f220910083c: callq  0x00007f22090fd2a0  ; OopMap{off=1537}
+                                                ;*putstatic FORM_OFFSET
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@32 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f2209100841: jmpq   0x00007f2209100618
+  0x00007f2209100846: mov    $0x0,%rdx          ;   {metadata(NULL)}
+  0x00007f2209100850: mov    $0xa050f00,%eax
+  0x00007f2209100855: callq  0x00007f22090fcea0  ; OopMap{[80]=Oop off=1562}
+                                                ;*new  ; - java.lang.Class::getDeclaredField@23 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f220910085a: jmpq   0x00007f2209100648
+  0x00007f220910085f: mov    %rdx,%rdx
+  0x00007f2209100862: callq  0x00007f22090f9ee0  ; OopMap{[80]=Oop off=1575}
+                                                ;*new  ; - java.lang.Class::getDeclaredField@23 (line 2070)
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@26 (line 1451)
+                                                ;   {runtime_call}
+  0x00007f2209100867: jmpq   0x00007f2209100657
+  0x00007f220910086c: callq  0x00007f22090f9a40  ; OopMap{rax=Oop off=1585}
+                                                ;*athrow
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@43 (line 1453)
+                                                ;   {runtime_call}
+  0x00007f2209100871: nop    
+  0x00007f2209100872: nop    
+  0x00007f2209100873: mov    0x2a8(%r15),%rax
+  0x00007f220910087a: mov    $0x0,%r10
+  0x00007f2209100884: mov    %r10,0x2a8(%r15)
+  0x00007f220910088b: mov    $0x0,%r10
+  0x00007f2209100895: mov    %r10,0x2b0(%r15)
+  0x00007f220910089c: add    $0x70,%rsp
+  0x00007f22091008a0: pop    %rbp
+  0x00007f22091008a1: jmpq   0x00007f220906c4a0  ;   {runtime_call}
+  0x00007f22091008a6: hlt    
+  0x00007f22091008a7: hlt    
+  0x00007f22091008a8: hlt    
+  0x00007f22091008a9: hlt    
+  0x00007f22091008aa: hlt    
+  0x00007f22091008ab: hlt    
+  0x00007f22091008ac: hlt    
+  0x00007f22091008ad: hlt    
+  0x00007f22091008ae: hlt    
+  0x00007f22091008af: hlt    
+  0x00007f22091008b0: hlt    
+  0x00007f22091008b1: hlt    
+  0x00007f22091008b2: hlt    
+  0x00007f22091008b3: hlt    
+  0x00007f22091008b4: hlt    
+  0x00007f22091008b5: hlt    
+  0x00007f22091008b6: hlt    
+  0x00007f22091008b7: hlt    
+  0x00007f22091008b8: hlt    
+  0x00007f22091008b9: hlt    
+  0x00007f22091008ba: hlt    
+  0x00007f22091008bb: hlt    
+  0x00007f22091008bc: hlt    
+  0x00007f22091008bd: hlt    
+  0x00007f22091008be: hlt    
+  0x00007f22091008bf: hlt    
+[Stub Code]
+  0x00007f22091008c0: nop                       ;   {no_reloc}
+  0x00007f22091008c1: nop    
+  0x00007f22091008c2: nop    
+  0x00007f22091008c3: nop    
+  0x00007f22091008c4: nop    
+  0x00007f22091008c5: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f22091008cf: jmpq   0x00007f22091008cf  ;   {runtime_call}
+  0x00007f22091008d4: nop    
+  0x00007f22091008d5: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f22091008df: jmpq   0x00007f22091008df  ;   {runtime_call}
+  0x00007f22091008e4: nop    
+  0x00007f22091008e5: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f22091008ef: jmpq   0x00007f22091008ef  ;   {runtime_call}
+  0x00007f22091008f4: nop    
+  0x00007f22091008f5: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f22091008ff: jmpq   0x00007f22091008ff  ;   {runtime_call}
+  0x00007f2209100904: nop    
+  0x00007f2209100905: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f220910090f: jmpq   0x00007f220910090f  ;   {runtime_call}
+  0x00007f2209100914: nop    
+  0x00007f2209100915: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f220910091f: jmpq   0x00007f220910091f  ;   {runtime_call}
+  0x00007f2209100924: nop    
+  0x00007f2209100925: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f220910092f: jmpq   0x00007f220910092f  ;   {runtime_call}
+  0x00007f2209100934: nop    
+  0x00007f2209100935: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f220910093f: jmpq   0x00007f220910093f  ;   {runtime_call}
+  0x00007f2209100944: nop    
+  0x00007f2209100945: mov    $0x0,%rbx          ;   {static_stub}
+  0x00007f220910094f: jmpq   0x00007f220910094f  ;   {runtime_call}
+[Exception Handler]
+  0x00007f2209100954: callq  0x00007f22090fb820  ;   {runtime_call}
+  0x00007f2209100959: mov    %rsp,-0x28(%rsp)
+  0x00007f220910095e: sub    $0x80,%rsp
+  0x00007f2209100965: mov    %rax,0x78(%rsp)
+  0x00007f220910096a: mov    %rcx,0x70(%rsp)
+  0x00007f220910096f: mov    %rdx,0x68(%rsp)
+  0x00007f2209100974: mov    %rbx,0x60(%rsp)
+  0x00007f2209100979: mov    %rbp,0x50(%rsp)
+  0x00007f220910097e: mov    %rsi,0x48(%rsp)
+  0x00007f2209100983: mov    %rdi,0x40(%rsp)
+  0x00007f2209100988: mov    %r8,0x38(%rsp)
+  0x00007f220910098d: mov    %r9,0x30(%rsp)
+  0x00007f2209100992: mov    %r10,0x28(%rsp)
+  0x00007f2209100997: mov    %r11,0x20(%rsp)
+  0x00007f220910099c: mov    %r12,0x18(%rsp)
+  0x00007f22091009a1: mov    %r13,0x10(%rsp)
+  0x00007f22091009a6: mov    %r14,0x8(%rsp)
+  0x00007f22091009ab: mov    %r15,(%rsp)
+  0x00007f22091009af: mov    $0x7f221e6e9856,%rdi  ;   {external_word}
+  0x00007f22091009b9: mov    $0x7f2209100959,%rsi  ;   {internal_word}
+  0x00007f22091009c3: mov    %rsp,%rdx
+  0x00007f22091009c6: and    $0xfffffffffffffff0,%rsp
+  0x00007f22091009ca: callq  0x00007f221e415e60  ;   {runtime_call}
+  0x00007f22091009cf: hlt    
+[Deopt Handler Code]
+  0x00007f22091009d0: mov    $0x7f22091009d0,%r10  ;   {section_word}
+  0x00007f22091009da: push   %r10
+  0x00007f22091009dc: jmpq   0x00007f22090473c0  ;   {runtime_call}
+  0x00007f22091009e1: hlt    
+  0x00007f22091009e2: hlt    
+  0x00007f22091009e3: hlt    
+  0x00007f22091009e4: hlt    
+  0x00007f22091009e5: hlt    
+  0x00007f22091009e6: hlt    
+  0x00007f22091009e7: hlt    
+Decoding compiled method 0x00007f2209102bd0:
+Code:
+[Entry Point]
+[Verified Entry Point]
+[Constants]
+  # {method} {0x00007f220308f0b8} '<clinit>' '()V' in 'java/lang/invoke/MethodHandle'
+  #           [sp+0x20]  (sp of caller)
+  0x00007f2209102d20: mov    %eax,-0x14000(%rsp)
+  0x00007f2209102d27: push   %rbp
+  0x00007f2209102d28: sub    $0x10,%rsp         ;*synchronization entry
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@-1 (line 421)
+
+  0x00007f2209102d2c: mov    $0x76d102918,%rsi  ;   {oop(a 'java/lang/Class' = 'java/lang/invoke/MethodHandle')}
+  0x00007f2209102d36: nop    
+  0x00007f2209102d37: callq  0x00007f2209046020  ; OopMap{off=28}
+                                                ;*invokevirtual desiredAssertionStatus
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@2 (line 421)
+                                                ;   {optimized virtual_call}
+  0x00007f2209102d3c: xor    $0x1,%eax
+  0x00007f2209102d3f: mov    $0x76d102918,%r10  ;   {oop(a 'java/lang/Class' = 'java/lang/invoke/MethodHandle')}
+  0x00007f2209102d49: mov    %al,0x70(%r10)     ;*invokevirtual desiredAssertionStatus
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@2 (line 421)
+
+  0x00007f2209102d4d: mov    $0xf9,%esi
+  0x00007f2209102d52: nop    
+  0x00007f2209102d53: callq  0x00007f22090051a0  ; OopMap{off=56}
+                                                ;*invokestatic initStatics
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@16 (line 422)
+                                                ;   {runtime_call}
+  0x00007f2209102d58: callq  0x00007f221e4fc8c0  ;*invokevirtual desiredAssertionStatus
+                                                ; - java.lang.invoke.MethodHandle::<clinit>@2 (line 421)
+                                                ;   {runtime_call}
+  0x00007f2209102d5d: mov    %rax,%rsi
+  0x00007f2209102d60: add    $0x10,%rsp
+  0x00007f2209102d64: pop    %rbp
+  0x00007f2209102d65: jmpq   0x00007f22090fe320  ;   {runtime_call}
+  0x00007f2209102d6a: hlt    
+  0x00007f2209102d6b: hlt    
+  0x00007f2209102d6c: hlt    
+  0x00007f2209102d6d: hlt    
+  0x00007f2209102d6e: hlt    
+  0x00007f2209102d6f: hlt    
+  0x00007f2209102d70: hlt    
+  0x00007f2209102d71: hlt    
+  0x00007f2209102d72: hlt    
+  0x00007f2209102d73: hlt    
+  0x00007f2209102d74: hlt    
+  0x00007f2209102d75: hlt    
+  0x00007f2209102d76: hlt    
+  0x00007f2209102d77: hlt    
+  0x00007f2209102d78: hlt    
+  0x00007f2209102d79: hlt    
+  0x00007f2209102d7a: hlt    
+  0x00007f2209102d7b: hlt    
+  0x00007f2209102d7c: hlt    
+  0x00007f2209102d7d: hlt    
+  0x00007f2209102d7e: hlt    
+  0x00007f2209102d7f: hlt    
+[Stub Code]
+  0x00007f2209102d80: mov    $0x0,%rbx          ;   {no_reloc}
+  0x00007f2209102d8a: jmpq   0x00007f2209102d8a  ;   {runtime_call}
+[Exception Handler]
+  0x00007f2209102d8f: jmpq   0x00007f22090f94a0  ;   {runtime_call}
+[Deopt Handler Code]
+  0x00007f2209102d94: callq  0x00007f2209102d99
+  0x00007f2209102d99: subq   $0x5,(%rsp)
+  0x00007f2209102d9e: jmpq   0x00007f22090473c0  ;   {runtime_call}
+  0x00007f2209102da3: hlt    
+  0x00007f2209102da4: hlt    
+  0x00007f2209102da5: hlt    
+  0x00007f2209102da6: hlt    
+  0x00007f2209102da7: hlt    
+Decoding compiled method 0x00007f2209102e90:
+Code:
+[Entry Point]
+[Constants]
+  # {method} {0x00007f2203049bb0} 'desiredAssertionStatus' '()Z' in 'java/lang/Class'
+  #           [sp+0xc0]  (sp of caller)
+  0x00007f22091030e0: mov    0x8(%rsi),%r10d
+  0x00007f22091030e4: shl    $0x3,%r10
+  0x00007f22091030e8: cmp    %rax,%r10
+  0x00007f22091030eb: jne    0x00007f2209045e20  ;   {runtime_call}
+  0x00007f22091030f1: nopw   0x0(%rax,%rax,1)
+  0x00007f22091030fc: xchg   %ax,%ax
+[Verified Entry Point]
+  0x00007f2209103100: mov    %eax,-0x14000(%rsp)
+  0x00007f2209103107: push   %rbp
+  0x00007f2209103108: sub    $0xb0,%rsp
+  0x00007f220910310f: mov    %rsi,0x80(%rsp)
+  0x00007f2209103117: mov    $0x7f220320b708,%rdi  ;   {metadata(method data for {method} {0x00007f2203049bb0} 'desiredAssertionStatus' '()Z' in 'java/lang/Class')}
+  0x00007f2209103121: mov    0xdc(%rdi),%ebx
+  0x00007f2209103127: add    $0x8,%ebx
+  0x00007f220910312a: mov    %ebx,0xdc(%rdi)
+  0x00007f2209103130: mov    $0x7f2203049bb0,%rdi  ;   {metadata({method} {0x00007f2203049bb0} 'desiredAssertionStatus' '()Z' in 'java/lang/Class')}
+  0x00007f220910313a: and    $0x0,%ebx
+  0x00007f220910313d: cmp    $0x0,%ebx
+  0x00007f2209103140: je     0x00007f2209103df8  ;*aload_0
+                                                ; - java.lang.Class::desiredAssertionStatus@0 (line 3208)
+
+  0x00007f2209103146: mov    %rsi,%rdi
+  0x00007f2209103149: mov    $0x7f220320b708,%rbx  ;   {metadata(method data for {method} {0x00007f2203049bb0} 'desiredAssertionStatus' '()Z' in 'java/lang/Class')}
+  0x00007f2209103153: mov    0x8(%rdi),%edi
+  0x00007f2209103156: shl    $0x3,%rdi
+  0x00007f220910315a: cmp    0x110(%rbx),%rdi
+  0x00007f2209103161: jne    0x00007f2209103170
+  0x00007f2209103163: addq   $0x1,0x118(%rbx)
+  0x00007f220910316b: jmpq   0x00007f22091031d6
+  0x00007f2209103170: cmp    0x120(%rbx),%rdi
+  0x00007f2209103177: jne    0x00007f2209103186
+  0x00007f2209103179: addq   $0x1,0x128(%rbx)
+  0x00007f2209103181: jmpq   0x00007f22091031d6
+  0x00007f2209103186: cmpq   $0x0,0x110(%rbx)
+  0x00007f2209103191: jne    0x00007f22091031aa
+  0x00007f2209103193: mov    %rdi,0x110(%rbx)
+  0x00007f220910319a: movq   $0x1,0x118(%rbx)
+  0x00007f22091031a5: jmpq   0x00007f22091031d6
+  0x00007f22091031aa: cmpq   $0x0,0x120(%rbx)
+  0x00007f22091031b5: jne    0x00007f22091031ce
+  0x00007f22091031b7: mov    %rdi,0x120(%rbx)
+  0x00007f22091031be: movq   $0x1,0x128(%rbx)
+  0x00007f22091031c9: jmpq   0x00007f22091031d6
+  0x00007f22091031ce: addq   $0x1,0x108(%rbx)
+  0x00007f22091031d6: mov    $0x7f220320c210,%rdi  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f22091031e0: mov    0xdc(%rdi),%ebx
+  0x00007f22091031e6: add    $0x8,%ebx
+  0x00007f22091031e9: mov    %ebx,0xdc(%rdi)
+  0x00007f22091031ef: mov    $0x7f22030459c0,%rdi  ;   {metadata({method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f22091031f9: and    $0x7ffff8,%ebx
+  0x00007f22091031ff: cmp    $0x0,%ebx
+  0x00007f2209103202: je     0x00007f2209103e0f
+  0x00007f2209103208: mov    %rsi,%rdi
+  0x00007f220910320b: mov    $0x7f220320c210,%rbx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f2209103215: mov    0x8(%rdi),%edi
+  0x00007f2209103218: shl    $0x3,%rdi
+  0x00007f220910321c: cmp    0x110(%rbx),%rdi
+  0x00007f2209103223: jne    0x00007f2209103232
+  0x00007f2209103225: addq   $0x1,0x118(%rbx)
+  0x00007f220910322d: jmpq   0x00007f2209103298
+  0x00007f2209103232: cmp    0x120(%rbx),%rdi
+  0x00007f2209103239: jne    0x00007f2209103248
+  0x00007f220910323b: addq   $0x1,0x128(%rbx)
+  0x00007f2209103243: jmpq   0x00007f2209103298
+  0x00007f2209103248: cmpq   $0x0,0x110(%rbx)
+  0x00007f2209103253: jne    0x00007f220910326c
+  0x00007f2209103255: mov    %rdi,0x110(%rbx)
+  0x00007f220910325c: movq   $0x1,0x118(%rbx)
+  0x00007f2209103267: jmpq   0x00007f2209103298
+  0x00007f220910326c: cmpq   $0x0,0x120(%rbx)
+  0x00007f2209103277: jne    0x00007f2209103290
+  0x00007f2209103279: mov    %rdi,0x120(%rbx)
+  0x00007f2209103280: movq   $0x1,0x128(%rbx)
+  0x00007f220910328b: jmpq   0x00007f2209103298
+  0x00007f2209103290: addq   $0x1,0x108(%rbx)
+  0x00007f2209103298: mov    0x18(%rsi),%edi
+  0x00007f220910329b: shl    $0x3,%rdi          ;*getfield classLoader
+                                                ; - java.lang.Class::getClassLoader0@1 (line 689)
+                                                ; - java.lang.Class::getClassLoader@1 (line 678)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910329f: mov    %rdi,0x78(%rsp)
+  0x00007f22091032a4: cmp    $0x0,%rdi
+  0x00007f22091032a8: mov    $0x7f220320c210,%rbx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f22091032b2: mov    $0x138,%rax
+  0x00007f22091032bc: jne    0x00007f22091032cc
+  0x00007f22091032c2: mov    $0x148,%rax
+  0x00007f22091032cc: mov    (%rbx,%rax,1),%rdx
+  0x00007f22091032d0: lea    0x1(%rdx),%rdx
+  0x00007f22091032d4: mov    %rdx,(%rbx,%rax,1)
+  0x00007f22091032d8: jne    0x00007f22091032ed  ;*ifnonnull
+                                                ; - java.lang.Class::getClassLoader@6 (line 679)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f22091032de: mov    $0x0,%rdi          ;   {oop(NULL)}
+  0x00007f22091032e8: jmpq   0x00007f2209103951  ;*astore_1
+                                                ; - java.lang.Class::desiredAssertionStatus@4 (line 3208)
+
+  0x00007f22091032ed: mov    $0x7f220320c210,%rbx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f22091032f7: addq   $0x1,0x158(%rbx)
+  0x00007f22091032ff: mov    $0x7f220320c3f8,%rbx  ;   {metadata(method data for {method} {0x00007f2203052778} 'getSecurityManager' '()Ljava/lang/SecurityManager;' in 'java/lang/System')}
+  0x00007f2209103309: mov    0xdc(%rbx),%eax
+  0x00007f220910330f: add    $0x8,%eax
+  0x00007f2209103312: mov    %eax,0xdc(%rbx)
+  0x00007f2209103318: mov    $0x7f2203052778,%rbx  ;   {metadata({method} {0x00007f2203052778} 'getSecurityManager' '()Ljava/lang/SecurityManager;' in 'java/lang/System')}
+  0x00007f2209103322: and    $0x7ffff8,%eax
+  0x00007f2209103328: cmp    $0x0,%eax
+  0x00007f220910332b: je     0x00007f2209103e26
+  0x00007f2209103331: mov    $0x76d100c78,%rbx  ;   {oop(a 'java/lang/Class' = 'java/lang/System')}
+  0x00007f220910333b: mov    0x74(%rbx),%ebx
+  0x00007f220910333e: shl    $0x3,%rbx          ;*getstatic security
+                                                ; - java.lang.System::getSecurityManager@0 (line 334)
+                                                ; - java.lang.Class::getClassLoader@11 (line 681)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f2209103342: cmp    $0x0,%rbx
+  0x00007f2209103346: mov    $0x7f220320c210,%rbx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f2209103350: mov    $0x168,%rax
+  0x00007f220910335a: je     0x00007f220910336a
+  0x00007f2209103360: mov    $0x178,%rax
+  0x00007f220910336a: mov    (%rbx,%rax,1),%rdx
+  0x00007f220910336e: lea    0x1(%rdx),%rdx
+  0x00007f2209103372: mov    %rdx,(%rbx,%rax,1)
+  0x00007f2209103376: je     0x00007f2209103951  ;*ifnull
+                                                ; - java.lang.Class::getClassLoader@16 (line 682)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910337c: mov    $0x7f220320c210,%rbx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f2209103386: addq   $0x1,0x188(%rbx)
+  0x00007f220910338e: nop    
+  0x00007f220910338f: callq  0x00007f2209046420  ; OopMap{[128]=Oop [120]=Oop off=692}
+                                                ;*invokestatic getCallerClass
+                                                ; - java.lang.Class::getClassLoader@20 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+                                                ;   {static_call}
+  0x00007f2209103394: mov    $0x7f220320c210,%rdx  ;   {metadata(method data for {method} {0x00007f22030459c0} 'getClassLoader' '()Ljava/lang/ClassLoader;' in 'java/lang/Class')}
+  0x00007f220910339e: addq   $0x1,0x198(%rdx)
+  0x00007f22091033a6: mov    $0x7f220320c510,%rdx  ;   {metadata(method data for {method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f22091033b0: mov    0xdc(%rdx),%esi
+  0x00007f22091033b6: add    $0x8,%esi
+  0x00007f22091033b9: mov    %esi,0xdc(%rdx)
+  0x00007f22091033bf: mov    $0x7f220304fb30,%rdx  ;   {metadata({method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f22091033c9: and    $0x7ffff8,%esi
+  0x00007f22091033cf: cmp    $0x0,%esi
+  0x00007f22091033d2: je     0x00007f2209103e3d
+  0x00007f22091033d8: mov    $0x7f220320c510,%rdx  ;   {metadata(method data for {method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f22091033e2: addq   $0x1,0x108(%rdx)
+  0x00007f22091033ea: mov    $0x7f220320c3f8,%rdx  ;   {metadata(method data for {method} {0x00007f2203052778} 'getSecurityManager' '()Ljava/lang/SecurityManager;' in 'java/lang/System')}
+  0x00007f22091033f4: mov    0xdc(%rdx),%esi
+  0x00007f22091033fa: add    $0x8,%esi
+  0x00007f22091033fd: mov    %esi,0xdc(%rdx)
+  0x00007f2209103403: mov    $0x7f2203052778,%rdx  ;   {metadata({method} {0x00007f2203052778} 'getSecurityManager' '()Ljava/lang/SecurityManager;' in 'java/lang/System')}
+  0x00007f220910340d: and    $0x7ffff8,%esi
+  0x00007f2209103413: cmp    $0x0,%esi
+  0x00007f2209103416: je     0x00007f2209103e54
+  0x00007f220910341c: mov    $0x76d100c78,%rdx  ;   {oop(a 'java/lang/Class' = 'java/lang/System')}
+  0x00007f2209103426: mov    0x74(%rdx),%esi
+  0x00007f2209103429: shl    $0x3,%rsi          ;*getstatic security
+                                                ; - java.lang.System::getSecurityManager@0 (line 334)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@0 (line 1523)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910342d: cmp    $0x0,%rsi
+  0x00007f2209103431: mov    $0x7f220320c510,%rdx  ;   {metadata(method data for {method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f220910343b: mov    $0x118,%rdi
+  0x00007f2209103445: je     0x00007f2209103455
+  0x00007f220910344b: mov    $0x128,%rdi
+  0x00007f2209103455: mov    (%rdx,%rdi,1),%rbx
+  0x00007f2209103459: lea    0x1(%rbx),%rbx
+  0x00007f220910345d: mov    %rbx,(%rdx,%rdi,1)
+  0x00007f2209103461: je     0x00007f220910394c  ;*ifnull
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@5 (line 1524)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f2209103467: mov    $0x7f220320c510,%rdx  ;   {metadata(method data for {method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f2209103471: addq   $0x1,0x138(%rdx)
+  0x00007f2209103479: mov    $0x7f220320c700,%rdx  ;   {metadata(method data for {method} {0x00007f220304fa78} 'getClassLoader' '(Ljava/lang/Class;)Ljava/lang/ClassLoader;' in 'java/lang/ClassLoader')}
+  0x00007f2209103483: mov    0xdc(%rdx),%edi
+  0x00007f2209103489: add    $0x8,%edi
+  0x00007f220910348c: mov    %edi,0xdc(%rdx)
+  0x00007f2209103492: mov    $0x7f220304fa78,%rdx  ;   {metadata({method} {0x00007f220304fa78} 'getClassLoader' '(Ljava/lang/Class;)Ljava/lang/ClassLoader;' in 'java/lang/ClassLoader')}
+  0x00007f220910349c: and    $0x7ffff8,%edi
+  0x00007f22091034a2: cmp    $0x0,%edi
+  0x00007f22091034a5: je     0x00007f2209103e6b
+  0x00007f22091034ab: cmp    $0x0,%rax
+  0x00007f22091034af: mov    $0x7f220320c700,%rdx  ;   {metadata(method data for {method} {0x00007f220304fa78} 'getClassLoader' '(Ljava/lang/Class;)Ljava/lang/ClassLoader;' in 'java/lang/ClassLoader')}
+  0x00007f22091034b9: mov    $0x108,%rdi
+  0x00007f22091034c3: jne    0x00007f22091034d3
+  0x00007f22091034c9: mov    $0x118,%rdi
+  0x00007f22091034d3: mov    (%rdx,%rdi,1),%rbx
+  0x00007f22091034d7: lea    0x1(%rbx),%rbx
+  0x00007f22091034db: mov    %rbx,(%rdx,%rdi,1)
+  0x00007f22091034df: jne    0x00007f22091034f4  ;*ifnonnull
+                                                ; - java.lang.ClassLoader::getClassLoader@1 (line 1510)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@9 (line 1526)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f22091034e5: mov    $0x0,%rdx          ;   {oop(NULL)}
+  0x00007f22091034ef: jmpq   0x00007f220910358e  ;*astore_3
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@12 (line 1526)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f22091034f4: cmp    (%rax),%rax        ;*invokevirtual getClassLoader0
+                                                ; - java.lang.ClassLoader::getClassLoader@7 (line 1514)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@9 (line 1526)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+                                                ; implicit exception: dispatches to 0x00007f2209103e82
+  0x00007f22091034f7: mov    %rax,%rdx
+  0x00007f22091034fa: mov    $0x7f220320c700,%rdi  ;   {metadata(method data for {method} {0x00007f220304fa78} 'getClassLoader' '(Ljava/lang/Class;)Ljava/lang/ClassLoader;' in 'java/lang/ClassLoader')}
+  0x00007f2209103504: mov    0x8(%rdx),%edx
+  0x00007f2209103507: shl    $0x3,%rdx
+  0x00007f220910350b: cmp    0x130(%rdi),%rdx
+  0x00007f2209103512: jne    0x00007f2209103521
+  0x00007f2209103514: addq   $0x1,0x138(%rdi)
+  0x00007f220910351c: jmpq   0x00007f2209103587
+  0x00007f2209103521: cmp    0x140(%rdi),%rdx
+  0x00007f2209103528: jne    0x00007f2209103537
+  0x00007f220910352a: addq   $0x1,0x148(%rdi)
+  0x00007f2209103532: jmpq   0x00007f2209103587
+  0x00007f2209103537: cmpq   $0x0,0x130(%rdi)
+  0x00007f2209103542: jne    0x00007f220910355b
+  0x00007f2209103544: mov    %rdx,0x130(%rdi)
+  0x00007f220910354b: movq   $0x1,0x138(%rdi)
+  0x00007f2209103556: jmpq   0x00007f2209103587
+  0x00007f220910355b: cmpq   $0x0,0x140(%rdi)
+  0x00007f2209103566: jne    0x00007f220910357f
+  0x00007f2209103568: mov    %rdx,0x140(%rdi)
+  0x00007f220910356f: movq   $0x1,0x148(%rdi)
+  0x00007f220910357a: jmpq   0x00007f2209103587
+  0x00007f220910357f: addq   $0x1,0x128(%rdi)
+  0x00007f2209103587: mov    0x18(%rax),%edx
+  0x00007f220910358a: shl    $0x3,%rdx          ;*getfield classLoader
+                                                ; - java.lang.Class::getClassLoader0@1 (line 689)
+                                                ; - java.lang.ClassLoader::getClassLoader@7 (line 1514)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@9 (line 1526)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910358e: mov    0x78(%rsp),%rdi
+  0x00007f2209103593: mov    $0x7f220320c510,%rbx  ;   {metadata(method data for {method} {0x00007f220304fb30} 'checkClassLoaderPermission' '(Ljava/lang/ClassLoader;Ljava/lang/Class;)V' in 'java/lang/ClassLoader')}
+  0x00007f220910359d: addq   $0x1,0x148(%rbx)
+  0x00007f22091035a5: mov    $0x7f220320c898,%rbx  ;   {metadata(method data for {method} {0x00007f220304f9d8} 'needsClassLoaderPermissionCheck' '(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f22091035af: mov    0xdc(%rbx),%eax
+  0x00007f22091035b5: add    $0x8,%eax
+  0x00007f22091035b8: mov    %eax,0xdc(%rbx)
+  0x00007f22091035be: mov    $0x7f220304f9d8,%rbx  ;   {metadata({method} {0x00007f220304f9d8} 'needsClassLoaderPermissionCheck' '(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f22091035c8: and    $0x7ffff8,%eax
+  0x00007f22091035ce: cmp    $0x0,%eax
+  0x00007f22091035d1: je     0x00007f2209103e87
+  0x00007f22091035d7: cmp    %rdi,%rdx
+  0x00007f22091035da: mov    $0x7f220320c898,%rbx  ;   {metadata(method data for {method} {0x00007f220304f9d8} 'needsClassLoaderPermissionCheck' '(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f22091035e4: mov    $0x108,%rax
+  0x00007f22091035ee: jne    0x00007f22091035fe
+  0x00007f22091035f4: mov    $0x118,%rax
+  0x00007f22091035fe: mov    (%rbx,%rax,1),%rcx
+  0x00007f2209103602: lea    0x1(%rcx),%rcx
+  0x00007f2209103606: mov    %rcx,(%rbx,%rax,1)
+  0x00007f220910360a: jne    0x00007f220910361a  ;*if_acmpne
+                                                ; - java.lang.ClassLoader::needsClassLoaderPermissionCheck@2 (line 1498)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@15 (line 1527)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f2209103610: mov    $0x0,%edx
+  0x00007f2209103615: jmpq   0x00007f2209103851  ;*ifeq
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@18 (line 1527)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910361a: cmp    $0x0,%rdx
+  0x00007f220910361e: mov    $0x7f220320c898,%rbx  ;   {metadata(method data for {method} {0x00007f220304f9d8} 'needsClassLoaderPermissionCheck' '(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f2209103628: mov    $0x128,%rax
+  0x00007f2209103632: jne    0x00007f2209103642
+  0x00007f2209103638: mov    $0x138,%rax
+  0x00007f2209103642: mov    (%rbx,%rax,1),%rcx
+  0x00007f2209103646: lea    0x1(%rcx),%rcx
+  0x00007f220910364a: mov    %rcx,(%rbx,%rax,1)
+  0x00007f220910364e: jne    0x00007f220910365e  ;*ifnonnull
+                                                ; - java.lang.ClassLoader::needsClassLoaderPermissionCheck@8 (line 1501)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@15 (line 1527)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f2209103654: mov    $0x0,%edx
+  0x00007f2209103659: jmpq   0x00007f2209103851  ;*ifeq
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@18 (line 1527)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+
+  0x00007f220910365e: cmp    (%rdi),%rax        ;*invokevirtual isAncestor
+                                                ; - java.lang.ClassLoader::needsClassLoaderPermissionCheck@15 (line 1504)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@15 (line 1527)
+                                                ; - java.lang.Class::getClassLoader@23 (line 683)
+                                                ; - java.lang.Class::desiredAssertionStatus@1 (line 3208)
+                                                ; implicit exception: dispatches to 0x00007f2209103e9e
+  0x00007f2209103661: mov    %rdi,%rbx
+  0x00007f2209103664: mov    $0x7f220320c898,%rax  ;   {metadata(method data for {method} {0x00007f220304f9d8} 'needsClassLoaderPermissionCheck' '(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f220910366e: mov    0x8(%rbx),%ebx
+  0x00007f2209103671: shl    $0x3,%rbx
+  0x00007f2209103675: cmp    0x150(%rax),%rbx
+  0x00007f220910367c: jne    0x00007f220910368b
+  0x00007f220910367e: addq   $0x1,0x158(%rax)
+  0x00007f2209103686: jmpq   0x00007f22091036f1
+  0x00007f220910368b: cmp    0x160(%rax),%rbx
+  0x00007f2209103692: jne    0x00007f22091036a1
+  0x00007f2209103694: addq   $0x1,0x168(%rax)
+  0x00007f220910369c: jmpq   0x00007f22091036f1
+  0x00007f22091036a1: cmpq   $0x0,0x150(%rax)
+  0x00007f22091036ac: jne    0x00007f22091036c5
+  0x00007f22091036ae: mov    %rbx,0x150(%rax)
+  0x00007f22091036b5: movq   $0x1,0x158(%rax)
+  0x00007f22091036c0: jmpq   0x00007f22091036f1
+  0x00007f22091036c5: cmpq   $0x0,0x160(%rax)
+  0x00007f22091036d0: jne    0x00007f22091036e9
+  0x00007f22091036d2: mov    %rbx,0x160(%rax)
+  0x00007f22091036d9: movq   $0x1,0x168(%rax)
+  0x00007f22091036e4: jmpq   0x00007f22091036f1
+  0x00007f22091036e9: addq   $0x1,0x148(%rax)
+  0x00007f22091036f1: mov    $0x7f220320ca90,%rbx  ;   {metadata(method data for {method} {0x00007f220304f928} 'isAncestor' '(Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f22091036fb: mov    0xdc(%rbx),%eax
+  0x00007f2209103701: add    $0x8,%eax
+  0x00007f2209103704: mov    %eax,0xdc(%rbx)
+  0x00007f220910370a: mov    $0x7f220304f928,%rbx  ;   {metadata({method} {0x00007f220304f928} 'isAncestor' '(Ljava/lang/ClassLoader;)Z' in 'java/lang/ClassLoader')}
+  0x00007f2209103714: and    $0x7ffff8,%eax
+  0x00007f220910371a: cmp    $0x0,%eax
+  0x00007f220910371d: je     0x00007f2209103ea3
+  0x00007f2209103723: mov    %rdi,%rbx
+  0x00007f2209103726: jmpq   0x00007f22091037a2  ;*aload_2
+                                                ; - java.lang.ClassLoader::isAncestor@2 (line 1482)
+                                                ; - java.lang.ClassLoader::needsClassLoaderPermissionCheck@15 (line 1504)
+                                                ; - java.lang.ClassLoader::checkClassLoaderPermission@15 (line 1527)
