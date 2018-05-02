@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>code{strata}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#157878">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='style.css' rel='stylesheet' type='text/css'>
+	</head>
+	<body onload="init()" style="overflow: hidden;">
+		<section class="main-content" style="padding:0px">
+			<div class="flex-container">
+				<div class="flex-item-w1">
+					<div id="cell_8">
+						<span onclick="openNav()"><img src="img/code_strata.gif"  /></span>
+					</div>
+					<div id="cell_7">
+						<span onclick="openNav()"><img src="img/calltree_app.png" /></span>
+					</div>
+					<div id="cell_6">
+						<span onclick="openNav()"><img src="img/calltree_app_and_libs.png" /></span>
+					</div>
+					<div id="cell_5">
+						<span onclick="openNav()"><img src="img/bytecode.png" /></span>
+					</div>
+					<div id="cell_4">
+						<span onclick="openNav()"><img src="img/syscall.png" /></span>
+					</div>
+					<div id="cell_3">
+						<span onclick="openNav()"><img src="img/x86.png" /></span>
+					</div>
+					<div id="cell_2">
+					</div>
+					<div id="cell_1">
+					</div>
+					<div id="cell_0">
+					</div>
+				</div>
+
+				<div class="flex-item-w2">
+					<table class ="h800"><tr><td>
+						<input type="range" min="3" max="8" value="8" step="1"  orient="vertical" onchange="showValue(this.value)" />
+					</td><td>
+						<div id="mini_8">
+							<img src="img/mini/mini_app.png" />
+						</div>
+						<div id="mini_7">
+							<img src="img/mini/mini_app_calls.png" />
+						</div>
+						<div id="mini_6">
+							<img src="img/mini/mini_app_and_lib_calls.png" />
+						</div>
+						<div id="mini_5">
+							<img src="img/mini/mini_app_and_lib_bytecode.png" />
+						</div>
+						<div id="mini_4">
+							<img src="img/mini/mini_syscall.png" />
+						</div>
+						<div id="mini_3">
+							<img src="img/mini/mini_x86.png" />
+						</div>
+						<div id="mini_2">
+						</div>
+						<div id="mini_1">
+						</div>
+						<div id="mini_0">
+						</div>
+					</td></tr>
+					<tr><td colspan = "2">
+						<div id="desc_8">
+							<h3>Application</h3>
+							<p>
+								Application as seen by the user.
+							</p>
+						</div>
+						<div id="desc_7">
+							<h3>Application calls</h3>
+							<p>
+								Each rectangle represents the invocation of a java method written by the application author(s). White links represents the way each method call sub methods.
+							</p>
+						</div>
+						<div id="desc_6">
+							<h3>Application and libraries calls</h3>
+							<p>
+								Each rectangle represents the invocation of a java method, in blue are methods of the application, whereas in green are methods from the library javafx (handling the graphical interface). White links represents the way each method call sub methods.
+							</p>
+						</div>
+						<div id="desc_5">
+							<h3>Byte code</h3>
+							<p>
+								The jvm (java virtual machine) doesn't read java code. Instead this code is transformed in a more compact form called bytecode. Each color segment represents a bytecode instruction.
+							</p>
+						</div>
+						<div id="desc_4">
+							<h3>System calls</h3>
+							<p>
+								Each square represent a system call. A system call is an operation handled by the operating system.
+							</p>
+						</div>
+						<div id="desc_3">
+							<h3>x86</h3>
+							<p>
+								In order to executed by micro processor, a program must be converted in a serie of instructions that the processor understand. A common instruction set nodays is x86.
+								Each color segment represents an x86 instruction.
+							</p>
+						</div>
+						<div id="desc_2">
+						</div>
+						<div id="desc_1">
+						</div>
+						<div id="desc_0">
+						</div>
+					</td>
+					</tr>
+					</table>
+				</div>
+			</div>
+
+			<div id="myNav" class="overlay" onclick="closeNav()">
+				<div class="overlay-content">
+					<img src="img/code_strata.gif" id="img_8" />
+					<img src="img/calltree_app.png" id="img_7" />
+					<img src="img/calltree_app_and_libs.png" id="img_6" />
+					<img src="img/bytecode.png" id="img_5" />
+					<img src="img/syscall.png" id="img_4" />
+					<img src="img/x86.png" id="img_3" />
+					<img src="img/x86.png" id="img_2" />
+					<img src="img/x86.png" id="img_1" />
+					<img src="img/x86.png" id="img_0" />
+				</div>
+			</div>
+
+
+			<script type="text/javascript">
+				function showValue(newValue) {
+					for(var i = 0; i < 9; i++) {
+						if(i == newValue) {
+							document.getElementById("cell_" + i).style.visibility = "visible";
+							document.getElementById("cell_" + i).style.height = "600px";
+							document.getElementById("mini_" + i).style.visibility = "visible";
+							document.getElementById("mini_" + i).style.height = "200px";
+							document.getElementById("desc_" + i).style.visibility = "visible";
+							document.getElementById("desc_" + i).style.height = "300px";
+							document.getElementById("img_" + i).style.visibility = "visible";
+	    						document.getElementById("img_" + i).style.width = "70%";
+						} else {
+							document.getElementById("cell_" + i).style.visibility = "collapse";
+							document.getElementById("cell_" + i).style.height = "0px";
+							document.getElementById("mini_" + i).style.visibility = "collapse";
+							document.getElementById("mini_" + i).style.height = "0px";
+							document.getElementById("desc_" + i).style.visibility = "collapse";
+							document.getElementById("desc_" + i).style.height = "0px";
+							document.getElementById("img_" + i).style.visibility = "collapse";
+	    						document.getElementById("img_" + i).style.width = "0%";
+						}	
+					}
+				}
+
+				function init() {
+					document.getElementById("desc_1").style.height = "300px";
+					document.getElementById("mini_1").style.height = "200px";
+					document.getElementById("cell_1").style.height = "600px";
+					for(var i = 0; i < 8; i++) {
+						document.getElementById("cell_" + i).style.visibility = "collapse";
+						document.getElementById("cell_" + i).style.height = "0px";
+						document.getElementById("mini_" + i).style.visibility = "collapse";
+						document.getElementById("mini_" + i).style.height = "0px";
+						document.getElementById("desc_" + i).style.visibility = "collapse";
+						document.getElementById("desc_" + i).style.height = "0px";
+						document.getElementById("img_" + i).style.visibility = "collapse";
+    						document.getElementById("img_" + i).style.width = "0%";
+					}
+				}
+
+    function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+			</script>
+
+		</section>
+	</body>
+</html>

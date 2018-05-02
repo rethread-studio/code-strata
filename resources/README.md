@@ -1,7 +1,7 @@
-Resources for the whistle-bits project
+Inspirations
 ===
 
-Here we will collect all resources (code, images, papers, etc.) and pointers related to our project.
+We acknowledge previous works that have inspired the code{strata} project.
 
 
 Previous artistic work about software
