@@ -9,6 +9,8 @@ Previous artistic work about software
 
 > [CODeDOC @ Whitney artport](http://artport.whitney.org/commissions/codedoc/index.shtml)
 
+This is the original inspiration for our project: use software as the core material to create artwork AND as the media to display the art work.
+
 In 2002, the [Whitney Museum (USA)](http://whitney.org/) proposed the CODeDOC exhibition, commissioned by [Ars Electronica](http://www.aec.at/news/), for which all artists were assigned a specific task, which had to exploit the code as main material. The [work by Bradford Paley](http://artport.whitney.org/commissions/codedoc/paley.shtml) is a very interesting example for our project. 
 
 We have made a standalone version of this work, which is available [here](https://github.com/DIVERSIFY-project/CodeProfiles)
@@ -17,10 +19,20 @@ We have made a standalone version of this work, which is available [here](https:
 
 In 2004, this exhibition at the [Whitney Museum (USA)](http://whitney.org/) explores the idea of software as art. In 2016, the project was revisited and most works were written in [Processing](https://processing.org/) were rewritten in [p5.js](http://p5js.org/).
 
->[Listen to wikipedia](http://listen.hatnote.com/)
+>[Listen to wikipedia](http://listen.hatnote.com/): sonification of the wikipedia contributions
 
 This project combines vizualization and sound synthesis to render the acitivty on wikipedia.
 The code is [available on Github](https://github.com/hatnote/listen-to-wikipedia)
+
+>[Tweetscape](http://heavylistening.com/tweetscapes/): sonification of twitter activity in Germany
+
+This project has been listening, sonifying and visualizing the twitter activity in Geramny, live, during 3 years.
+The project does not display in real time anymore, but a [video summarizes the key ideas of the project](https://www.youtube.com/watch?v=0lKSFlB_-Q0).
+This project is developed by [T. Hermann's sonification research group](http://sonification.de/blog).
+
+>[Bitlisten](https://www.bitlisten.com/): sonification of bitcoin transactions
+
+Bitllisten is [open source](https://github.com/MaxLaumeister/bitlisten).
 
 >[Live coding](https://en.wikipedia.org/wiki/Live_coding)
 
