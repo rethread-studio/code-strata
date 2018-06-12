@@ -8,12 +8,9 @@ public class BoGoSort {
 
     void sort(TreeList arr)
     {
-        //Keep a track of the number of shuffles
         int shuffle=1;
         for(;!isSorted(arr);shuffle++)
             shuffle(arr);
-        //Boast
-        System.out.println("This took "+shuffle+" shuffles.");
     }
 
     void shuffle(TreeList arr)
