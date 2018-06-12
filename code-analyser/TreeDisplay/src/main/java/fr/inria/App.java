@@ -77,6 +77,8 @@ public class App
         System.out.println("\t compCallTree: Generates an image of the comparison of call trees contained in the traces.");
         System.out.println("\t webReport: Generates a full web report.");
         System.out.println("\t compTraces: Compute the distance between two traces");
+        System.out.println("\t byteCodeTree: Generate an image of the bytecode executed");
+        System.out.println("\t x86Tree: Generate an image of the assembly executed");
     }
 
     public static void callTree() {
@@ -150,8 +152,25 @@ public class App
                     if(app.propFile != null) Context.currentExec = PropertiesReader.readProperties(new File(app.propFile));
                     else Context.currentExec = readProperties(app);
                     PApplet.main("fr.inria.View.Legend");
-                    PApplet.main("fr.inria.View.CallTreeAlterView");
+                    if(Context.currentExec.branch) {
+                        PApplet.main("fr.inria.View.BranchView");
+                    } else {
+                        PApplet.main("fr.inria.View.CallTreeAlterView");
+                    }
                     break;
+                case "byteCodeTree":
+                    if(app.propFile != null) Context.currentExec = PropertiesReader.readProperties(new File(app.propFile));
+                    else Context.currentExec = readProperties(app);
+
+                    PApplet.main("fr.inria.View.ByteCodeView");
+                    break;
+
+                case "x86Tree":
+                    if(app.propFile != null) Context.currentExec = PropertiesReader.readProperties(new File(app.propFile));
+                    else Context.currentExec = readProperties(app);
+                    PApplet.main("fr.inria.View.X86View");
+                    break;
+
                 case "compCallTree":
 
                     generateComparaison(new File(app.propFile), new File(app.propFile2));

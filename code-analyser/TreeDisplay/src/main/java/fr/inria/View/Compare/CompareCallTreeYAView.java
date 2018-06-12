@@ -8,6 +8,7 @@ import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.TreeCallUtils;
 import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.SimpleReader;
+import fr.inria.IOs.YajtaReader;
 import fr.inria.SimpleColor;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -39,7 +40,8 @@ public class CompareCallTreeYAView extends PApplet {
 
     public void setup() {
         //JSONReader r = new VisualvmReader();
-        JSONReader r = new SimpleReader();
+        //JSONReader r = new SimpleReader();
+        JSONReader r = new YajtaReader();
         System.out.println("read f1");
         CallTree t1 = r.readFromFile(e.e1.trace);
         System.out.println("read f2");

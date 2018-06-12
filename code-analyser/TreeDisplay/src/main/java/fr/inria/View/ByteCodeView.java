@@ -2,7 +2,9 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
+import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.VisualvmReader;
+import fr.inria.IOs.YajtaReader;
 import processing.core.PApplet;
 
 import java.util.jar.JarFile;
@@ -28,12 +30,15 @@ public class ByteCodeView extends PApplet {
     public void setup() {
         try {
             background(0);
-            VisualvmReader r = new VisualvmReader();
+            //VisualvmReader r = new VisualvmReader();
+            JSONReader r = new YajtaReader();
             CallTree t = r.readFromFile(e.trace);
             int h = e.screenSize / t.depth;
             fill(204, 102, 0);
 
             TreeCallUtils.label(t, e.packages, e.defaultLevel);
+            //t = TreeCallUtils.from(t, "fr.inria");
+            t = TreeCallUtils.from(t, "null.main");
 
             JarParser j = new JarParser();
             for(JarFile jar :e.jars) {

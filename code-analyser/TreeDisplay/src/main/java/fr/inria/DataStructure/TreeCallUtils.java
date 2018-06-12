@@ -36,6 +36,19 @@ public class TreeCallUtils {
         for(CallTree c : t.getChildren()) label(c,l,defaultLevel);
 
     }
+
+    public static void highlight(CallTree t, String target, int l, boolean h) {
+        boolean paint = h;
+        if(t.name.startsWith(target)) paint = true;
+        for(CallTree c : t.getChildren()) {
+            highlight(c,target,l,paint);
+        }
+        if(paint) t.level = l;
+    }
+    public static void highlight(CallTree t, String target, int l) {
+        highlight(t,target,l,false);
+    }
+
     public static CallTree from(CallTree t, String start) {
         if(t.name.startsWith(start)) return t;
         else {

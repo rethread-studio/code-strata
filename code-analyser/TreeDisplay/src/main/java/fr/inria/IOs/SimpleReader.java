@@ -15,6 +15,7 @@ public class SimpleReader extends JSONReader {
         try {
             int w = 1;//o.getInt("weight");
             String name = o.getString("name");
+
             JSONArray children = o.getJSONArray("children");
 
             res = new CallTree(name,w);

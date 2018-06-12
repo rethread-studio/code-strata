@@ -24,6 +24,7 @@ public class Execution {
     public File outputDir;
     public Set<String> excludes;
     public String from;
+    public boolean branch = false;
 
 
     public int screenSize;

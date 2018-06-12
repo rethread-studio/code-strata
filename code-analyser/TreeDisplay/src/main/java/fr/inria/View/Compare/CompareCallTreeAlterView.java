@@ -49,9 +49,9 @@ public class CompareCallTreeAlterView extends PApplet {
         System.out.println("label 2");
         TreeCallUtils.label(t2, e.e2.packages, e.e2.defaultLevel);
         System.out.println("from 1");
-        t1 = TreeCallUtils.from(t1, "QuickSortTest");
+        //t1 = TreeCallUtils.from(t1, "QuickSortTest");
         System.out.println("from 2");
-        t2 = TreeCallUtils.from(t2, "QuickSortTest");
+        //t2 = TreeCallUtils.from(t2, "QuickSortTest");
 
         //CompareCallTree t = new CompareCallTree(t1,t2);
         CompareTree<CallTree> t = new CompareTree(t1,t2);

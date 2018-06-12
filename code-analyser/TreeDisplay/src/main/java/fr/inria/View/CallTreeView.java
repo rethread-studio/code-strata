@@ -5,7 +5,9 @@ import fr.inria.DataStructure.CallTree;
 import fr.inria.DataStructure.Context;
 import fr.inria.DataStructure.Execution;
 import fr.inria.DataStructure.TreeCallUtils;
+import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.VisualvmReader;
+import fr.inria.IOs.YajtaReader;
 import processing.core.PApplet;
 
 /**
@@ -28,11 +30,13 @@ public class CallTreeView extends PApplet {
     }
 
     public void setup() {
-        VisualvmReader r = new VisualvmReader();
+        //VisualvmReader r = new VisualvmReader();
+        JSONReader r = new YajtaReader();
         CallTree t = r.readFromFile(e.trace);
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
+        t= TreeCallUtils.from(t, "fr.inria");
         picker = new ColorPicker(255,100,0, e.nbLevel, 30);
 
         //String mostFMethod = TreeCallUtils.mostFrequentMethod(TreeCallUtils.frequencies(t));

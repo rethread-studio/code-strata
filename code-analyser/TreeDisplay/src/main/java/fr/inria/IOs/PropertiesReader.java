@@ -17,7 +17,7 @@ public class PropertiesReader {
         try {
             p.load(new FileInputStream(properties));
 
-            String sDefaultLevel, sNbLevel, trace, jars, x86log, syscalls, outputDir, sScreenSize, sSave;
+            String sDefaultLevel, sNbLevel, trace, jars, x86log, syscalls, outputDir, sScreenSize, sSave, sBranch;
             e.name = p.getProperty("name", "project");
 
             sScreenSize = p.getProperty("screenSize", "1200");
@@ -25,6 +25,9 @@ public class PropertiesReader {
 
             sSave = p.getProperty("save", "false");
             e.save = Boolean.parseBoolean(sSave);
+
+            sBranch = p.getProperty("branch", "false");
+            e.branch = Boolean.parseBoolean(sBranch);
 
 
             sDefaultLevel = p.getProperty("defaultLevel", "0");

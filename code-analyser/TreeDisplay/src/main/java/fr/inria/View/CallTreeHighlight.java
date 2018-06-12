@@ -1,19 +1,16 @@
 package fr.inria.View;
 
 import fr.inria.ColorPicker;
-import fr.inria.DataStructure.*;
+import fr.inria.DataStructure.CallTree;
+import fr.inria.DataStructure.Context;
+import fr.inria.DataStructure.Execution;
+import fr.inria.DataStructure.TreeCallUtils;
 import fr.inria.EquiDistantColors;
 import fr.inria.IOs.JSONReader;
-import fr.inria.IOs.SimpleReader;
-import fr.inria.IOs.VisualvmReader;
 import fr.inria.IOs.YajtaReader;
-import fr.inria.SimpleColor;
 import processing.core.PApplet;
 
-/**
- * Created by nharrand on 29/03/17.
- */
-public class CallTreeAlterView  extends PApplet {
+public class CallTreeHighlight  extends PApplet {
     public static ColorPicker picker;
 
     static int strokeLight = 255;
@@ -25,7 +22,7 @@ public class CallTreeAlterView  extends PApplet {
 
         e = Context.currentExec;
 
-        size(e.screenSize, e.screenSize+10);
+        size(e.screenSize, e.screenSize+400);
 
     }
 
@@ -39,21 +36,6 @@ public class CallTreeAlterView  extends PApplet {
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
-        t = TreeCallUtils.from(t, "null.Thread-5");
-        t = TreeCallUtils.from(t, "org.apache.commons.codec.language.bm.PhoneticEngineTest.testEncode()");
-
-        //TreeCallUtils.highlight(t,"org.apache.commons.codec.language.DoubleMetaphone.conditionC0", 1);
-
-        //t = TreeCallUtils.from(t, "org.apache.commons.collections4.map.CompositeMapTest.testAddComposited");
-        //t = TreeCallUtils.from(t, "org.apache.commons.collections4.map.CompositeMapTest.testAddComposited");
-        //t = TreeCallUtils.from(t, "org.apache.commons.collections4.map.CompositeMap.entrySet");
-        //TreeCallUtils.highlight(t,"org.apache.commons.lang3.reflect.MethodUtils.getOverrideHierarchy(java.lang.reflect.Method, org.apache.commons.lang3.ClassUtils$Interfaces)", 2);
-        //t = TreeCallUtils.from(t, "null.Thread-1");
-        //t = TreeCallUtils.from(t, "null.Thread-3");
-        //t = TreeCallUtils.from(t, "null.main");
-        //t = TreeCallUtils.from(t, "org.apache.commons.codec.language.bm.Lang.loadFromResource");
-        //TreeCallUtils.highlight(t,"org.apache.commons.codec.binary.BaseNCodec.isInAlphabet", 3);
-        //t = TreeCallUtils.from(t, "org.apache.commons.codec.binary.Base32.decode");
         //t= TreeCallUtils.from(t, "fr.inria");
         //t= TreeCallUtils.from(t, "org.apache.commons.codec.language.DoubleMetaphone2Test.testDoubleMetaphonePrimary");
         //t= TreeCallUtils.from(t, "null.main");
@@ -69,8 +51,8 @@ public class CallTreeAlterView  extends PApplet {
         //picker = new ColorPicker(255,100,0, e.nbLevel, 30);
         //background(0);
         //picker = new ColorPicker(127+64+32,75+12,0, e.nbLevel, 100);
-        picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
-        //picker = new EquiDistantColors(127+64+32,75+12,0, e.nbLevel, 100);
+        //picker = new SimpleColor(127+64+32,75+12,0, e.nbLevel, 100);
+        picker = new EquiDistantColors(127+64+32,75+12,0, e.nbLevel, 100);
         background(255);
         //background(0);
 
@@ -90,7 +72,7 @@ public class CallTreeAlterView  extends PApplet {
         drawTree(t, e.outputDir + "/img/" + e.name + "_a_calltree.png");
 
         //if(e.exit)
-            exit();
+        exit();
     }
 
     public void drawTree(CallTree t, String name) {
@@ -118,12 +100,7 @@ public class CallTreeAlterView  extends PApplet {
             if(c.level <= maxLevel) {
                 setColors(c.level);
                 //line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
-                if(c.level == 1) {
-                    //dottedLine(x + w / 2, y + (h / 2), x + 3 * w + w / 2, tmpH * pop[d + 1] + (tmpH / 2));
-                    dashedLine(x + w / 2, y + (h / 2), x + 3 * w + w / 2, tmpH * pop[d + 1] + (tmpH / 2));
-                } else {
-                    line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
-                }
+                line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
             }
             drawNode(c, w, d + 1, width, pop, maxLevel);
         }
@@ -141,22 +118,19 @@ public class CallTreeAlterView  extends PApplet {
     static int strokeW = 2;
 
     public void setColors(int level) {
-        if (level == 0) {
-            fill(0x43, 0x43, 0x43);
-            stroke(0x43, 0x43, 0x43);
+        /*if (level == 0) {
+            fill(0, 102, 204);
+            stroke(0, 102, 204);
         } else if (level == 1) {
-            //fill(0x6a, 0xa8, 0x4f);
-            //stroke(0x6a, 0xa8, 0x4f);
-
-            fill(0xe6, 0x91, 0x38);
-            stroke(0xe6, 0x91, 0x38);
+            fill(0, 204, 102);
+            stroke(0, 204, 102);
         } else {
             fill(204, 102, 0);
             stroke(204, 102, 0);
-        }
-        /*if(false) {
-        //if(level > 1) {
-        //if(level != 0) {
+        }*/
+        if(false) {
+            //if(level > 1) {
+            //if(level != 0) {
 
             fill(0);
             stroke(0);
@@ -164,36 +138,10 @@ public class CallTreeAlterView  extends PApplet {
             int[] c = picker.getColor(level);
             fill(c[0], c[1], c[2]);
             stroke(c[0], c[1], c[2]);
-        }*/
+        }
         strokeWeight(strokeW);
     }
 
     public void draw(){
-    }
-
-    void dottedLine(float x1, float y1, float x2, float y2) {
-        int distance = (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / 10;
-
-        for (int i = 0; i <= distance; i++) {
-            float s = ((float)i) / distance;
-            float x = lerp(x1, x2, s);
-            float y = lerp(y1, y2, s);
-            point(x, y);
-        }
-    }
-
-    void dashedLine(float x1, float y1, float x2, float y2) {
-        int distance = (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / 10;
-
-        float inter[][] = new float[distance+1][2];
-
-        for (int i = 0; i <= distance; i++) {
-            float s = ((float)i) / distance;
-            inter[i][0] = lerp(x1, x2, s);
-            inter[i][1] = lerp(y1, y2, s);
-        }
-        for(int i = 0; i < distance; i += 2) {
-            line(inter[i][0],inter[i][1],inter[i+1][0],inter[i+1][1]);
-        }
     }
 }

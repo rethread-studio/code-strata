@@ -2,7 +2,9 @@ package fr.inria.View;
 
 import fr.inria.ColorPicker;
 import fr.inria.DataStructure.*;
+import fr.inria.IOs.JSONReader;
 import fr.inria.IOs.VisualvmReader;
+import fr.inria.IOs.YajtaReader;
 import fr.inria.IOs.x86Parser;
 import processing.core.PApplet;
 
@@ -27,10 +29,13 @@ public class X86View extends PApplet {
     public void setup() {
         try {
             background(0);
-            VisualvmReader r = new VisualvmReader();
+            //VisualvmReader r = new VisualvmReader();
+            JSONReader r = new YajtaReader();
             CallTree t = r.readFromFile(e.trace);
 
             TreeCallUtils.label(t, e.packages, e.defaultLevel);
+            //t= TreeCallUtils.from(t, "fr.inria");
+            t= TreeCallUtils.from(t, "null.main");
 
             x86Parser p = new x86Parser();
             p.readFromFile(e.x86log);

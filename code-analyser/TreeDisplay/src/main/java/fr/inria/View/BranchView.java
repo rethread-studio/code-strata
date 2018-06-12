@@ -1,19 +1,16 @@
 package fr.inria.View;
 
 import fr.inria.ColorPicker;
-import fr.inria.DataStructure.*;
-import fr.inria.EquiDistantColors;
+import fr.inria.DataStructure.CallTree;
+import fr.inria.DataStructure.Context;
+import fr.inria.DataStructure.Execution;
+import fr.inria.DataStructure.TreeCallUtils;
 import fr.inria.IOs.JSONReader;
-import fr.inria.IOs.SimpleReader;
-import fr.inria.IOs.VisualvmReader;
 import fr.inria.IOs.YajtaReader;
 import fr.inria.SimpleColor;
 import processing.core.PApplet;
 
-/**
- * Created by nharrand on 29/03/17.
- */
-public class CallTreeAlterView  extends PApplet {
+public class BranchView  extends PApplet {
     public static ColorPicker picker;
 
     static int strokeLight = 255;
@@ -39,10 +36,9 @@ public class CallTreeAlterView  extends PApplet {
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
-        t = TreeCallUtils.from(t, "null.Thread-5");
-        t = TreeCallUtils.from(t, "org.apache.commons.codec.language.bm.PhoneticEngineTest.testEncode()");
 
-        //TreeCallUtils.highlight(t,"org.apache.commons.codec.language.DoubleMetaphone.conditionC0", 1);
+        //t = TreeCallUtils.from(t, "org.apache.commons.codec.binary.BinaryCodecTest.testToAsciiBytes()");
+        t = TreeCallUtils.from(t, "org.apache.commons.codec.binary.BinaryCodec.toAsciiBytes(byte[])");
 
         //t = TreeCallUtils.from(t, "org.apache.commons.collections4.map.CompositeMapTest.testAddComposited");
         //t = TreeCallUtils.from(t, "org.apache.commons.collections4.map.CompositeMapTest.testAddComposited");
@@ -90,7 +86,7 @@ public class CallTreeAlterView  extends PApplet {
         drawTree(t, e.outputDir + "/img/" + e.name + "_a_calltree.png");
 
         //if(e.exit)
-            exit();
+        exit();
     }
 
     public void drawTree(CallTree t, String name) {
@@ -119,8 +115,9 @@ public class CallTreeAlterView  extends PApplet {
                 setColors(c.level);
                 //line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
                 if(c.level == 1) {
-                    //dottedLine(x + w / 2, y + (h / 2), x + 3 * w + w / 2, tmpH * pop[d + 1] + (tmpH / 2));
-                    dashedLine(x + w / 2, y + (h / 2), x + 3 * w + w / 2, tmpH * pop[d + 1] + (tmpH / 2));
+                    dottedLine(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
+                } else if(c.level == 2) {
+                    dashedLine(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
                 } else {
                     line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
                 }
@@ -134,7 +131,11 @@ public class CallTreeAlterView  extends PApplet {
             int r = 6 ;
             setColors(t.level);
             //rect(x+w/2, y+h/2, r, r);
-            ellipse(x+w/2, y+h/2, r, r);
+            if(t.name.contains("@")) {
+                rect(x+w/2-r/2, y+h/2-r/2, r, r);
+            } else {
+                ellipse(x+w/2, y+h/2, r, r);
+            }
         }
     }
 
@@ -145,8 +146,9 @@ public class CallTreeAlterView  extends PApplet {
             fill(0x43, 0x43, 0x43);
             stroke(0x43, 0x43, 0x43);
         } else if (level == 1) {
-            //fill(0x6a, 0xa8, 0x4f);
-            //stroke(0x6a, 0xa8, 0x4f);
+            fill(0x6a, 0xa8, 0x4f);
+            stroke(0x6a, 0xa8, 0x4f);
+        } else if (level == 2) {
 
             fill(0xe6, 0x91, 0x38);
             stroke(0xe6, 0x91, 0x38);
@@ -173,12 +175,13 @@ public class CallTreeAlterView  extends PApplet {
 
     void dottedLine(float x1, float y1, float x2, float y2) {
         int distance = (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / 10;
-
+        float r = 2.0f;
         for (int i = 0; i <= distance; i++) {
             float s = ((float)i) / distance;
             float x = lerp(x1, x2, s);
             float y = lerp(y1, y2, s);
-            point(x, y);
+            //point(x, y);
+            ellipse(x-r/2, y-r/2, r, r);
         }
     }
 
