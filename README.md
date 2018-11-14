@@ -32,3 +32,7 @@ This section regroups tools to trace programs and visualize the results.
 ### resources
 
 ### subjects
+
+### code-strata-v2
+
+This folder contains the second version of Code{strata} project.
