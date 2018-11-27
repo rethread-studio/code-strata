@@ -12,7 +12,7 @@ let current_strata_index = 0;
 function preload() {
   font = loadFont('./assets/RobotoCondensed-Light.ttf');
   // font = loadFont('assets/LiberationSans-Regular.ttf');
-  data = loadJSON('tree.json')
+  data = loadJSON('./data/tree.json')
 
 }
 
