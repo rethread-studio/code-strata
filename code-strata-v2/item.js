@@ -1,24 +1,28 @@
+const CLOSER = 100;
+const FARTHER = 300;
+
+
 class Item {
-  constructor(record, parent) {
+  constructor(record, x, y, parent) {
+    this.record = record; // { "source": "...", "name": "...", children: [...] }
 
-    this.record = record;
+    this.x = x;
+    this.y = y;
 
-    this.x = 0;
-    this.y = 0;
+    this.parent = parent;
 
-    let boundingBox = font.textBounds(this.name, this.x, this.y);
+    this.developer = getDeveloper(record);
+    // Get the size of the text
+
+    let boundingBox = FONT.textBounds(this.name, this.x, this.y);
 
     this.width = boundingBox.w;
     this.height = boundingBox.h;
 
-    this.x = random(this.width / 2, windowWidth - this.width);
-    this.y = random(this.height / 2, windowHeight - this.height / 2);
-
-    this.parent = parent;
   }
 
   get name() {
-    return this.record.name;
+    return this.developer;
   }
 
   draw() {
@@ -26,7 +30,34 @@ class Item {
   }
 
   createChildren() {
-    return this.record.children.map(rec => new Item(rec, this));
+    let angles = getRandomAngles(this.record.children.length);
+    return this.record.children.map((rec, index) => {
+
+      let module = 0;
+
+      if(this.record.source == rec.source) {
+        module = random() * CLOSER;
+      }
+      else {
+        module = CLOSER + random() * (FARTHER - CLOSER);
+      }
+      return new Item(rec, this.x + module * Math.cos(angles[index]), this.y + module * Math.sin(angles[index]), this);
+    });
   }
 
+}
+
+function getRandomAngles(count) {
+  let angles = [];
+  let previous = 0;
+  for(let i=0; i <  count + 1; i++) {
+    let value = previous + random();
+    angles.push(value);
+    previous = value;
+  }
+  let top = angles[angles.length - 1];
+  for(let i=0; i < angles.length; i++) {
+    angles[i] = 2 * Math.PI * angles[i] / top
+  }
+  return angles.slice(0, count);
 }
