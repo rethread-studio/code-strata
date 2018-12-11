@@ -1,63 +1,35 @@
-const CLOSER = 100;
-const FARTHER = 300;
 
+class Item extends VerletParticle2D {
 
-class Item {
-  constructor(record, x, y, parent) {
-    this.record = record; // { "source": "...", "name": "...", children: [...] }
+  constructor(position, record, parent) {
+    super(position);
 
-    this.x = x;
-    this.y = y;
-
+    this.record = record;
     this.parent = parent;
 
-    this.developer = getDeveloper(record);
-    // Get the size of the text
+    let bbox = Resources.FONT.textBounds(this.text, this.x, this.y);
+    this.width = bbox.w;
+    this.height = bbox.h;
+    this.radius = Math.max(this.width, this.height);
 
-    let boundingBox = FONT.textBounds(this.name, this.x, this.y);
-
-    this.width = boundingBox.w;
-    this.height = boundingBox.h;
-
+    this.addBehavior(new AttractionBehavior(this, this.radius + Config.PARTICLE_PADDING, Config.REPULSION_STRENGTH, Config.JITTER));
   }
 
-  get name() {
-    return this.developer;
+  get text() {
+    return this.record.developer;
   }
 
   draw() {
-    text(this.name, this.x, this.y);
+    text(this.text, this.x, this.y);
   }
 
-  createChildren() {
-    let angles = getRandomAngles(this.record.children.length);
-    return this.record.children.map((rec, index) => {
-
-      let module = 0;
-
-      if(this.record.source == rec.source) {
-        module = random() * CLOSER;
-      }
-      else {
-        module = CLOSER + random() * (FARTHER - CLOSER);
-      }
-      return new Item(rec, this.x + module * Math.cos(angles[index]), this.y + module * Math.sin(angles[index]), this);
+  explode() {
+    return this.record.children.map(rec => {
+      let item = new Item(new Vec2D(this.x, this.y), rec, this);
+      let direction = new Vec2D.randomVector(); 
+      let speed =  Math.max(this.getVelocity().magnitude(), Config.MIN_SPEED);
+      item.addVelocity(direction.scale(speed));
+      return item;
     });
   }
-
-}
-
-function getRandomAngles(count) {
-  let angles = [];
-  let previous = 0;
-  for(let i=0; i <  count + 1; i++) {
-    let value = previous + random();
-    angles.push(value);
-    previous = value;
-  }
-  let top = angles[angles.length - 1];
-  for(let i=0; i < angles.length; i++) {
-    angles[i] = 2 * Math.PI * angles[i] / top
-  }
-  return angles.slice(0, count);
 }
