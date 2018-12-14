@@ -39,8 +39,8 @@ public class CallTreeAlterView  extends PApplet {
         int h = e.screenSize / t.depth;
 
         TreeCallUtils.label(t, e.packages, e.defaultLevel);
-        t = TreeCallUtils.from(t, "null.Thread-5");
-        t = TreeCallUtils.from(t, "org.apache.commons.codec.language.bm.PhoneticEngineTest.testEncode()");
+        //t = TreeCallUtils.from(t, "null.Thread-5");
+        //t = TreeCallUtils.from(t, "org.apache.commons.codec.language.bm.PhoneticEngineTest.testEncode()");
 
         //TreeCallUtils.highlight(t,"org.apache.commons.codec.language.DoubleMetaphone.conditionC0", 1);
 

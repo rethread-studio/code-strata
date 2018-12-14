@@ -117,7 +117,9 @@ public class BranchView  extends PApplet {
                 if(c.level == 1) {
                     dottedLine(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
                 } else if(c.level == 2) {
+                    strokeWeight(5.0f);
                     dashedLine(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
+                    strokeWeight(1.0f);
                 } else {
                     line(x + w/2, y + (h / 2), x + 3 * w + w/2, tmpH * pop[d + 1] + (tmpH / 2));
                 }
@@ -129,6 +131,9 @@ public class BranchView  extends PApplet {
             //int r = 3 + ((t.weight * 22)/ maxWeight) ;
             //int r = 10 ;
             int r = 6 ;
+            if(t.level == 1 || t.level == 2) {
+                r = 10;
+            }
             setColors(t.level);
             //rect(x+w/2, y+h/2, r, r);
             if(t.name.contains("@")) {
@@ -175,7 +180,7 @@ public class BranchView  extends PApplet {
 
     void dottedLine(float x1, float y1, float x2, float y2) {
         int distance = (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / 10;
-        float r = 2.0f;
+        float r = 5.0f;
         for (int i = 0; i <= distance; i++) {
             float s = ((float)i) / distance;
             float x = lerp(x1, x2, s);
