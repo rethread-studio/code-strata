@@ -1,32 +1,35 @@
-class Item {
-  constructor(record, parent) {
+
+class Item extends VerletParticle2D {
+
+  constructor(position, record, parent) {
+    super(position);
 
     this.record = record;
-
-    this.x = 0;
-    this.y = 0;
-
-    let boundingBox = font.textBounds(this.name, this.x, this.y);
-
-    this.width = boundingBox.w;
-    this.height = boundingBox.h;
-
-    this.x = random(this.width / 2, windowWidth - this.width);
-    this.y = random(this.height / 2, windowHeight - this.height / 2);
-
     this.parent = parent;
+
+    let bbox = Resources.FONT.textBounds(this.text, this.x, this.y);
+    this.width = bbox.w;
+    this.height = bbox.h;
+    this.radius = Math.max(this.width, this.height);
+
+    this.addBehavior(new AttractionBehavior(this, this.radius + Config.PARTICLE_PADDING, Config.REPULSION_STRENGTH, Config.JITTER));
   }
 
-  get name() {
-    return this.record.name;
+  get text() {
+    return this.record.developer;
   }
 
   draw() {
-    text(this.name, this.x, this.y);
+    text(this.text, this.x, this.y);
   }
 
-  createChildren() {
-    return this.record.children.map(rec => new Item(rec, this));
+  explode() {
+    return this.record.children.map(rec => {
+      let item = new Item(new Vec2D(this.x, this.y), rec, this);
+      let direction = new Vec2D.randomVector(); 
+      let speed =  Math.max(this.getVelocity().magnitude(), Config.MIN_SPEED);
+      item.addVelocity(direction.scale(speed));
+      return item;
+    });
   }
-
 }
