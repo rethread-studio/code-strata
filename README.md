@@ -1,10 +1,10 @@
-# code{strata}
+# Code{strata}
 
 [View demo](https://diversify-project.github.io/code-strata/test/demo.html)
 
 Musicologists and software scientists collaborate to reveal the beautiful and complex code strata that underlie software applications.
 
-Software is, by nature, invisible, yet it is omnipresent in our lives. This pervasiveness of software is the result of organic and decentralized processes.  A growing number of companies and individuals have contributed to the devlopment and aggregation of millions of software pieces. The assembly and coordination between all these pieces relies on a flexible hierarchical organization of software and a stratfied organization of the code.
+Software is, by nature, invisible, yet it is omnipresent in our lives. This pervasiveness of software is the result of organic and decentralized processes.  A growing number of companies and individuals have contributed to the development and aggregation of millions of software pieces. The assembly and coordination between all these pieces relies on a flexible hierarchical organization of software and a stratfied organization of the code.
 
 This interdisciplinary project, aims at building visual and sound devices that reveal these code strata to an audience as large as possible. Stratigraphy  reveals the beauties of [geological](http://www.jqjacobs.net/southwest/images/fajada_butte.jpg) or [ecological](https://upload.wikimedia.org/wikipedia/commons/c/c4/MUWO4193.JPG) structures. Inspired by these natural wonders of structure and complexity, we want to restore a more tangible relation between users and the software world through artistic representations.
 
@@ -33,6 +33,6 @@ This section regroups tools to trace programs and visualize the results.
 
 ### subjects
 
-### code-strata-v2
+### code-strata-2019
 
-This folder contains the second version of Code{strata} project.
+This folder contains the second artwork of *Code{strata}* project, realized by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
