@@ -13,26 +13,26 @@ This interdisciplinary project, aims at building visual and sound devices that r
 
 We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that symbolizes the major impact of software on all sectors of our societies. We deconstruct all the code that has been stacked to provide this action in almost any software tool. We choose an [open source text editor](https://github.com/jguitana/simple-file-editor) to pursue this deconstruction of code strata. The choice of open source code is essential for us since it provides an access to all strata, but also to the origin of these strata.
 
-## music, light and software
+## Music, light and software
 
 Music and light share the characteristics of invisibility and abstraction with software. Despite the fundamental differences in the nature of these objects (music and light are perceived through a combination of waves and neuroprocessing, while software results from the interactions of signals on digital processor), we believe they fit the purpose of representing code complexity in artistic devices.
 
-## project structure
+## Project structure
 
 ### code-analyser
 
 This section regroups tools to trace programs and visualize the results.
 
-### code-sonifier
-
-### data
-
-### docs
-
-### resources
-
-### subjects
-
 ### code-strata-2019
 
-This folder contains the second artwork of *Code{strata}* project, realized by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
+This folder contains the second artwork of *Code{strata}* project, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
+
+### documentation
+
+### inspiration
+
+### strata-sonifier
+
+### strata-visualizer
+
+### subjects

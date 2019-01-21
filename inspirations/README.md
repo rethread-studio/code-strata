@@ -1,11 +1,8 @@
-Inspirations
-===
+# Inspirations
 
 We acknowledge previous works that have inspired the code{strata} project.
 
-
-Previous artistic work about software
----
+## Previous artistic work about software
 
 > [CODeDOC @ Whitney artport](http://artport.whitney.org/commissions/codedoc/index.shtml)
 
@@ -39,8 +36,7 @@ Bitllisten is [open source](https://github.com/MaxLaumeister/bitlisten).
 Live coding creates a direct link between code and artistic representations. It consists in using source code and interactive programming to create music or images in an improvised way. This approach is also used to teach programming in schools. 
 [Sonic-Pi](http://sonic-pi.net/) is one environment for live coding.
 
-The nature of software
----
+## The nature of software
 
 This project about the nature of software is directly inspired by the following works, which propose different perspectives on the invisibibility and omnipresence of software. 
 
@@ -56,8 +52,7 @@ In this paper that appeared in the [Wall street journal](http://www.wsj.com/euro
 
 In 2016, this paper that appeared in [IEEE spectrum](http://spectrum.ieee.org/), comes back on Andreesen's vision five years later and discusses the deep impact of software, but also, almost paradoxically, the fact that software 'disappears' in the sense that it is not perceived as the source of value anymore.
 
-Software vizualization
----
+## Software vizualization
 
 Here is a (short) list of tools to vizualize different aspects of software's structure and execution
 - the [history of web browsers](http://visual.ly/browser-history)
@@ -66,8 +61,7 @@ Here is a (short) list of tools to vizualize different aspects of software's str
 - [A tool to vizualize Binaries](http://binvis.io/#/)
 - and [other examples](http://www.webdesignerdepot.com/2009/06/50-great-examples-of-data-visualization/)
  
-Art and technology forums
----
+## Art and technology forums
 
 - [EXPERIMENTA](http://www.atelier-arts-sciences.eu/APPEL-A-CANDIDATURE-EXPERIMENTA)
 - [Technarte](http://www.technarte.org/)
