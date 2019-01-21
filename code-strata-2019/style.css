@@ -73,6 +73,10 @@ h1 {
     color: black;
 }
 
+a:hover {
+    color: rgb(120, 120, 120);
+}
+
 #more {
     float: left;
     width: 50%;
