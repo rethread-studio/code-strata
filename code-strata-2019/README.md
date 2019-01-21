@@ -2,12 +2,12 @@
 
 ## Intent note
 
-For this second version of the Code{strata} project, our wish is to create a movable artistic work.
+For this second version of the *Code{strata}* project, our wish is to create a movable artistic work.
 This is why it takes the form of a web application.
 
 This artwork aims to be an exploration of what happens during the execution of the copy and paste and focuses, on the one hand, on the human and, on the other hand, on the language.
 
-### An audiovisual interpretation
+### A visual interpretation
 
 In this way, we explore the progress of the action, strata by strata, which reveals the functions called at each level. Because of our desire to give back to humans, we decided to replace the name of the functions by the developpers name who contributed to their programming.
 
@@ -15,6 +15,10 @@ To do this, we collected this data thanks to the pages relating to each developp
 + [Simple text editor](https://github.com/jguitana/simple-file-editor/graphs/contributors)
 + [Javafx](https://github.com/javafxports/openjdk-jfx/graphs/contributors)
 + [Java](https://hg.openjdk.java.net/jdk/jdk)
+
+[work in progress]
+
+### A sound interpretation
 
 [work in progress]
 
@@ -39,10 +43,6 @@ Javascript pages.
 ### libraries
 
 Libraries p5.js used.
-
-### sounds
-
-Contains the breaths.
 
 ## Usage
 
