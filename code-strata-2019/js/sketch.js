@@ -3,11 +3,11 @@ let data;
 let colorBackground = 240;
 
 function preload() {
-  Resources.FONT = loadFont('./assets/RobotoCondensed-Light.ttf');
+  Resources.FONT = loadFont('../assets/RobotoCondensed-Light.ttf');
 
   data = new Data(
-    loadJSON('./data/data.json'),
-    loadJSON('./data/developers.json')
+    loadJSON('../data/data.json'),
+    loadJSON('../data/developers.json')
   );
 }
 
