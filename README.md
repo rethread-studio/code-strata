@@ -27,9 +27,9 @@ This section regroups tools to trace programs and visualize the results.
 
 This folder contains the second artwork of *Code{strata}* project, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
 
-### documentation
+### docs
 
-### inspiration
+### inspirations
 
 ### strata-sonifier
 
