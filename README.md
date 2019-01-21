@@ -29,7 +29,7 @@ This folder contains the second artwork of *Code{strata}* project, produced by J
 
 ### docs
 
-### inspirations
+### inspiration
 
 ### strata-sonifier
 
