@@ -2,12 +2,12 @@
 
 ## Intent note
 
-For this second version of the *Code{strata}* project, our wish is to create a movable artistic work.
+For this second version of the Code{strata} project, our wish is to create a movable artistic work.
 This is why it takes the form of a web application.
 
 This artwork aims to be an exploration of what happens during the execution of the copy and paste and focuses, on the one hand, on the human and, on the other hand, on the language.
 
-### A visual interpretation
+### An audiovisual interpretation
 
 In this way, we explore the progress of the action, strata by strata, which reveals the functions called at each level. Because of our desire to give back to humans, we decided to replace the name of the functions by the developpers name who contributed to their programming.
 
@@ -18,9 +18,7 @@ To do this, we collected this data thanks to the pages relating to each developp
 
 [work in progress]
 
-### A sound interpretation
-
-[work in progress]
+[Visit our page and the artwork.](https://castor-software.github.io/code-strata/)
 
 ## Folder content
 
