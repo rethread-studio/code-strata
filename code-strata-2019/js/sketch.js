@@ -4,6 +4,10 @@ let colorBackground = 240;
 
 function preload() {
   Resources.FONT = loadFont('../assets/RobotoCondensed-Light.ttf');
+  // Resources.java = loadFont('../assets/BebasNeue Bold.otf');
+  // Resources.App = loadFont('../assets/RobotoCondensed-Light.ttf');
+  // Resources.javafx = loadFont('../assets/Gotham-Book.ttf');
+  // Resources.default = loadFont('../assets/Montserrat-Regular.otf');
 
   data = new Data(
     loadJSON('../data/data.json'),
@@ -36,6 +40,7 @@ function draw() {
   if (mustAdvance()) {
     advanceStrata();
     changeBackground();
+    // interval = interval - 44;
   }
 }
 

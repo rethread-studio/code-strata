@@ -18,4 +18,13 @@ function player() {
 function setup() {
     breathIn.playMode('sustain');
     player();
+    // playBreathIn();
 }
+
+// function playBreathIn() {
+//     if (!mustAdvance()) {
+//         player() = false;
+//     } else if (mustAdvance()) {
+//         player();
+//     }
+// }

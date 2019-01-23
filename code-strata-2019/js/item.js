@@ -1,4 +1,3 @@
-
 class Item extends VerletParticle2D {
 
   constructor(position, record, parent) {
@@ -8,6 +7,7 @@ class Item extends VerletParticle2D {
     this.parent = parent;
 
     let bbox = Resources.FONT.textBounds(this.text, this.x, this.y);
+    // let bbox = Resources[record.source].textBounds(this.text, this.x, this.y);
     this.width = bbox.w;
     this.height = bbox.h;
     this.radius = Math.max(this.width, this.height);
@@ -26,8 +26,8 @@ class Item extends VerletParticle2D {
   explode() {
     return this.record.children.map(rec => {
       let item = new Item(new Vec2D(this.x, this.y), rec, this);
-      let direction = new Vec2D.randomVector(); 
-      let speed =  Math.max(this.getVelocity().magnitude(), Config.MIN_SPEED);
+      let direction = new Vec2D.randomVector();
+      let speed = Math.max(this.getVelocity().magnitude(), Config.MIN_SPEED);
       item.addVelocity(direction.scale(speed));
       return item;
     });

@@ -1,5 +1,9 @@
 const Resources = {
     FONT: null // To be initialized in preload
+    // java: null,
+    // App: null,
+    // javafx: null,
+    // default: null
 };
 
 const Config = {
