@@ -29,6 +29,8 @@ This folder contains the second artwork of Code{strata} project, produced by Jus
 
 ### docs
 
+Code{strata} GitHub Page site. 
+
 ### inspiration
 
 ### strata-sonifier

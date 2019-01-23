@@ -67,6 +67,11 @@ h1 {
     margin-bottom: 10%;
 }
 
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 .links a {
     font-size: 1.4em;
     text-decoration: none;
@@ -87,6 +92,10 @@ a:hover {
     float: left;
     width: 50%;
     text-align: center;
+}
+
+#name {
+    font-style: italic;
 }
 
 #copypaste {

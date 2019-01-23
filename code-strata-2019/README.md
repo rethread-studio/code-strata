@@ -42,6 +42,10 @@ Javascript pages.
 
 Libraries p5.js used.
 
+### sounds
+
+Contains the breaths.
+
 ## Usage
 
 1. Download **code-strata** repository;
