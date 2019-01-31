@@ -6,7 +6,7 @@ class Data {
     }
 
     get root() {
-        let root = { source: "", name: "", children: [] };
+        let root = { name: "ctrl-c ctrl-v", children: [] };
         for(let thread of this.records.children) {
           root.children = root.children.concat(thread.children);
         }
@@ -16,16 +16,18 @@ class Data {
     getDeveloper(record) {
         let choices = this.developers[record.source];
         if(!choices) {
-            return "...";
+            return "";
         }
         return random(choices);
     }
 
     // Lazy (and random) developer assignment
+    // and children retrieval
     record(values) {
+        
         let result = { developer: this.getDeveloper(values) };
         Object.assign(result, values);
-
+    
         result._children = result.children;
         result.children = undefined;
 

@@ -5,6 +5,7 @@ const Config = {
   REPULSION_STRENGTH: -2000, // Strength of the repulsion between particles. Must be negative.
   JITTER: 0.0001, // Jitter for the repulsion
   MIN_SPEED: 2, // Minimum speed for a particle
+  DRAG: 0.05, // Drag for particles
 
   INITIAL_BACKKGROUND_COLOR: 240,
   BACKGRUND_COLOR_VARIATION: 2,
@@ -51,7 +52,7 @@ function setup() {
 
   // Physical system
   physics = new VerletPhysics2D();
-  physics.setDrag(0.05);
+  physics.setDrag(Config.DRAG);
   physics.setWorldBounds(new Rect(0, 0, windowWidth, windowHeight));
   // Stratas will be represented as particles
   // The first strata is one particle with the root element

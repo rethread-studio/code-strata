@@ -18,6 +18,9 @@ class Item extends VerletParticle2D {
   }
 
   get text() {
+    if(this.record['developer'] === undefined || this.record.developer === '') {
+      return this.record.name;
+    }
     return this.record.developer;
   }
 
