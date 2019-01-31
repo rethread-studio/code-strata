@@ -6,8 +6,10 @@ class Item extends VerletParticle2D {
     this.record = record;
     this.parent = parent;
 
-    let bbox = Resources.FONT.textBounds(this.text, this.x, this.y);
-    // let bbox = Resources[record.source].textBounds(this.text, this.x, this.y);
+    this.font = getFontForTeam(record.source); // External dependency :(
+
+    let bbox = this.font.textBounds(this.text, this.x, this.y);
+
     this.width = bbox.w;
     this.height = bbox.h;
     this.radius = Math.max(this.width, this.height);
@@ -20,6 +22,7 @@ class Item extends VerletParticle2D {
   }
 
   draw() {
+    textFont(this.font);
     text(this.text, this.x, this.y);
   }
 

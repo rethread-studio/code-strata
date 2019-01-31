@@ -1,24 +1,55 @@
+
+const Config = {
+  FRAMES_TO_EXPLODE: 500, // Controls the number of frames a strata is visible
+  PARTICLE_PADDING: 5, // Minimum distance between particles
+  REPULSION_STRENGTH: -2000, // Strength of the repulsion between particles. Must be negative.
+  JITTER: 0.0001, // Jitter for the repulsion
+  MIN_SPEED: 2, // Minimum speed for a particle
+
+  INITIAL_BACKKGROUND_COLOR: 240,
+  BACKGRUND_COLOR_VARIATION: 2,
+};
+
+
 let physics;
 let data;
-let colorBackground = 240;
+let colorBackground = Config.INITIAL_BACKKGROUND_COLOR;
+
+// Map from teams to fonts
+const Team2FontMap = {}
+
+
+function getFontForTeam(team) {
+  let font = Team2FontMap[team];
+  if(!font) {
+    font = Assets.Fonts.RobotoCondensed;
+  }
+  return font;
+}
 
 function preload() {
-  Resources.FONT = loadFont('../assets/RobotoCondensed-Light.ttf');
-  // Resources.java = loadFont('../assets/BebasNeue Bold.otf');
-  // Resources.App = loadFont('../assets/RobotoCondensed-Light.ttf');
-  // Resources.javafx = loadFont('../assets/Gotham-Book.ttf');
-  // Resources.default = loadFont('../assets/Montserrat-Regular.otf');
 
+  loadAssets();
+  
   data = new Data(
     loadJSON('../data/data.json'),
     loadJSON('../data/developers.json')
   );
+
+
 }
 
 function setup() {
+  
+  //Setting the team to font map
+  Team2FontMap.javafx = Assets.Fonts.BebasNeue;
+  Team2FontMap.App = Assets.Fonts.GothamBook;
+  Team2FontMap.java = Assets.Fonts.Montserrat;
+
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER);
 
+  // Physical system
   physics = new VerletPhysics2D();
   physics.setDrag(0.05);
   physics.setWorldBounds(new Rect(0, 0, windowWidth, windowHeight));
@@ -58,10 +89,6 @@ function advanceStrata() {
   physics.particles = next;
 }
 
-// function returnStrata() {
-
-// }
-
 function changeBackground() {
-  colorBackground = colorBackground - 2;
+  colorBackground = colorBackground - Config.BACKGRUND_COLOR_VARIATION;
 }
