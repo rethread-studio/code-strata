@@ -64,7 +64,7 @@ h1 {
 
 .content {
     margin-top: 3em;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 p {
@@ -89,13 +89,9 @@ a:hover {
 }
 
 #codestrata {
-    float: left;
+    float: right;
     width: 50%;
     text-align: center;
-}
-
-#name {
-    font-style: italic;
 }
 
 #copypaste {
@@ -104,6 +100,20 @@ a:hover {
     text-align: center;
 }
 
+#github {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
 #code {
+    font-style: italic;
+}
+
+#name {
+    font-style: italic;
+}
+
+#concept {
     font-style: italic;
 }

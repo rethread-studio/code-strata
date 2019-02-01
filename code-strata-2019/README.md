@@ -2,21 +2,18 @@
 
 ## Intent note
 
-For this second version of the Code{strata} project, our wish is to create a movable artistic work.
-This is why it takes the form of a web application.
+What is software and how does it work? How is it organized? What happens when we copy paste?
 
-This artwork aims to be an exploration of what happens during the execution of the copy and paste and focuses, on the one hand, on the human and, on the other hand, on the language.
+Our aim is to highlight all the complexity and structures behind our intuitive and streamlined graphical interface to see the beauty that emerges.
 
-### An audiovisual interpretation
+This artistic interpretation, based on the analysis of the execution of a ```ctrl-c ctrl-v``` in a simple text editor, offers you to explore a copy and paste, stratum by stratum.
+For this second version, we have imposed as a condition to create a movable artwork. That's why this project took the form of a web application, bring up by an aesthetic so called *plastic economy*.
 
-In this way, we explore the progress of the action, strata by strata, which reveals the functions called at each level. Because of our desire to give back to humans, we decided to replace the name of the functions by the developpers name who contributed to their programming.
+Here, the austerity of the work, by application of the concept of plastic economy, appears legitimate. It evokes, on the one hand, the coldness of the machine and, on the other hand, our desire to decomplex and not scare the visitor, gradually giving way to wonder at the sight of all the functions called for the execution of an action as simple as the copy and paste. We also want, through this artwork, to give a visual and audible account of the place occupied by human in this software universe.
 
-To do this, we collected this data thanks to the pages relating to each developpers community:
-+ [Simple text editor](https://github.com/jguitana/simple-file-editor/graphs/contributors)
-+ [Javafx](https://github.com/javafxports/openjdk-jfx/graphs/contributors)
-+ [Java](https://hg.openjdk.java.net/jdk/jdk)
+In order to shine a light on those who have programmed all these functions, we draw through the work a kind of memorial in honor of those who participated in the creation of the ```ctrl-c ctrl-v```. When we analyze the data collected, we distinguish two types of function calls: functions called by the text editor and those called by *Javafx* libraries; both represent distinct communities of developers, all working in the style of an ecosystem and this is what we try to find visually. Finally, to the visual exploration is added a sound exploration of what happens inside a computer, assuring in this way a total immersion.
 
-[work in progress]
+The choice of breathing is not insignificant, obviously evoking the human. However, the division of the track in grains characterizes the couple tension / slackening specific to the execution of the ```ctrl-c ctrl-v```. In addition, it is symbolic of the effort, effort of the machine that makes an incredible number of calculations for this action that seems so simple, but above all, effort of the developers who wrote these millions of lines of code.
 
 [Visit our page and the artwork.](https://castor-software.github.io/code-strata/)
 
@@ -24,7 +21,7 @@ To do this, we collected this data thanks to the pages relating to each developp
 
 ### assets
 
-Contains the typography chosen for the project.
+Contains the typography chosen and sounds for the project.
 
 ### data
 
@@ -40,11 +37,7 @@ Javascript pages.
 
 ### libraries
 
-Libraries p5.js used.
-
-### sounds
-
-Contains the breaths.
+Libraries used.
 
 ## Usage
 
