@@ -1,11 +1,12 @@
 let breathIn;
 let breathOut;
-let interval = 2000; // interval between grains
+let interval = 100; // interval between grains
 
 function preload() {
-    breathIn = loadSound('../sounds/breath_in.wav');
-    breathOut = loadSound('../sounds/breath_out.wav');
+    breathIn = loadSound('../assets/sounds/breath_in.wav');
+    breathOut = loadSound('../assets/sounds/breath_out.wav');
 }
+
 
 function player() {
     let grainDuration = random(0.2, breathIn.duration());

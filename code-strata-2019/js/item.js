@@ -24,9 +24,19 @@ class Item extends VerletParticle2D {
     return this.record.developer;
   }
 
+  get team() {
+    return this.record['source'];
+  }
+
   draw() {
-    textFont(this.font);
+    //textFont(this.font); // It turns out that setting the font makes the process really slow.
+    //fill(color(this.isLocked?Config.LOCKED_PARTICLE_COLOR:Config.MOVING_PARTICLE_COLOR));
     text(this.text, this.x, this.y);
+
+    // fill(color(0))
+    // ellipse(this.x, this.y, this.radius + Config.PARTICLE_PADDING, this.radius + Config.PARTICLE_PADDING);
+    // fill(color(255));
+    // ellipse(this.x, this.y, this.radius, this.radius);
   }
 
   explode() {
