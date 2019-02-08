@@ -5,15 +5,7 @@ class Item extends VerletParticle2D {
 
     this.record = record;
     this.parent = parent;
-
-    this.font = getFontForTeam(record.source); // External dependency :(
-
-    let bbox = this.font.textBounds(this.text, this.x, this.y);
-
-    this.width = bbox.w;
-    this.height = bbox.h;
-    this.radius = Math.max(this.width, this.height);
-
+    this.radius = textWidth(this.text);
     this.addBehavior(new AttractionBehavior(this, this.radius + Config.PARTICLE_PADDING, Config.REPULSION_STRENGTH, Config.JITTER));
   }
 
@@ -29,14 +21,7 @@ class Item extends VerletParticle2D {
   }
 
   draw() {
-    //textFont(this.font); // It turns out that setting the font makes the process really slow.
-    //fill(color(this.isLocked?Config.LOCKED_PARTICLE_COLOR:Config.MOVING_PARTICLE_COLOR));
-    text(this.text, this.x, this.y);
-
-    // fill(color(0))
-    // ellipse(this.x, this.y, this.radius + Config.PARTICLE_PADDING, this.radius + Config.PARTICLE_PADDING);
-    // fill(color(255));
-    // ellipse(this.x, this.y, this.radius, this.radius);
+   text(this.text, this.x, this.y);
   }
 
   explode() {
