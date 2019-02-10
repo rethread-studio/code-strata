@@ -9,6 +9,6 @@ const Assets = {
 };
 
 function loadAssets() {
-    Assets.Sounds.BreathIn = loadSound('../assets/sounds/breath_in.wav');
-    Assets.Sounds.BreathOut = loadSound('../assets/sounds/breath_out.wav');
+    Assets.Sounds.BreathIn = loadSound('../assets/sounds/breath-in-002.wav');
+    Assets.Sounds.BreathOut = loadSound('../assets/sounds/breath-out-002.wav');
 }
