@@ -25,5 +25,5 @@ Our aim is to highlight all the complexity and structures behind our intuitive a
 
 For this second version, we have imposed as a condition to create a movable artwork. That's why this project took the form of a web application.
 
-[Visit *Code{strata}* (2019).](../code-strata-2019/)
+[Visit *Code{strata}* (2019).](https://github.com/castor-software/code-strata/tree/master/code-strata-2019)
 
