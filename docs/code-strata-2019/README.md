@@ -1,4 +1,4 @@
-# *Code{strata}* (2019)
+# *code{strata}* (2019)
 
 ## Intent note
 
@@ -15,7 +15,9 @@ In order to shine a light on those who have programmed all these functions, we d
 
 The choice of breathing is not insignificant, obviously evoking the human. However, the division of the track in grains characterizes the couple tension / slackening specific to the execution of the ```ctrl-c ctrl-v```. In addition, it is symbolic of the effort, effort of the machine that makes an incredible number of calculations for this action that seems so simple, but above all, effort of the developers who wrote these millions of lines of code.
 
-[Visit our page and the artwork.](https://castor-software.github.io/code-strata/)
+[Visit *code{strata}* (2019).](https://castor-software.github.io/code-strata/code-strata-2019/index.html)
+
+[Read the medium post *code{strata}: the beautiful execution of ctrl-c ctrl-v*.](https://medium.com/@almyre/code-strata-the-beautiful-execution-of-ctrl-c-ctrl-v-4c4bebbc409?sk=f275371d1229746c9371b4a0345f6adb)
 
 ## Folder content
 

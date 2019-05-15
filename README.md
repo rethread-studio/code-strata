@@ -1,4 +1,4 @@
-# Code{strata}
+# code{strata}
 
 [Visit our page](https://castor-software.github.io/code-strata/)
 
@@ -25,11 +25,9 @@ This section regroups tools to trace programs and visualize the results.
 
 ### code-strata-2019
 
-This folder contains the second artwork of Code{strata} project, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
+This folder contains the second artwork of code{strata}, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
 
 ### docs
-
-Code{strata} GitHub Page site. 
 
 ### inspiration
 

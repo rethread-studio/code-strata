@@ -1,4 +1,4 @@
-# Code{strata}
+# code{strata}
 
 [View demo](test/strata.html)
 
@@ -17,13 +17,13 @@ We choose to focus first on the strata of `ctrl-c ctrl-v`, an iconic action that
 
 Music and light share the characteristics of invisibility and abstraction with software. Despite the fundamental differences in the nature of these objects (music and light are perceived through a combination of waves and neuroprocessing, while software results from the interactions of signals on digital processor), we believe they fit the purpose of representing code complexity in artistic devices.
 
-## *Code{strata}* (2019)
+## *code{strata}* (2019)
 
-This is the second artwork of Code{strata} project, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
+This is the second artwork of code{strata}, produced by Justine Fortier, Nicolas Harrand and Oscar Luis Vera Pérez.
 
 Our aim is to highlight all the complexity and structures behind our intuitive and streamlined graphical interface to see the beauty that emerges.
 
 For this second version, we have imposed as a condition to create a movable artwork. That's why this project took the form of a web application.
 
-[Visit *Code{strata}* (2019).](code-strata-2019/index.html)
+[Visit *code{strata}* (2019).](https://castor-software.github.io/code-strata/code-strata-2019/index.html)
 
