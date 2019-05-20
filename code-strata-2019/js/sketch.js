@@ -13,12 +13,11 @@ const Config = {
   LOCKED_PARTICLE_COLOR: 255,
 
   SOUND_INTERVAL: 4000,
-  SOUND_FRAGMENT: 0.6, // minimum grain duration
+  SOUND_FRAGMENT: 0.7, // maximum grain duration and minimum offset
 
   BACKWARD_FRAME_RATE: 28,
-  FORWARD_FRAME_RATE: 60,
+  FORWARD_FRAME_RATE: 60
 };
-
 
 let physics;
 let data;
@@ -26,9 +25,8 @@ let colorBackground = Config.INITIAL_BACKKGROUND_COLOR;
 
 let animation = {
   direction: 1,
-  currentSnapshot: 0,
-}
-
+  currentSnapshot: 0
+};
 
 let snapshots = [];
 
@@ -69,23 +67,19 @@ function changeDirection() {
 
 // Map from teams to fonts
 const Team2FontMap = {
-  'App': 'Courier',
-  'javafx': 'Helvetica'
-}
-
+  App: "Courier",
+  javafx: "Helvetica"
+};
 
 let frozzen_particles = [];
 
 function preload() {
-
   loadAssets();
 
   data = new Data(
-    loadJSON('../data/data.json'),
-    loadJSON('../data/developers.json')
+    loadJSON("../data/data.json"),
+    loadJSON("../data/developers.json")
   );
-
-
 }
 
 function setup() {
@@ -117,19 +111,17 @@ function initPhysics() {
 }
 
 function setupPlayer() {
-  Assets.Sounds.BreathIn.playMode('sustain');
+  Assets.Sounds.BreathIn.playMode("sustain");
   player();
 }
 
 function player() {
-  let grainDuration = random(Config.SOUND_FRAGMENT, Assets.Sounds.BreathIn.duration());
-  let offset = random(0, Config.SOUND_FRAGMENT); // beginning of the sample
+  let grainDuration = random(0.3, Config.SOUND_FRAGMENT);
+  let offset = random(Config.SOUND_FRAGMENT, Assets.Sounds.BreathIn.duration());
   Assets.Sounds.BreathIn.play(0, 1, 1, offset, grainDuration);
   let interval = Config.SOUND_INTERVAL / physics.particles.length + 100;
   setTimeout(player, interval);
 }
-
-
 
 function draw() {
   if (isMovingForward()) {
@@ -146,17 +138,14 @@ function draw() {
 }
 
 function setFontForTeam(team) {
-
   let font = Team2FontMap[team];
   if (!font) {
-    font = 'Courier';
+    font = "Courier";
   }
   textFont(font);
-
 }
 
 function moveForward() {
-
   background(colorBackground);
 
   // Update the particles
@@ -172,7 +161,6 @@ function moveForward() {
     saveSnapshot();
     advanceStrata();
     changeBackground();
-
   }
 }
 
@@ -200,7 +188,6 @@ function mustAdvanceStrata() {
 }
 
 function advanceStrata() {
-
   let next = [];
   for (let item of physics.particles) {
     next = next.concat(item.explode());

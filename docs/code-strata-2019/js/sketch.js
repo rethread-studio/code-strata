@@ -13,7 +13,7 @@ const Config = {
   LOCKED_PARTICLE_COLOR: 255,
 
   SOUND_INTERVAL: 4000,
-  SOUND_FRAGMENT: 0.6, // minimum grain duration
+  SOUND_FRAGMENT: 0.7, // maximum grain duration and minimum offset
 
   BACKWARD_FRAME_RATE: 28,
   FORWARD_FRAME_RATE: 60,
@@ -122,8 +122,8 @@ function setupPlayer() {
 }
 
 function player() {
-  let grainDuration = random(Config.SOUND_FRAGMENT, Assets.Sounds.BreathIn.duration());
-  let offset = random(0, Config.SOUND_FRAGMENT); // beginning of the sample
+  let grainDuration = random(0.3, Config.SOUND_FRAGMENT);
+  let offset = random(Config.SOUND_FRAGMENT, Assets.Sounds.BreathIn.duration());
   Assets.Sounds.BreathIn.play(0, 1, 1, offset, grainDuration);
   let interval = Config.SOUND_INTERVAL / physics.particles.length + 100;
   setTimeout(player, interval);
